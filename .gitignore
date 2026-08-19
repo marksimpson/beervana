@@ -12,3 +12,6 @@ untappd-history.json
 map-bbox.xml
 mapfull-*.png
 crop-*.png
+
+# Cached brewery pages from beervana.co.nz
+.site-cache/

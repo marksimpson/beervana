@@ -1,0 +1,3242 @@
+[
+ {
+  "brewery": "The Alchemist Mixology",
+  "page_brewery": "The Alchemist Mixology",
+  "slug": "alchemist_mixology",
+  "name": "Dark'n'Stormy",
+  "abv": 5,
+  "style": "Ginger Beer Cocktail",
+  "notes": "Dark Rum, Lime & Brown sugar mixed with ginger beer for a crisp & refreshing cocktail"
+ },
+ {
+  "brewery": "The Alchemist Mixology",
+  "page_brewery": "The Alchemist Mixology",
+  "slug": "alchemist_mixology",
+  "name": "Flirty Lady",
+  "abv": 6,
+  "style": "Ginger Beer Cocktail",
+  "notes": "Gin, Rosehip, Lime & Ginger beer topped with a meringue!"
+ },
+ {
+  "brewery": "The Alchemist Mixology",
+  "page_brewery": "The Alchemist Mixology",
+  "slug": "alchemist_mixology",
+  "name": "Raspberry Chocolate Brownie",
+  "abv": 5,
+  "style": "Beer-based Cocktail",
+  "notes": "\ud83c\udf6b Raspberry & Chocolate Brownie. Rich and velvety &mdash; tart raspberry blends into Emerson&rsquo;s Chocolato Otis, a smooth chocolate oatmeal stout with roasted malt, cocoa, and creamy depth. Like dessert in a glass."
+ },
+ {
+  "brewery": "The Alchemist Mixology",
+  "page_brewery": "The Alchemist Mixology",
+  "slug": "alchemist_mixology",
+  "name": "Tropical IPA",
+  "abv": 6.3,
+  "style": "Beer-Based Cocktail",
+  "notes": "Bright and tropical \u2014 passionfruit and lime meet Emerson IPA."
+ },
+ {
+  "brewery": "The Alchemist Mixology",
+  "page_brewery": "The Alchemist Mixology",
+  "slug": "alchemist_mixology",
+  "name": "Virgin Lady Mocktail",
+  "abv": 0,
+  "style": "Mocktail",
+  "notes": "Rosehip, Raspberry & lime stirred with ginger beer & topped with a meringue"
+ },
+ {
+  "brewery": "Altitude Brewing",
+  "page_brewery": "Altitude Brewing",
+  "slug": "altitude-brewing",
+  "name": "Alta Fresca: Strawberry & Lime",
+  "abv": 7.5,
+  "style": "White Sparkling Sangria",
+  "notes": "Queenstown's hottest summer beverage is back. This insanely popular concoction is summer in a glass: a fresh and zesty sparkling white sangria with a beautiful pink blush that's poured over ice. 2026 edition brings a classic combo of strawberry and lime to the sangria table. Juicy spring strawberry aromas meld with fresh grape and a light, dry spritzy mouthfeel, with a fresh citrus edge that quenches all thirsts."
+ },
+ {
+  "brewery": "Altitude Brewing",
+  "page_brewery": "Altitude Brewing",
+  "slug": "altitude-brewing",
+  "name": "Good Times",
+  "abv": 0.5,
+  "style": "Non-alc XPA",
+  "notes": "One of our core values here at Altitude is having a good time. Some days are naturally gonna be better than others, and some don't go as planned, but as they say, you can turn lemons into lemonade. When it's time to pass up a beer, we respect that. But it never means you shouldn't be having a good time as good times are all the time with us. This extra pale ale is crafted with all the best qualities of a full-flavoured brew but without the booze."
+ },
+ {
+  "brewery": "Altitude Brewing",
+  "page_brewery": "Altitude Brewing",
+  "slug": "altitude-brewing",
+  "name": "Hang Time (Rocky Ridge Collab)",
+  "abv": 6.5,
+  "style": "Hazy IPA",
+  "notes": "Collaboration with Rocky Ridge Brewing Co. (Australia) After making one delicious beer with our mates over in WA, the thirsty world demanded another. This time they came to us for a brew day, and we have created another classic for those demanding dry mouths. Hang time is a punchy, full-bodied hazy using the goodness of 2 hops we have never used before in NZ 101 and Alora. This NZ/US combo delivers passion and stonefruit to the moon that is backed up with tingly yuzu and lime zest and some sweet melon smooches."
+ },
+ {
+  "brewery": "Altitude Brewing",
+  "page_brewery": "Altitude Brewing",
+  "slug": "altitude-brewing",
+  "name": "Happy Place",
+  "abv": 5,
+  "style": "Helles Lager",
+  "notes": "This is the quintessential brewer's beer. A classic style that is uncomplicated and easy to drink, but the exact opposite when it comes to the brewing. Endless careful practice, recipe crafting and flawless production technique are all that is needed to produce a full-flavoured and well-balanced Helles. Something that would make a proud Bavarian as happy to drink it as we are happy making it."
+ },
+ {
+  "brewery": "Altitude Brewing",
+  "page_brewery": "Altitude Brewing",
+  "slug": "altitude-brewing",
+  "name": "Jam Sessions Vol. 3: Boysenberry, Blackberry & Raspberry (Nitro)",
+  "abv": 5,
+  "style": "Pastry Sour",
+  "notes": "Reissued. Welcome back to the third jam session in our ongoing series, featuring a trio of wicked berries. This session started with a creamy kettle-soured base that's been fermented really clean. Then we kept hitting it layers of hand-selected fruits until we reached the pitch-perfect harmony of tart, sweet, creamy and refreshing. Store chilled for the freshest performance."
+ },
+ {
+  "brewery": "Altitude Brewing",
+  "page_brewery": "Altitude Brewing",
+  "slug": "altitude-brewing",
+  "name": "Jazz Hands",
+  "abv": 6.8,
+  "style": "West Coast IPA",
+  "notes": "Brewed for the 2026 WC IPA challenge, this year's entry is Jazz hands; The iconic, inspirational, and awesome time-honoured move that's synonymous with the stage. Don't let it be your Mr Cellophane and pass you by at this year's challenge or any other event. Pungent aromas of fresh sticky buds, key lime pie and blackberry crumble layer up into a hop-saturated mouthfeel that jazz's hard. Dry and refined, the bitterness hits early, right with the saturation of flavour and ends the performance perfectly in the West Coast (end) stage, wanting an encore."
+ },
+ {
+  "brewery": "Altitude Brewing",
+  "page_brewery": "Altitude Brewing",
+  "slug": "altitude-brewing",
+  "name": "Rerrero Frocher: Choc Hazelnut (Nitro)",
+  "abv": 10,
+  "style": "Pastry Stout",
+  "notes": "When you unwrap this box of chocolates, you know exactly what you're gonna get. Brewed to capture the unmistakable indulgence of a chocolate hazelnut truffle, this indulgent beer pours deep black with notes of Nutella, roasted hazelnuts, Belgian chocolate and espresso. Full-bodied and velvety with a lingering milk chocolate sweetness that is balanced by an easy and mild roasted bitterness."
+ },
+ {
+  "brewery": "Altitude Brewing",
+  "page_brewery": "Altitude Brewing",
+  "slug": "altitude-brewing",
+  "name": "Yodeling School German Chocolate Torte (Nitro)",
+  "abv": 10,
+  "style": "Pastry Stout",
+  "notes": "A decadent pastry stout inspired by the classic German chocolate cake, pouring deep obsidian with a creamy mocha head. Rich aromas of dark chocolate brownie, toasted coconut and fresh roast coffee rise from the glass. The palate layers velvety cocoa, caramelised sugar, creamy coconut and subtle vanilla frosting. All this indulgence is balanced by a subtle earthy bitterness and a touch of roast. Full-bodied and dessert-like without becoming cloying, it finishes clean enough to enjoy another bite.y"
+ },
+ {
+  "brewery": "Altitude Brewing",
+  "page_brewery": "Altitude Brewing",
+  "slug": "altitude-brewing",
+  "name": "You Can Call Me Al (Aliment Collab)",
+  "abv": 6.7,
+  "style": "Doppelbock",
+  "notes": "Collaboration with Aliment Brewing (Moutere) Hi, my name is Al. I am the very special progeny of a collaboration between breweries Altitude and Aliment. I would like to tell you a bit about myself. I am beautiful dark bronze, fresh espresso colour with a soft tan foam on top. First impressions aside, you should smell my delicious top notes of baked rye sourdough, toasted caramel nuts, sticky toffee pudding and hints of dried fruits. If this doesn't make you love me, then I taste just as good. An Initial rich toasted fruit bread flavour is superseded by a little chocolate note, with a full yet very clean mouthfeel from my lager fermentation."
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "9-5",
+  "abv": 8.2,
+  "style": "Spiced Imperial Stout",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Barbara",
+  "abv": 4.5,
+  "style": "Raspberry & Rhubarb Cider",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Barbara boys in berry",
+  "abv": 4.2,
+  "style": "Berry Cider",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Barbara Girls in berry",
+  "abv": 4.2,
+  "style": "Berry Cider",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Barbara Rhubarb cider",
+  "abv": 4.2,
+  "style": "Rhubarb cider",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "BMO Beer (Beersmo)",
+  "abv": 6.8,
+  "style": "Hazy IPA",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Buff sockburn brown lager",
+  "abv": 4.5,
+  "style": "Brown Lager",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Cinnamon Bunz",
+  "abv": 8.2,
+  "style": "Spiced Imperial Pastry Stout",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Dig the Gig",
+  "abv": 4.5,
+  "style": "Lager",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Drama Lager",
+  "abv": 5.7,
+  "style": "Hopped Lager",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Earl of Lemonade",
+  "abv": 4.2,
+  "style": "Hard Lemonade",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Emerald Princess",
+  "abv": 6,
+  "style": "Hemp American Pale Ale",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Evil Guy",
+  "abv": 8,
+  "style": "Double Hazy IPA",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Fin the beer Main character energy",
+  "abv": 4.2,
+  "style": "Lager",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Flamin Princess",
+  "abv": 4.5,
+  "style": "Lager",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Frozen Account",
+  "abv": 5.8,
+  "style": "Raspberry Ice Cream Sour",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Ghost Princess",
+  "abv": 4.5,
+  "style": "Rhubarb Cider",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Inner Demon",
+  "abv": 4.8,
+  "style": "Brown Sugar Pumpkin Ale",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "It's Our Year",
+  "abv": 6.5,
+  "style": "Coconut hazy IPA",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Jake the Hazy",
+  "abv": 6,
+  "style": "Lychee Hazy",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Juicy Pineapple Rocket",
+  "abv": 6.5,
+  "style": "Hazy IPA",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Ken Cider",
+  "abv": 4.2,
+  "style": "Green Apple Cider",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Kitty Cakes",
+  "abv": 6.6,
+  "style": "Caramel Cake Stout",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Lumpy Space Princess",
+  "abv": 6,
+  "style": "Bright IPA",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Marcey Van Beer",
+  "abv": 4.2,
+  "style": "Blood Orange Sour Ale",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Mr. Peanut Butter and Jelly",
+  "abv": 6.5,
+  "style": "Peanut Butter Jelly stout",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Muscle Princess",
+  "abv": 4.5,
+  "style": "Cider",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Napoleon Bona Beer",
+  "abv": 2.5,
+  "style": "Bright IPA",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Ol Bluey Ginger Beer",
+  "abv": 4,
+  "style": "Ginger beer",
+  "notes": ""
+ },
+ {
+  "brewery": "Beers by Bacon Bros",
+  "page_brewery": "Beers by Bacon Bros",
+  "slug": "beers-by-bacon-bros",
+  "name": "Old Mate",
+  "abv": 6,
+  "style": "Red IPA with Hemp",
+  "notes": ""
+ },
+ {
+  "brewery": "Behemoth Brewing Company",
+  "page_brewery": "Behemoth Brewing Company",
+  "slug": "behemoth-brewing-company",
+  "name": "Churly's Cantina",
+  "abv": 7,
+  "style": "Agave Tropical Stout",
+  "notes": "Small lager yeast fermented stout with the taste of Agave. The warming taste of Mexico right here at Beervana."
+ },
+ {
+  "brewery": "Behemoth Brewing Company",
+  "page_brewery": "Behemoth Brewing Company",
+  "slug": "behemoth-brewing-company",
+  "name": "Churly's Share",
+  "abv": 7,
+  "style": "Whiskey Aged Tropical Stout",
+  "notes": "Churly's has been nice enough to give his share back into this stout which we had ageed on Oak Staves that have held whiskies from around the world. Now you can get the taste of your favourite dram in this smooth, flavourful and maybe far too easy drinking tropical stout."
+ },
+ {
+  "brewery": "Behemoth Brewing Company",
+  "page_brewery": "Behemoth Brewing Company",
+  "slug": "behemoth-brewing-company",
+  "name": "Classic Lemon-Lime Margarita",
+  "abv": 5,
+  "style": "Frozen Margarita (Beer Base)",
+  "notes": "Just like your classic frozen margarita but made with a citrus sour beer base!"
+ },
+ {
+  "brewery": "Behemoth Brewing Company",
+  "page_brewery": "Behemoth Brewing Company",
+  "slug": "behemoth-brewing-company",
+  "name": "Cool Me Down",
+  "abv": 5,
+  "style": "Watermelon Hazy IPA",
+  "notes": "Brewed with our mates at the Black Seeds. It is a hazy loaded with real watermelon from Vietnam, it is one for real watermelon lovers, watermelon in beer form."
+ },
+ {
+  "brewery": "Behemoth Brewing Company",
+  "page_brewery": "Behemoth Brewing Company",
+  "slug": "behemoth-brewing-company",
+  "name": "Frozen Mango Margarita",
+  "abv": 5,
+  "style": "Frozen Mango Margarita (Beer Base)",
+  "notes": "Like your favourite frozen margarita but made with a sour mango beer base!"
+ },
+ {
+  "brewery": "Behemoth Brewing Company",
+  "page_brewery": "Behemoth Brewing Company",
+  "slug": "behemoth-brewing-company",
+  "name": "Neighbourino",
+  "abv": 5.9,
+  "style": "Beer Week Pale Ale",
+  "notes": "Brewed with our mates at Brothers for Auckland Beer Week we used Riwaka, citra and Motueka hop flakes. Along with a little bit of rice in the grain bill to lighten the body and make it that much more drinkable."
+ },
+ {
+  "brewery": "Behemoth Brewing Company",
+  "page_brewery": "Behemoth Brewing Company",
+  "slug": "behemoth-brewing-company",
+  "name": "Pallet Wreaker",
+  "abv": 9,
+  "style": "Double IPA",
+  "notes": "Back in 2012 a brewery called Greenflash from San Diego created what may be the hoppiest beer in the world at the time. This is our ode to that beer. 9 ALC/VOL and 250 theoretical IBUs (because your taste buds struggle to register anything over 100 IBU but we wanted to give it a crack). Bitter beers may have fallen out of fashion, but we have loaded this beer with Columbus, Moutere, Centennial, Nelson Sauvin and Cryo Simcoe to give you a full on assault to the senses\u2014so many hops it will weaken even the most sturdy wooden pallet!"
+ },
+ {
+  "brewery": "Behemoth Brewing Company",
+  "page_brewery": "Behemoth Brewing Company",
+  "slug": "behemoth-brewing-company",
+  "name": "Party of One",
+  "abv": 6,
+  "style": "Dolcita Single Hopped Hazy IPA",
+  "notes": "This hazy is here to showcase brand new American Dolcita hops showcasing vibrant notes of candied peach rings, pineapple, tangerine, and sweet cream."
+ },
+ {
+  "brewery": "Behemoth Brewing Company",
+  "page_brewery": "Behemoth Brewing Company",
+  "slug": "behemoth-brewing-company",
+  "name": "Responsibly Non-Alcoholic Hazy IPA",
+  "abv": 0.5,
+  "style": "Non-Alc Hazy IPA",
+  "notes": "We at Behemoth believe in bigger tasting beers; big on flavour and fun! This is why the majority of our beers have big percentages and big full-body flavours. But we're also not afraid to try something new... So! We are releasing Responsibly Non-Alcoholic Hazy IPA with all the flavour you want when reaching for a beer at the end of the day! Made with Pale Malt, Vienna Malt, Oats, Wheat and Carahell Malts along with Citra, Mosaic, Galaxy, and Riwaka Hops to give you an incredibly flavourful and refreshing Hazy IPA just without the booze!"
+ },
+ {
+  "brewery": "Big Mountain Mead",
+  "page_brewery": "Big Mountain Mead",
+  "slug": "big-mountain-mead",
+  "name": "Cherry Sour",
+  "abv": 5,
+  "style": "Sparkling Mead",
+  "notes": "The natural sweetness of New Zealand\u2019s bush honey paired with fresh and sour cherry juice."
+ },
+ {
+  "brewery": "Big Mountain Mead",
+  "page_brewery": "Big Mountain Mead",
+  "slug": "big-mountain-mead",
+  "name": "Ginger Manuka",
+  "abv": 5,
+  "style": "Sparkling Mead",
+  "notes": "Subtle hints of honey with a ginger spicy after-taste. Tastes like the sweet spot between ginger beer and ginger ale."
+ },
+ {
+  "brewery": "Big Mountain Mead",
+  "page_brewery": "Big Mountain Mead",
+  "slug": "big-mountain-mead",
+  "name": "Hopped Apple and Peach Cider",
+  "abv": 5,
+  "style": "Cider (Flavoured)",
+  "notes": "A crisp, semi-dry co-ferment of apple and peach, dry hopped with Nectaron hops from NZ Hops to deliver tropical and stone fruit aromatics and a clean, refreshing finish."
+ },
+ {
+  "brewery": "Big Mountain Mead",
+  "page_brewery": "Big Mountain Mead",
+  "slug": "big-mountain-mead",
+  "name": "Spiced Apple Pie",
+  "abv": 5,
+  "style": "Sparkling Mead",
+  "notes": "The familiar flavours of your favourite apple pie. Crisp apple, cinnamon and a hint of ginger."
+ },
+ {
+  "brewery": "Big Mountain Mead",
+  "page_brewery": "Big Mountain Mead",
+  "slug": "big-mountain-mead",
+  "name": "Wild Manuka",
+  "abv": 5,
+  "style": "Sparkling Mead",
+  "notes": "A slightly sweet sparkling session mead made from multi-flora m\u0101nuka honey fermented with Ruapehu mountain water."
+ },
+ {
+  "brewery": "Bonnie Day Brewery & Taproom",
+  "page_brewery": "Bonnie Day Brewery & Taproom",
+  "slug": "bonnie-day-brewery-and-taproom",
+  "name": "Black IPA",
+  "abv": 7,
+  "style": "Black IPA",
+  "notes": ""
+ },
+ {
+  "brewery": "Bonnie Day Brewery & Taproom",
+  "page_brewery": "Bonnie Day Brewery & Taproom",
+  "slug": "bonnie-day-brewery-and-taproom",
+  "name": "Dark lager",
+  "abv": 4.4,
+  "style": "Lager (Dark)",
+  "notes": ""
+ },
+ {
+  "brewery": "Bonnie Day Brewery & Taproom",
+  "page_brewery": "Bonnie Day Brewery & Taproom",
+  "slug": "bonnie-day-brewery-and-taproom",
+  "name": "IPL",
+  "abv": 5.1,
+  "style": "India Pale Lager",
+  "notes": ""
+ },
+ {
+  "brewery": "Bonnie Day Brewery & Taproom",
+  "page_brewery": "Bonnie Day Brewery & Taproom",
+  "slug": "bonnie-day-brewery-and-taproom",
+  "name": "Pilsner",
+  "abv": 4.8,
+  "style": "Pilsner",
+  "notes": ""
+ },
+ {
+  "brewery": "Brew Moon Brewing Company",
+  "page_brewery": "Brew Moon Brewing Company",
+  "slug": "brew_moon_brewing_co",
+  "name": "Fireside",
+  "abv": 6,
+  "style": "Orange Spiced Stout",
+  "notes": "Our NZ Stout Challenge 2026 entry. A silky, rich stout enhanced with orange slices, vanilla. and a variety of delicious warming spices. Mulled Stout, if you will"
+ },
+ {
+  "brewery": "Brew Moon Brewing Company",
+  "page_brewery": "Brew Moon Brewing Company",
+  "slug": "brew_moon_brewing_co",
+  "name": "Leithfield",
+  "abv": 4,
+  "style": "Lager",
+  "notes": "Cutting through the crap. A clean, refreshing lager to cleanse your palate."
+ },
+ {
+  "brewery": "Brew Moon Brewing Company",
+  "page_brewery": "Brew Moon Brewing Company",
+  "slug": "brew_moon_brewing_co",
+  "name": "Neon Rooster",
+  "abv": 5.5,
+  "style": "American Pale Ale",
+  "notes": ""
+ },
+ {
+  "brewery": "Brew Moon Brewing Company",
+  "page_brewery": "Brew Moon Brewing Company",
+  "slug": "brew_moon_brewing_co",
+  "name": "Paradise Punch",
+  "abv": 4.5,
+  "style": "Tropical Sour with vanilla",
+  "notes": ""
+ },
+ {
+  "brewery": "Brew Moon Brewing Company",
+  "page_brewery": "Brew Moon Brewing Company",
+  "slug": "brew_moon_brewing_co",
+  "name": "Sour Face Feijoa Sour",
+  "abv": 4,
+  "style": "Sour/ Gose",
+  "notes": "A delightfully bright and refreshing sour made with a heap of NZ's favourite winter fruit. There is a small addition of salt and coriander for some complexity (you're welcome beer nerds) , but the feijoa is undoubtedly the star of the show."
+ },
+ {
+  "brewery": "Brew Moon Brewing Company",
+  "page_brewery": "Brew Moon Brewing Company",
+  "slug": "brew_moon_brewing_co",
+  "name": "Waipara",
+  "abv": 5.8,
+  "style": "New England IPA",
+  "notes": "Waipara is a world-class wine region just down the road, where both of our brewers previously worked as winemakers. It also translates to murky or muddy water which is a pretty apt name for a New England IPA. After a long period of trialing hop combinations, we&rsquo;ve finally settled on our favourite match. This brew is hopped with Citra, Motueka and Nectaron, which we believe bring all the sweet citrus and tropical fruit character we love in hazy beers, whilst still finishing clean and crisp."
+ },
+ {
+  "brewery": "Brothers Beer",
+  "page_brewery": "Brothers Beer",
+  "slug": "brothers_beer",
+  "name": "Acid Test #1: Yuzu & Red Kiwifruit",
+  "abv": 5.5,
+  "style": "Fruited Sour",
+  "notes": "Acid Test. A brand new series from Brothers Beer where we play with all things sour and fruity. Red and Green Kiwifruit from the Bay of Plenty, Yuzu from Japan, a Berliner Weisse base. We use the wild Lactobacillus that grows naturally on the outside of wheat malt. This gives you more complexity. More funk. More flavour. Pucker up."
+ },
+ {
+  "brewery": "Brothers Beer",
+  "page_brewery": "Brothers Beer",
+  "slug": "brothers_beer",
+  "name": "Bounty Hunter",
+  "abv": 10,
+  "style": "Imperial Stout - Coconut & Vanilla",
+  "notes": "I can bring you in warm, or I can bring you in cold. About 8-10 degrees ideally, in a nice Beervana glass... It's cold as Hoth out there! Time for a big, hearty stout to warm your cockles. Roasted Barley, Chocolate & Crystal malts, real Vanilla and toasted Coconut. At 10, it hugs you like a Wookiee. This is the way."
+ },
+ {
+  "brewery": "Brothers Beer",
+  "page_brewery": "Brothers Beer",
+  "slug": "brothers_beer",
+  "name": "Dad Bod",
+  "abv": 7,
+  "style": "Hop Flake Hazy IPA",
+  "notes": "Good News, everyone! Studies show that 78 of women prefer men with dad bods. So, there's no reason to drink those sad, lifeless low-carb fizzy water things, when you could be drinking this bad boy! Packed with Mosaic & Citra cryo, Nectaron, AND Motueka Hop Flakes, you can dive right into this juicy, full calorie beer, knowing that all the while, you're making yourself more attractive to the fairer sex*. Life is too short to drink low carb. *Ladies, don't listen to us. It's just a marketing ploy. You can totally drink this beer. It's, um, slimming? Yeah, that's it. Visibly reduces wrinkles."
+ },
+ {
+  "brewery": "Brothers Beer",
+  "page_brewery": "Brothers Beer",
+  "slug": "brothers_beer",
+  "name": "Goes To Eleven",
+  "abv": 6.3,
+  "style": "New Zealand IPA",
+  "notes": "Made for the Smith's NZIPA Challenge, we decided to go full noise this year. Get lost backstage. Crank that baby up to eleven! Goes to Eleven is chock-full of Amplifire Riwaka, both in cryo hop pellet and Fresh Hop Oil form. Add some Cryo Sauvin, and some frozen Sauvin and Nectaron Fresh Hop cones for good measure. Goes to Eleven. (It's one louder, see.)"
+ },
+ {
+  "brewery": "Brothers Beer",
+  "page_brewery": "Brothers Beer",
+  "slug": "brothers_beer",
+  "name": "Hazesteria",
+  "abv": 4.5,
+  "style": "Hazy Pale Ale",
+  "notes": "\u201cHazesteria is what they\u2019ve called it\u201d said a bearded beer geek. The crowd grew. \u201cMy friend\u2019s friend works with a guy that knows the brewer\u201d said a girl wearing Docs \u201cand he says they used loads of Mosiac and Nectaron in the dry hop!\u201d A chant began: \u201cHazy! Hazy! Hazy! HAZY!\u201d Super smashable, with notes of mango, stone fruits, lime and citrus."
+ },
+ {
+  "brewery": "Brothers Beer",
+  "page_brewery": "Brothers Beer",
+  "slug": "brothers_beer",
+  "name": "Nirvana",
+  "abv": 10,
+  "style": "Hazy Triple IPA",
+  "notes": "Everyone remembers Nirvana: just three fresh-faced young brothers, making innocent, infectious bubblegum pop, with perfect three part harmonies. Or something like that. Our memories are a bit hazy. Like this Triple IPA. Which is also hazy, but has another perfect three part harmony - Citra Cryo, Mosaic Cryo, and Nectaron giving you tropical fruits, citrus, even a little bit of that bubblegum. The hits just keep coming. Mmm-Hop."
+ },
+ {
+  "brewery": "Brothers Beer",
+  "page_brewery": "Brothers Beer",
+  "slug": "brothers_beer",
+  "name": "Peacenik",
+  "abv": 5,
+  "style": "NZ PIlsner",
+  "notes": "Relaaax, dude. You're like, totally here now, y'know? You can just sit back and soak in the vibes, like a happy lil' beer dude. This bodacious NZ Pils, it's like totally limey and stuff, just super crisp. Like, it's got Motueka, and Riwaka, and those are like, totally my favourite hops, man. It's just, righteous, y'know?"
+ },
+ {
+  "brewery": "Brothers Beer",
+  "page_brewery": "Brothers Beer",
+  "slug": "brothers_beer",
+  "name": "The Mighty Quinn",
+  "abv": 13.5,
+  "style": "Quintuple IPA",
+  "notes": "\"Come all without, Come all within, You've not seen nothing like The Mighty Quinn\" -Bob Dylan We don't know what he was drinking when Dylan penned this song about a charismatic Eskimo (his words. It was a different time) that was going to come and save us all, but it was probably pretty strong stuff. Like this Quintuple, yes Quintuple (!) Hazy IPA: chock-full of cryo hops - Nelson, Motueka, Mosaic, Citra and Nelson Hop Flakes too. Should have you dancing about like a beatnik in no time."
+ },
+ {
+  "brewery": "Karamu Barrelworks",
+  "page_brewery": "Bruxelles Oamaru",
+  "slug": "bruxelles-oamaru",
+  "name": "Cherry Peach",
+  "abv": 6.8,
+  "style": "Fruited Wild Ale",
+  "notes": "Brewed in the traditional Belgian way, this wild ale is made from a grist of 40% raw wheat and 60% malted barley, using a turbid mash, aged hops, and an extended boil. The wort is then cooled overnight in an open coolship, allowing wild yeasts and bacteria to inoculate it naturally. After spontaneous fermentation, the beer is matured in oak barrels for at least one year before being refermented on sour cherries and peaches. It is dry hopped with Mandarina Bavaria prior to packaging. From brew day to packaging, the entire process takes around two years. Karamu wild ale is ready to enjoy after approximately four months of bottle or keg conditioning. While delicious when young, it will continue to evolve and drink beautifully for many years."
+ },
+ {
+  "brewery": "Karamu Barrelworks",
+  "page_brewery": "Bruxelles Oamaru",
+  "slug": "bruxelles-oamaru",
+  "name": "Grape Ale -Pinot Gris",
+  "abv": 8.3,
+  "style": "Fruited Wild Ale",
+  "notes": "Brewed in the traditional Belgian way, this wild ale is made from a grist of 40% raw wheat and 60% malted barley, using a turbid mash, aged hops, and an extended boil. The wort is then cooled overnight in an open coolship, allowing wild yeasts and bacteria to inoculate it naturally. After spontaneous fermentation, the beer is matured in oak barrels for at least one year before being refermented on Pinot Gris skins. From brew day to packaging, the entire process takes around two years. Karamu wild ale is ready to enjoy after approximately four months of bottle or keg conditioning. While delicious when young, it will continue to evolve and drink beautifully for many years."
+ },
+ {
+  "brewery": "Ninebarnyardowls",
+  "page_brewery": "Bruxelles Oamaru",
+  "slug": "bruxelles-oamaru",
+  "name": "NV Blend",
+  "abv": 6,
+  "style": "Spontaneous Ale",
+  "notes": "A blend of no less than three vintages of coolshipped, spontaneous, barrel-fermented wild ale, bottled and further conditioned for a minimum of 12 months."
+ },
+ {
+  "brewery": "Wilderness Brewing",
+  "page_brewery": "Bruxelles Oamaru",
+  "slug": "bruxelles-oamaru",
+  "name": "Russet",
+  "abv": 6.4,
+  "style": "Flanders Red Ale",
+  "notes": "This Flemish-style Red-Brown Ale is the second iteration of Russet. We brew the same recipe each year and allow it to mature in oak before blending. For this batch, we selected barrels from two different brewing years\u20142021 and 2023\u2014which had been aged in a mix of ex-Pinot Noir and ex-Pinot Noir Port barrels and inoculated with our house Flanders mixed culture."
+ },
+ {
+  "brewery": "Craftwork Brewery",
+  "page_brewery": "Bruxelles Oamaru",
+  "slug": "bruxelles-oamaru",
+  "name": "Siege of Li\u00e8ge",
+  "abv": 7,
+  "style": "Barrel Aged Mixed fermentation saison",
+  "notes": "This is the second batch of Siege of Li\u00e8ge, a Barrel-aged mixed fermentation saison, initially fermented with French saison yeast, pumped into two oak puncheons with Li\u00e8ge sirop (Wallonian syrup made from pear and apple), and Brettanomyces, Pediococcus, and Lactobacillus, for 18 months. Rich and tangy with a slight sweetness, fennel, pear and big oak."
+ },
+ {
+  "brewery": "Canyon Brewing",
+  "page_brewery": "Canyon Brewing",
+  "slug": "canyon-brewing",
+  "name": "Aperol spritz",
+  "abv": 8.5,
+  "style": "Other",
+  "notes": "Bitter orange and fizzy wine. A classic Apres ski sipper"
+ },
+ {
+  "brewery": "Canyon Brewing",
+  "page_brewery": "Canyon Brewing",
+  "slug": "canyon-brewing",
+  "name": "Boneface Yuzu Sour",
+  "abv": 6.4,
+  "style": "Yuzu Sour",
+  "notes": "Creamy zesty sour with Yuzu on Yuzu"
+ },
+ {
+  "brewery": "Canyon Brewing",
+  "page_brewery": "Canyon Brewing",
+  "slug": "canyon-brewing",
+  "name": "Bright eyed 0",
+  "abv": 0,
+  "style": "Hazy IPA",
+  "notes": "Dry and crisp, fruity little non alc hazy ipa."
+ },
+ {
+  "brewery": "Canyon Brewing",
+  "page_brewery": "Canyon Brewing",
+  "slug": "canyon-brewing",
+  "name": "Cardrona Hazy IPA",
+  "abv": 6,
+  "style": "Hazy IPA",
+  "notes": "Juicy Hazy IPA, Nectarine, Citrus and pine"
+ },
+ {
+  "brewery": "Canyon Brewing",
+  "page_brewery": "Canyon Brewing",
+  "slug": "canyon-brewing",
+  "name": "Duck Duck Gose",
+  "abv": 5.5,
+  "style": "Gose",
+  "notes": "Desperados on crack, Grapefruit, Agave and oak, Lightly sour"
+ },
+ {
+  "brewery": "Canyon Brewing",
+  "page_brewery": "Canyon Brewing",
+  "slug": "canyon-brewing",
+  "name": "Entwined Sauvignon wild Ale",
+  "abv": 7.2,
+  "style": "Wild Ale",
+  "notes": "Wild fermented barrel ale, notes of Gooseberry, buttery oak and Sauvignon blanc"
+ },
+ {
+  "brewery": "Canyon Brewing",
+  "page_brewery": "Canyon Brewing",
+  "slug": "canyon-brewing",
+  "name": "Heat4",
+  "abv": 6.5,
+  "style": "New Zealand IPA",
+  "notes": "Punchy NZIPA, bright and clear, notes of stonefruit and mango"
+ },
+ {
+  "brewery": "Canyon Brewing",
+  "page_brewery": "Canyon Brewing",
+  "slug": "canyon-brewing",
+  "name": "Isarco Lager",
+  "abv": 5,
+  "style": "Lager",
+  "notes": "Crisp Euro lager, mellow and easy drinking"
+ },
+ {
+  "brewery": "Canyon Brewing",
+  "page_brewery": "Canyon Brewing",
+  "slug": "canyon-brewing",
+  "name": "Mango Margarita",
+  "abv": 8.5,
+  "style": "Cocktail",
+  "notes": "Tropical party time! Mango, tequila and lime"
+ },
+ {
+  "brewery": "Canyon Brewing",
+  "page_brewery": "Canyon Brewing",
+  "slug": "canyon-brewing",
+  "name": "Rhys' Pieces Imperial PB Stout",
+  "abv": 10,
+  "style": "Imperial PB Stout",
+  "notes": "Big hitting Chocolate, notes of peanut butter. Rich and sweet"
+ },
+ {
+  "brewery": "Canyon Brewing",
+  "page_brewery": "Canyon Brewing",
+  "slug": "canyon-brewing",
+  "name": "Tussock basher",
+  "abv": 2.5,
+  "style": "Pale Ale",
+  "notes": "Refreshing light hazy. Low alcohol low regrets"
+ },
+ {
+  "brewery": "Canyon Brewing",
+  "page_brewery": "Canyon Brewing",
+  "slug": "canyon-brewing",
+  "name": "Yuzu Mango Beergarita Slushy",
+  "abv": 8,
+  "style": "Cocktail",
+  "notes": "Blended mango marg and Yuzu milkshake sour, slushed to perfection"
+ },
+ {
+  "brewery": "Cassels Brewing Co",
+  "page_brewery": "Cassels Brewing Co",
+  "slug": "cassels_brewing_co",
+  "name": "APA",
+  "abv": 5.4,
+  "style": "American Pale Ale",
+  "notes": "This delightfully fruity, aromatic beer gets its lead from the abundance of USA hops. A top fermented ale style, the tropical fruit salad and passionfruit flavours give way to a soft, clean, bitter finish. A very well-balanced beer."
+ },
+ {
+  "brewery": "Cassels Brewing Co",
+  "page_brewery": "Cassels Brewing Co",
+  "slug": "cassels_brewing_co",
+  "name": "Cassels Pilsner",
+  "abv": 4.8,
+  "style": "Pilsner",
+  "notes": "Our Pilsner showcases the very best of New Zealand ingredients. Motueka and Nelson Sauvin hops bring lime and sauvignon grape flavours, alongside subtle juniper berry characters. This is balanced out by the mostly Pilsner malt-base, which provides cracker-like flavours and sweetness, perfectly complementing the crisp, refreshingly bitter finish."
+ },
+ {
+  "brewery": "Cassels Brewing Co",
+  "page_brewery": "Cassels Brewing Co",
+  "slug": "cassels_brewing_co",
+  "name": "Cassels Triple Cream on Nitro",
+  "abv": 9,
+  "style": "Imperial Milk Stout",
+  "notes": "Lusciously creamy on the tongue, this imperial strength Milk Stout is stronger and sweeter than its Milk Stout sibling. You can expect the same full-bodied mouth-feel and bittersweet, mocha aromatics but with a hint of spice from the Moutere and Willamette hops. We\u2019ve also gone one better this time round and paired this delicious brew with Nitro! Nitrogen creates tiny bubbles that delivers an even silkier and creamier mouthfeel if you can believe it."
+ },
+ {
+  "brewery": "Cassels Brewing Co",
+  "page_brewery": "Cassels Brewing Co",
+  "slug": "cassels_brewing_co",
+  "name": "Fogged Up",
+  "abv": 4.7,
+  "style": "Hazy Pale Ale",
+  "notes": "Fogged Up Hazy Pale Ale has been created by our award-winning brewers to deliver a full flavoured yet elegant beer. Juicy tropical fruit notes combine with punchy hop characteristics to bring you a balanced and refreshing brew that will have you coming back for more!"
+ },
+ {
+  "brewery": "Cassels Brewing Co",
+  "page_brewery": "Cassels Brewing Co",
+  "slug": "cassels_brewing_co",
+  "name": "Light Owl",
+  "abv": 2.5,
+  "style": "Low ABV Ale",
+  "notes": "While low in alcohol, Light Owl has been brewed to maximise personality. Chinook hops bring a distinctive pine aroma which is rounded out by the citrus, floral flavours of the Taiheke\u00ae hops. The result is a full-bodied, big character Pale Ale despite the low ABV."
+ },
+ {
+  "brewery": "Cassels Brewing Co",
+  "page_brewery": "Cassels Brewing Co",
+  "slug": "cassels_brewing_co",
+  "name": "Milk Stout (on Nitro)",
+  "abv": 5.2,
+  "style": "Milk Stout",
+  "notes": "The only thing better than a Cassels Milk Stout... A Cassels Nitro Milk Stout! The secret? Nitrogen. Unlike regular carbonation, nitrogen creates tiny bubbles that give this stout its extremely velvety and creamy texture. Each sip is rich, silky and jam packed with flavour \u2013 bittersweet chocolate, dried fruits and bold \u201ccoffee-and-cream\u201d aromas. Soft roasted-malt bitterness keeps the sweetness in check. An absolute game changer for stout lovers!"
+ },
+ {
+  "brewery": "Cassels Brewing Co",
+  "page_brewery": "Cassels Brewing Co",
+  "slug": "cassels_brewing_co",
+  "name": "Nectaron\u00ae IPA",
+  "abv": 6.1,
+  "style": "IPA",
+  "notes": "Introducing the Nectaron&reg; hop from NZ Hops, bringing intense tropical fruit aromas to the party. This NZ IPA has been hopped at multiple stages through its brewing journey, mellow out all that hoppy goodness with the toastiness of NZ Ale Malt and Cassels&rsquo; House Ale Strain and the result is the almighty brew you could soon have in your hand."
+ },
+ {
+  "brewery": "Cassels Brewing Co",
+  "page_brewery": "Cassels Brewing Co",
+  "slug": "cassels_brewing_co",
+  "name": "Red IPA (On Nitro)",
+  "abv": 6.6,
+  "style": "Red IPA",
+  "notes": "Our Red IPA is vibrant and copper-coloured, with a rich, tan head. Prominent pine-needle and citrus hop aromas lead to bold avours of bitter-orange and grapefruit. The to ee-sweet, caramel malts and creamy mouthfeel balance beautifully amidst lingering bitterness, and a subtle, toasty aftertaste. We've also one-upped it this round and paired it with nitro. Unlike regular carbonation, nitrogen creates tiny bubbles that enriches the malt and gives the Red IPA a luxuriously smooth and creamier texture."
+ },
+ {
+  "brewery": "Choice Bros. Brewing",
+  "page_brewery": "Choice Bros. Brewing",
+  "slug": "choice-bros-brewing",
+  "name": "Black Pearl",
+  "abv": 8,
+  "style": "Dark 'n' Stormy Tropical Stout",
+  "notes": "We took 50l of high proof rum and aged it in 4 char oak barrels, after we skinned and zested a lot of limes and aged the skins in the rum. All of this was added to a vibrant and punchy stout with some ginger to create the flavour of a Dark 'n' Stormy"
+ },
+ {
+  "brewery": "Choice Bros. Brewing",
+  "page_brewery": "Choice Bros. Brewing",
+  "slug": "choice-bros-brewing",
+  "name": "Double Space Cowboy",
+  "abv": 7,
+  "style": "Passionfruit Double Hazy IPA",
+  "notes": "Space Cowboy is Choice Bros biggest beer. It's known for the passionfuit flavour that is imbued into the Kohia Nelson hops and paired with the classic Mosaic. So we have taken that, doubled the dry hop rate and fermented it with passionfruit to really level this bad boy up."
+ },
+ {
+  "brewery": "Choice Bros. Brewing",
+  "page_brewery": "Choice Bros. Brewing",
+  "slug": "choice-bros-brewing",
+  "name": "Dreams",
+  "abv": 6.5,
+  "style": "Mango, Strawberry and Cream Smoothie Sour",
+  "notes": "Smoothie Sours have taken over the USA by storm. There is a good reason for that. 40 of this beer is pure fruit puree and you can tell. If big fruity flavours are your thing. This is the beer for you"
+ },
+ {
+  "brewery": "Choice Bros. Brewing",
+  "page_brewery": "Choice Bros. Brewing",
+  "slug": "choice-bros-brewing",
+  "name": "Drop The Game",
+  "abv": 7.2,
+  "style": "Viognier Sour Grape Ale",
+  "notes": "The viognier grapes come through as an aroma of apricot, honey and cinnamon. Strong bodied, deep sour flavour with an aromatic wine finish to taste"
+ },
+ {
+  "brewery": "Choice Bros. Brewing",
+  "page_brewery": "Choice Bros. Brewing",
+  "slug": "choice-bros-brewing",
+  "name": "Perfect Day",
+  "abv": 3.9,
+  "style": "Lager",
+  "notes": "Clean, crisp and super refreshing. This lager takes it's inspiration from the American Lagers that leave you wanting more. A light whirlpool addition of Mosaic adds a hint of hoppiness to an otherwise traditional drop."
+ },
+ {
+  "brewery": "Choice Bros. Brewing",
+  "page_brewery": "Choice Bros. Brewing",
+  "slug": "choice-bros-brewing",
+  "name": "Reet Petite",
+  "abv": 6,
+  "style": "Red IPA",
+  "notes": "We are bringing back an old Choice Bros classic. This is a Red IPA, packed full of ginger that brings in another element to what is already a punchy style. Piney, citrusy and a strong red malt backbone, this beer does it all"
+ },
+ {
+  "brewery": "Crimson Badger Brewing",
+  "page_brewery": "Crimson Badger Brewing",
+  "slug": "crimson_badger_brewing",
+  "name": "0% Ginger Bear",
+  "abv": 0,
+  "style": "Ginger Beer",
+  "notes": "The ideal companion for celebrating life\u2019s moments, all whilst keeping your wits about you and waking up feeling refreshed AF"
+ },
+ {
+  "brewery": "Crimson Badger Brewing",
+  "page_brewery": "Crimson Badger Brewing",
+  "slug": "crimson_badger_brewing",
+  "name": "Dark & Grizzly",
+  "abv": 5.8,
+  "style": "Ginger Beer w/Rum",
+  "notes": "After a couple of years on the circut and enough questions about making it a permanent fixture, we cam up with this. Based on the classic dark & stormy but the our Ginger Bear and a dash of rum. Goes well anywhere!"
+ },
+ {
+  "brewery": "Crimson Badger Brewing",
+  "page_brewery": "Crimson Badger Brewing",
+  "slug": "crimson_badger_brewing",
+  "name": "Ginger Bear",
+  "abv": 4,
+  "style": "Ginger Beer",
+  "notes": "The best selling in New Zealand for a hot minute now. Balanced perfectly with sweet and the right amount of spice. Made to refresh!"
+ },
+ {
+  "brewery": "Crimson Badger Brewing",
+  "page_brewery": "Crimson Badger Brewing",
+  "slug": "crimson_badger_brewing",
+  "name": "Mulled Ginger Bear",
+  "abv": 6,
+  "style": "Winter spiced Ginger Beer",
+  "notes": "Created by blind luck and pitched to the ski slopes for ski lap rewards. Made since 2017 and still a mountain favourite!"
+ },
+ {
+  "brewery": "Crimson Badger Brewing",
+  "page_brewery": "Crimson Badger Brewing",
+  "slug": "crimson_badger_brewing",
+  "name": "Mulled Wine",
+  "abv": 6,
+  "style": "Fruited wine",
+  "notes": "New recipe for this year. 6% perfection for the cold, fireside or just a good time"
+ },
+ {
+  "brewery": "Station Brewing (Alexandra)",
+  "page_brewery": "Crimson Badger Brewing",
+  "slug": "crimson_badger_brewing",
+  "name": "Par 4 Pale ALE",
+  "abv": 4,
+  "style": "Pale Ale",
+  "notes": "NZ Hopped pale ale from our mates at Station Brewing."
+ },
+ {
+  "brewery": "Station Brewing (Alexandra)",
+  "page_brewery": "Crimson Badger Brewing",
+  "slug": "crimson_badger_brewing",
+  "name": "Pescription Pils",
+  "abv": 5,
+  "style": "Pilsner  - Fruity",
+  "notes": "Hoppy + Fruity. Brewed by our mates at Station Brewing."
+ },
+ {
+  "brewery": "Crimson Badger Brewing",
+  "page_brewery": "Crimson Badger Brewing",
+  "slug": "crimson_badger_brewing",
+  "name": "Pineapple Ginger Bear",
+  "abv": 4,
+  "style": "Ginger Beer",
+  "notes": "New, and launching fresh at Beervana 2026 is our Pineapple Ginger Bear. 4% and fresh off the press!"
+ },
+ {
+  "brewery": "Double Vision Brewing",
+  "page_brewery": "Double Vision Brewing",
+  "slug": "double_vision_brewing",
+  "name": "Birthday Suit",
+  "abv": 5.6,
+  "style": "New Zealand Pilsner",
+  "notes": "Ten years of Double Vision Brewing, and we are stripping it back to celebrate! For our decade milestone, we wanted a proper birthday drink that encapsulates the DVB essence in one drop: a classic, sessionable NZ Pilsner built to celebrate with. The character on the can might be keeping things completely bare, but this beer is fully dressed in the best hop profile we could muster. Accessible, inclusive, and built for repeat pints as we toast to ten years of pushing the boundaries. Flavours: New Zealand Pilsner malt and a measure of wheat keeps the mouthfeel delicate yet soft, letting the hops take centre stage. Fermented clean with Froth Vagabond Czech Pilsner lager yeast, this brew takes you on a three-stop hop tour. Local Kohatu brings fresh tropical pineapple, Australian Galaxy exudes lush passionfruit, and USA Krush Cryo delivers a final punch of tropical fruit cocktail, berry and bright citrus\u2014snappy, dry, and maximum moreishness."
+ },
+ {
+  "brewery": "Double Vision Brewing",
+  "page_brewery": "Double Vision Brewing",
+  "slug": "double_vision_brewing",
+  "name": "Chin Wag",
+  "abv": 4.8,
+  "style": "Hazy Pale Ale",
+  "notes": "The kind of beer you just can\u2019t stop talking about. Some beers you just drink; this one gets passed along - one sip, a text to a mate, and suddenly everyone is asking where to get it. Chin Wag is a session fruited hazy where the yeast does the talking, turning hops into pure tropical goodness. Built for sharing, oversharing, and spreading gossip. Flavours: A soft pilsner malt base stays clean and muted to keep the fruit honest. White Labs WLP077 Tropicale yeast frees aromatic thiols from a mash charge of NZ Nelson Sauvin and Taiheke, complemented by a high-krausen addition of Citra and a finish of Nectaron. Real mango and passionfruit pur\u00e9e are added cold to lock in a smooth, pillowy body tasting of grapefruit, guava, soft pineapple, and stone fruit."
+ },
+ {
+  "brewery": "Double Vision Brewing",
+  "page_brewery": "Double Vision Brewing",
+  "slug": "double_vision_brewing",
+  "name": "Classic",
+  "abv": 4.5,
+  "style": "Lager",
+  "notes": "You wanted an easy-drinking Lager and we are giving you one. Introducing the &lsquo;classic&rsquo; beer you&rsquo;ve been searching for. Quality meets easy goin&rsquo; beer. No more sacrificing your standards. Your standard go-to lager but with the quality ingredients you would expect from DVB! Think crisp, clean, approachable."
+ },
+ {
+  "brewery": "Double Vision Brewing",
+  "page_brewery": "Double Vision Brewing",
+  "slug": "double_vision_brewing",
+  "name": "Dreamsicle",
+  "abv": 6.6,
+  "style": "Tropical Smoothie Sour",
+  "notes": "Don't let the sweet smile fool ya \u2013 Dreamsicle's got a bite! This Tropical Orange Creamsicle Smoothie Sour takes that classic orange and vanilla ice cream flavour, then gives it a monstrous twist with a tropical kick. It\u2019s smooth, sweet, and dangerously drinkable, just how we like to nudge those recipe boundaries. Flavours: Expect a luscious, creamy body from milk sugars and coconut, backed up by a pillowy mouthfeel from wheat and oats. Vibrant orange and guava lead a tropical charge, while banana adds a sweet undercurrent. Smooth vanilla delivers that nostalgic creamsicle hit, but watch out \u2013 this flavour combo has a playful, zesty bite that keeps things interesting."
+ },
+ {
+  "brewery": "Double Vision Brewing",
+  "page_brewery": "Double Vision Brewing",
+  "slug": "double_vision_brewing",
+  "name": "Expatriate",
+  "abv": 5.5,
+  "style": "American Pale Ale",
+  "notes": "The EXPATRIATE is an American Pale Ale leaving the homeland in exploration of something more. It had no idea it would find New Zealand but the hops were too good to pass up. An alliance of US and NZ hops are sure to enlist your palate for a second round. Citrus, tropical, floral & pine notes from the hops with a light biscuity malt profile."
+ },
+ {
+  "brewery": "Double Vision Brewing",
+  "page_brewery": "Double Vision Brewing",
+  "slug": "double_vision_brewing",
+  "name": "I <3 You/I Love You",
+  "abv": 6.9,
+  "style": "Smoothie Sour",
+  "notes": "In a world where purple dinosaurs sing sweet songs, I Love You reveals a cheekier reality - sometimes love bites back. This pink-purple sour is like a can of cake: you can have your love for your mate and eat them too! It's your ticket to a tropical sunset escape, blending borderline Theropodic Vibes with fruity indulgence that's far too easy to devour. Looks like Barney will be having both cans for himself. Flavours: Loaded with barley, wheat, and oats for a smooth base, it's piled high with guava puree, raspberry puree, banana puree, and passion fruit puree for vibrant tropical layers. Coconut, vanilla, and milk sugars add creamy sweetness, while beetroot brings vivid pink-purple colour. The result is a plush, smoothie-like body delivering juicy berry, stone fruit, and citrus, finishing tart and refreshing like a sunset sorbet."
+ },
+ {
+  "brewery": "Double Vision Brewing",
+  "page_brewery": "Double Vision Brewing",
+  "slug": "double_vision_brewing",
+  "name": "Jaegar Unleashed",
+  "abv": 6.5,
+  "style": "New Zealand IPA",
+  "notes": "Targeting systems upgraded. Armour plating reinforced. Standing on the other flank of our third Pacific Hop instalment is Jaeger - Unleashed. After trading blows through Origins and our Fresh Hop clash, this precision-engineered mech has been completely rebuilt with advanced lupulin weaponry to face down the mutated Kaiju. Running a drier, sharper, and cleaner West Coast profile, this unit is locked, loaded, and ready to strike. Flavours: A clean, bright base of pilsner malt, wheat malt, and dextrine malt, with a touch of light crystal, keeps the body lean, snappy, and light on its feet. Clean Froth Buddy ale yeast lets the hops fire on all cylinders. Nelson Sauvin and Taiheke are supercharged by a heavy drop of Tropical Fusion Kief, delivering sharp, defined notes of crushed gooseberries, white wine grapes, and zesty grapefruit with a clean, punchy bitterness"
+ },
+ {
+  "brewery": "Double Vision Brewing",
+  "page_brewery": "Double Vision Brewing",
+  "slug": "double_vision_brewing",
+  "name": "Kai Juice Unleashed",
+  "abv": 6.5,
+  "style": "Hazy IPA",
+  "notes": "The beast has broken its chains. Following the raw power of the Origins first set and the seasonal chaos of the Fresh Hop second drop, Kai Juice - Unleashed arrives as the third evolution of our jungle giant. We have taken our wild, nature-powered hazy and mutated it with high-spec hop tech - packing it with concentrated kief and enriched hops to go head-to-head with its metal rival, Jaeger. It is soft, thick, and fully unleashed. Flavours: A high-protein grist of pilsner base malt, wheat malt, and flaked oats builds a silky, pillowy body with a rock-solid stable haze. Whitelabs WLP008 yeast cradles a heavy payload of Galaxy, Nectaron, Riwaka Amplifire, and Riwaka Kief. Expect a massive, saturated punch of sweet peach, pineapple, and passionfruit, backed by a heavy wave of dank tropical citrus and fresh-squeezed lime oil."
+ },
+ {
+  "brewery": "Double Vision Brewing",
+  "page_brewery": "Double Vision Brewing",
+  "slug": "double_vision_brewing",
+  "name": "Lost Clause (Nitro)",
+  "abv": 13.5,
+  "style": "Imperial Pastry Stout",
+  "notes": "Santa may be a Lost Clause, but you\u2019re on the nice list if you\u2019ve got this beer in your vessel. Down here, Christmas lands in summer - so while the big guy\u2019s stuck halfway down a chimney, you can unwrap a sun-season sipper that\u2019s all Christmas cake with no fireplace required. Flavours: A plush barley-and-wheat base carries rich muscovado molasses, toffee, and dark caramel. Festive spice - cardamom, cinnamon, nutmeg, and ginger - builds gingerbread warmth, while dates and raisins layer dense dried\u2011fruit notes (fig, plum, sultana). Full\u2011bodied, smooth, and gently warming, with a long, cake\u2011like finish."
+ },
+ {
+  "brewery": "Double Vision Brewing",
+  "page_brewery": "Double Vision Brewing",
+  "slug": "double_vision_brewing",
+  "name": "Merry Monk",
+  "abv": 9.1,
+  "style": "Belgian Tripel",
+  "notes": "This Belgian Tripel is a bold, scandalously traditional classic that refuses to play it safe, holding onto its secrets tighter than a blowing robe on a windy Wellington day. This monk isn\u2019t going to reveal everything until you get it into your glass to breathe a bit. Dry, effervescent, and stronger than it tastes, it is a decadent, high-gravity, relaxed adventure. Flavours: A straightforward, 100% European Bestmalz Pilsner malt base is lightened with clear candi sugar to keep the body dry and dangerously drinkable at 9.1% ABV. Fermented with WLP530 Abbey Ale yeast, it delivers a deep, spicy ester profile of cherry, plum and pear, while late additions of bitter dried orange peel bring a bright citrus lift. Mild, delicate Saaz hops linger in the background, providing a soft floral touch and a clean bitterness to balance the sweetness."
+ },
+ {
+  "brewery": "Double Vision Brewing",
+  "page_brewery": "Double Vision Brewing",
+  "slug": "double_vision_brewing",
+  "name": "Monarch Unleashed",
+  "abv": 10.2,
+  "style": "Hazy Triple IPA",
+  "notes": "Crowning the trilogy, Monarch - Unleashed descends as the ultimate mediator. After watching Kai Juice and Jaeger clash through Origins and Fresh Hops, this colossal triple hazy has had the safety limiters completely ripped off to enforce supreme order. Wielding a massive arsenal of Superdelic, Mosaic, and Clayton Hops\u2019 Amplifire Motueka, this heavy-gravity overlord is built to overpower every other beer in the fridge. Flavours: A massive, bold grist of pilsner base malt, wheat malt, flaked wheat, and flaked oats is smoothed out with dextrose sugar and maltodextrin for a thick, velvety body that balanced the 10.2% ABV. Whitelabs WLP008 yeast carries a saturated hop payload of Superdelic, Mosaic, Amplifire Motueka, and Motueka Kief. Expect a sweet-and-dank explosion of red fruit, candy, tropical mango, and fresh-squeezed mojito lime oil that takes you straight to boss level."
+ },
+ {
+  "brewery": "Double Vision Brewing",
+  "page_brewery": "Double Vision Brewing",
+  "slug": "double_vision_brewing",
+  "name": "Red Rascal",
+  "abv": 6.3,
+  "style": "Red IPA",
+  "notes": "A Red Rascal lives in us all, sometimes big, sometimes small. Though sometimes dormant, never extinct. A playful nature canned into a drink. Perfectly balanced with bitter and sweet, your Monday to Sunday delicious treat. Flavours: Fresh, fruity, Gooseberry and citrus with a gentle Red Malt flavour balance."
+ },
+ {
+  "brewery": "Double Vision Brewing",
+  "page_brewery": "Double Vision Brewing",
+  "slug": "double_vision_brewing",
+  "name": "Smooth Operator",
+  "abv": 4.7,
+  "style": "Cream Ale",
+  "notes": "Smooth Operator Cream Ale is a light 19th-century American style brew designed to keep you coming back for more. Complete with a slight touch of whole bean vanilla and New Zealand\u2019s finest honey. Think creamy, smooth and refreshing with a clean and zesty finish. Flavours: Flavours Lager, Pilsner or Pale Ale Drinker? Welcome to your new favourite style. Some get 1950s Cream Soda\u2026 \u0003But for adults! Honey, Vanilla, Cornflakes. Not too sweet and no lactose."
+ },
+ {
+  "brewery": "Double Vision Brewing",
+  "page_brewery": "Double Vision Brewing",
+  "slug": "double_vision_brewing",
+  "name": "Split the D (Nitro)",
+  "abv": 4.8,
+  "style": "Irish Dry Stout",
+  "notes": "Split the D takes the Irish dry stout you know and gives it the treatment it deserves. Drawing on Dagda and his endless cauldron, this is our ever\u2011flowing well of stout done properly \u2013 tight, roasty, and built for repeat pints rather than gimmicks. Flavours: Ale malt, flaked wheat, roasted barley, patent malt and a smidge of Eclipse Wheat build a roasty\u2011toasty backbone with smooth coffee and dark chocolate notes. Fuggles and Lallemand Nottingham keep it classic \u2013 earthy, clean and dry \u2013 with a firm bitterness and crisp finish. On nitro it settles into a dense creamy head over a lean, drinkable body: a modern take on a timeless pint."
+ },
+ {
+  "brewery": "Double Vision Brewing",
+  "page_brewery": "Double Vision Brewing",
+  "slug": "double_vision_brewing",
+  "name": "Tinyken",
+  "abv": 0,
+  "style": "Non Alcoholic Hazy IPA",
+  "notes": "Plain and simply put, if you want a beer but are being 'good' for whatever reason, you don't want to be drinking some rubbish hop water. Meet TinyKen. TinyKen is as innocent as the Milkman saying hi to mum; meet your real daddy of Non Alc Hazy IPAs."
+ },
+ {
+  "brewery": "Double Vision Brewing",
+  "page_brewery": "Double Vision Brewing",
+  "slug": "double_vision_brewing",
+  "name": "Tiny Terror",
+  "abv": 2.3,
+  "style": "Little Hazy Pale Ale",
+  "notes": "TINY Terror is weighing in light on standard drinks but big in flavour! To keep the body we have used a high protein mash at a higher temp and oats so yo feel like you're still having a beer but being good."
+ },
+ {
+  "brewery": "Duncan's Brewing Co.",
+  "page_brewery": "Duncan's Brewing Co.",
+  "slug": "duncans_brewing",
+  "name": "Apricot Brett",
+  "abv": 5.5,
+  "style": "Wild Sour (2024)",
+  "notes": "In the 23/24 summer, a harvest of deliciously juicy apricots arrived from the southern reaches of Cromwell. We aged them with two funk brothers named lactobacillus and brettanomyces and the result is perfectly funky, lightly soured, earthy, fruity, and bright. It's a wild ride."
+ },
+ {
+  "brewery": "Duncan's Brewing Co.",
+  "page_brewery": "Duncan's Brewing Co.",
+  "slug": "duncans_brewing",
+  "name": "Boysenberry Peanut Maple Crunch Float",
+  "abv": 8.5,
+  "style": "Slushie Float (Pastry Sour + Imperial Pastry Stout)",
+  "notes": "Warning: May ruin ordinary beers forever. We've taken our Boysenberry & Apple Crumble Pastry Sour, turned it into a slushie, then floated it on our Maple Peanut Crunch Imperial Pastry Stout. Because self-control is overrated."
+ },
+ {
+  "brewery": "Duncan's Brewing Co.",
+  "page_brewery": "Duncan's Brewing Co.",
+  "slug": "duncans_brewing",
+  "name": "Lemon Meringue",
+  "abv": 5,
+  "style": "Ice Cream Sour",
+  "notes": "A slice of nostalgia in a beer glass. This ice cream sour beer is bursting with bright, tangy lemon curd, layered over a buttery, crumbly pie crust, and finished with fluffy clouds of sweet meringue. Tart, creamy, and shamelessly dessert-inspired. Nana would probably ask for a second pour."
+ },
+ {
+  "brewery": "Duncan's Brewing Co.",
+  "page_brewery": "Duncan's Brewing Co.",
+  "slug": "duncans_brewing",
+  "name": "Malbec Brett",
+  "abv": 8.5,
+  "style": "\"Wild Sour (2025)\"",
+  "notes": "This wild ferment was a Hawkes Bay mission. Broken van, stranded staff, grapes fermenting where they shouldn\u2019t\u2026 it nearly broke us. But out of the chaos came something special; a wild sour brimming with funky Brett character, tannish Malbec grapes, and a crisp, clean finish. Proof that hard work (and a little madness) really does pay off."
+ },
+ {
+  "brewery": "Duncan's Brewing Co.",
+  "page_brewery": "Duncan's Brewing Co.",
+  "slug": "duncans_brewing",
+  "name": "Mango Grapefruju",
+  "abv": 5,
+  "style": "Ice Cream Sour",
+  "notes": "Sometimes you just need a juicy throwback! To quench that craving, we present Mango Grapefruju. An ice cream sour inspired by the classic treat. Bursting with refreshing mango, grapefruit and lime, and rounded out with a soft touch of vanilla for that creamy, frosty finish. Ooh, ahh. It\u2019s gonna hit yah!"
+ },
+ {
+  "brewery": "Duncan's Brewing Co.",
+  "page_brewery": "Duncan's Brewing Co.",
+  "slug": "duncans_brewing",
+  "name": "Pawpaw After Party",
+  "abv": 5,
+  "style": "Smoothie Sour",
+  "notes": "The After Party has arrived. Bursting with pawpaw, mango, and banana added before and after fermentation, this mega-fruited smoothie sour beer is stacked with tropical goodness and just the right balance of sweet and tangy. Thick, juicy, and ready to keep the party going long after everyone else has gone home."
+ },
+ {
+  "brewery": "Duncan's Brewing Co.",
+  "page_brewery": "Duncan's Brewing Co.",
+  "slug": "duncans_brewing",
+  "name": "Raspberry Waffle",
+  "abv": 6,
+  "style": "Pastry Sour",
+  "notes": "The Duncan\u2019s waffle maker is back at it. A beer packed with tart raspberries, drizzled in rich maple goodness, and finished with a smooth hit of vanilla."
+ },
+ {
+  "brewery": "Duncan's Brewing Co.",
+  "page_brewery": "Duncan's Brewing Co.",
+  "slug": "duncans_brewing",
+  "name": "San Isidore",
+  "abv": 5,
+  "style": "Fruited Sour",
+  "notes": "Back with our spicy sidekicks Apostle. We\u2019ve taken inspiration from the magic of Saint Isidore. Passionfruit & pineapple bring a tropical party, habanero throws the heat, & a hint of mint keeps it fresh, all on top of a smooth corn & barley base. Tangy, vibrant, with just the right kick. Like a blessing with a bit of bite!"
+ },
+ {
+  "brewery": "Emerson's Brewery",
+  "page_brewery": "Emerson's Brewery",
+  "slug": "emerson-s-brewery",
+  "name": "1812",
+  "abv": 5,
+  "style": "Pale Ale",
+  "notes": "One of New Zealand\u2019s first new generation pale ales and now something of a classic, Emerson\u2019s 1812 is all about balance. Pouring a bright amber hue beneath a deep cream coloured head, the aroma hints at caramel and dark toffee balanced with a light citrusy fruitiness. Medium bodied, the palate first offers a marmalade-like combination of ripe citrus and caramelised malts before resiny hops come to the fore and lead into a lingering dry finish"
+ },
+ {
+  "brewery": "Emerson's Brewery",
+  "page_brewery": "Emerson's Brewery",
+  "slug": "emerson-s-brewery",
+  "name": "Bookbinder",
+  "abv": 3.7,
+  "style": "Session Ale",
+  "notes": "A wonderfully drinkable interpretation of a classic English ale. Bookbinder is a blend of four malts combined with two classic Nelson grown European hops (Fuggles and Riwaka). The beer pours an attractive reddish brown, with a cream coloured head. Bookbinder has a sweet, perfumey, malt and hop aroma with a soft, malty, fruit and vinous palate that is both full flavoured and refreshing with a long, gently drying finish."
+ },
+ {
+  "brewery": "Emerson's Brewery",
+  "page_brewery": "Emerson's Brewery",
+  "slug": "emerson-s-brewery",
+  "name": "Boss Level - Bonus Level w/ Blood Orange",
+  "abv": 8,
+  "style": "Blood Orange Ultra IPA",
+  "notes": "All your bases are belong to us. Ready player 1 - you\u2019ve unlocked the Bonus Level. It\u2019s a can load of weaponised hop firepower with a wicked citrus twist. Five different US hop varieties, 100 IBU\u2019s and a massive malt grist to match, finished with a powerful blast of distilled Blood Orange extract. Game over man, game over!"
+ },
+ {
+  "brewery": "Emerson's Brewery",
+  "page_brewery": "Emerson's Brewery",
+  "slug": "emerson-s-brewery",
+  "name": "Juicy Apple Cider",
+  "abv": 4.5,
+  "style": "Cider",
+  "notes": "Apples have a symbolic status in many legends, folklores, and traditions. They can represent love, beauty, wisdom, immortality, and temptation &mdash; to name but a few. We just reckon they make a deliciously refreshing beverage. And Juicy Apple Cider is certainly that, with the crisp, sweet hit of ripe apples, balanced by a slightly dry finish. Hmmm, maybe they were right about the temptation thing."
+ },
+ {
+  "brewery": "Emerson's Brewery",
+  "page_brewery": "Emerson's Brewery",
+  "slug": "emerson-s-brewery",
+  "name": "Overlord",
+  "abv": 8,
+  "style": "Imperial Stout",
+  "notes": "A bold, malt-forward stout bursting with rich roasted flavors and a punch of Citra and Simcoe hops \u2014 the bigger, bolder sibling of Phantom Lord! Ruler of all things dark and hoppy."
+ },
+ {
+  "brewery": "Emerson's Brewery",
+  "page_brewery": "Emerson's Brewery",
+  "slug": "emerson-s-brewery",
+  "name": "Phantom Lord Hazy IPA",
+  "abv": 5.5,
+  "style": "Hazy IPA",
+  "notes": "It\u2019s unwise to make sweeping generalisations about Phantom Lords. They\u2019re not all sinister and evil. In fact, this one is quite the fun, fruity character. Brewed with a heady combo of Kohatu (NZ), and Mosaic (US) hops, Phantom Lord Hazy IPA is full of complex tropical flavours. Pineapple, lime, and stone fruit, meet mango, citrus and berries. Just watch out, at 6.66, it does still have a bit of devil in it."
+ },
+ {
+  "brewery": "Emerson's Brewery",
+  "page_brewery": "Emerson's Brewery",
+  "slug": "emerson-s-brewery",
+  "name": "Phantom Lord Hopped Stout",
+  "abv": 5.9,
+  "style": "Hopped Stout",
+  "notes": "Brewers Guild of New Zealand Trophy Winner for Stouts and Porters 2016 It displays all the classic stout, characteristics. Black as tar, opulent roast and chocolate notes yet hopped in the way we would hop an American Style Pale Ale. The malt grist is made up primarily of ale, roast barley, chocolate and crystal malts, with rolled oats included to add that smooth mouth feel. Phantom Lord has been mash hopped, first wort hopped, hopped in the kettle and once boiled, the steaming hot wort has been pumped through fresh, new season hop cones \u2013 hop backed!"
+ },
+ {
+  "brewery": "Emerson's Brewery",
+  "page_brewery": "Emerson's Brewery",
+  "slug": "emerson-s-brewery",
+  "name": "Phantom Lord West Coast IPA",
+  "abv": 5.6,
+  "style": "West Coast IPA",
+  "notes": "This Phantom Lord\u2019s soul draws its spirit not from the Underworld, but California, USA. As a est Coast IPA, it\u2019s absolutely brimming with Centennial, Simcoe, and Citra hops. We were going to stop adding them, but the devil on our shoulder told us to keep going. And he was right. The result has the classic, bitter bite you want, with big grapefruit, resinous pine, and passionfruit undertones. It\u2019s our loudest Phantom Lord yet \u2013\u2013 well, it is American."
+ },
+ {
+  "brewery": "Emerson's Brewery",
+  "page_brewery": "Emerson's Brewery",
+  "slug": "emerson-s-brewery",
+  "name": "Pride Of The Plains",
+  "abv": 5,
+  "style": "Riwaka Pilsner",
+  "notes": "Pride of the Plains. First brewed on 16 May 1995, with Saaz D hops (now known as Riwaka), our 2026 reboot has been inspired by the original single-hop recipe. It has the same bold fruit flavours, and notes of passionfruit and lime. Make the most of it, it might not be around again for another 30 years.."
+ },
+ {
+  "brewery": "Garage Project",
+  "page_brewery": "Garage Project",
+  "slug": "garage_project",
+  "name": "Antebeer w/ Vanilla Foam",
+  "abv": 6,
+  "style": "Coconut Ube & Lychee Smoothie W/ Vanilla Foam",
+  "notes": "Paranormal containment failure detected. Open a portal to a new dimension of flavour. Antebeer, Coconut Ube Smoothie, it\u2019s beer but not as you know it. Strong base blended with purple ube powder, coconut cream, banana, lychee and vanilla for an outrageously colourful, full flavoured paranormal smoothie beer experience that's out of this world. Brewed in collaboration with Deep Field Games, creators of Abiotic Factor, as part of our Kiwi Game Studio collab bundle, celebrating creativity and innovation in the New Zealand games industry."
+ },
+ {
+  "brewery": "Garage Project",
+  "page_brewery": "Garage Project",
+  "slug": "garage_project",
+  "name": "Fugazi",
+  "abv": 2.2,
+  "style": "Pale Ale",
+  "notes": "Don't be decieved, sometimes things are not what they seem. The modest strength belies the flavour within. A complex selection of malts and generous dose of Sauvin and Simcoe hops create a light but satisfying beer that punches well above its weight. A true sheep in wolf's clothing."
+ },
+ {
+  "brewery": "Garage Project",
+  "page_brewery": "Garage Project",
+  "slug": "garage_project",
+  "name": "gg ez",
+  "abv": 5,
+  "style": "NZ-04",
+  "notes": "Good game. Crisp golden NZ pils, crafted to showcase the new H\u0101pi Research trial hop variety NZ04. Canterbury barley with a light touch of toffee malt bring fresh baked baguette sweetness, balanced with clean bitterness, upfront grapefruit citrus and tropical passionfruit notes. Too ez."
+ },
+ {
+  "brewery": "Garage Project",
+  "page_brewery": "Garage Project",
+  "slug": "garage_project",
+  "name": "Last Cast",
+  "abv": 8,
+  "style": "Reel Hazy Oat Cream IIPA",
+  "notes": "The fog\u2019s rolling in. It\u2019s getting late, time for a Last Cast? Unfathomably lush, hazy Oat Cream IIPA, brewed with a boat load of oats and full cream lactose, then double dry hopped with Mosaic, Motueka, Dolcita and Riwaka for an incredibly smooth mouthfeel and huge tropical fruit and citrus flavour. Dive into its hazy depths, but beware what lies within! Brewed in collaboration with Black Salt Games, creators of DREDGE, as part of our Kiwi Game Studio collab bundle, celebrating creativity and innovation in the New Zealand games industry."
+ },
+ {
+  "brewery": "Garage Project",
+  "page_brewery": "Garage Project",
+  "slug": "garage_project",
+  "name": "Our Dankest Daze",
+  "abv": 6,
+  "style": "West Coast IPA",
+  "notes": "The hopocalypse is upon us. Our Dankest Daze, West Coast IPA, brewed with a killer line-up of Chinook, Centennial, Citra and Nelson Sauvin. A crisp, clean malt base, bursting with bright grapefruit citrus and dripping dank hop resin, all finished off with a delicious bitter bite. You can run, but you can\u2019t hide. Brewed in collaboration with PikPok, creators of Into the Dead: Our Darkest Days, as part of our Kiwi Game Studio collab bundle, celebrating creativity and innovation in the New Zealand games industry."
+ },
+ {
+  "brewery": "Garage Project",
+  "page_brewery": "Garage Project",
+  "slug": "garage_project",
+  "name": "Side Quest",
+  "abv": 4,
+  "style": "Soft Serve",
+  "notes": "Whisky Barrel Aged Stout - turned into a Soft Serve."
+ },
+ {
+  "brewery": "Garage Project",
+  "page_brewery": "Garage Project",
+  "slug": "garage_project",
+  "name": "Stun Lock",
+  "abv": 14.5,
+  "style": "Chocolate Liquorice Stout",
+  "notes": "Whiskey barrel aged stout infused with cacao nibs and liquorice root."
+ },
+ {
+  "brewery": "Garage Project",
+  "page_brewery": "Garage Project",
+  "slug": "garage_project",
+  "name": "TINY IPA",
+  "abv": 0.5,
+  "style": "Non-alc IPA",
+  "notes": "Big things sometimes come in little packages. Say hi to Tiny IPA: Brewed with Nelson Sauvin, Mosaic and Motueka hops. Tiny IPA is specially fermented to give you all the juicy mouthwatering bitterness and punchy hop character you&rsquo;ve come to expect from an IPA, just without the alcohol. Yup that&rsquo;s right. Big flavour, without the booze so you can enjoy your IPA every day. Tiny, but mighty. NZBA 2025 GOLD MEDAL"
+ },
+ {
+  "brewery": "Good George Brewing Co.",
+  "page_brewery": "Good George Brewing Co.",
+  "slug": "good-george-brewing-co",
+  "name": "Baby Jesus",
+  "abv": 2.9,
+  "style": "Pale Ale",
+  "notes": "Aesthetic: Golden with a tight white foam Aroma: Tropical and citrus aromas of mango, passionfruit, and lime with hints of stone fruit and grape. Palate: Crisp and light-bodied with juicy hops balanced by subtle malt and toffee notes Hops: Krush, Galaxy, Citra, Verdant IPA, Maris Otter Pale Ale, Toffee Malt, Rolled Oats NZ BEER AWARDS 2026 GOLD MEAL"
+ },
+ {
+  "brewery": "Good George Brewing Co.",
+  "page_brewery": "Good George Brewing Co.",
+  "slug": "good-george-brewing-co",
+  "name": "Chilli Chocolate Stout",
+  "abv": 5.2,
+  "style": "Sweet Stout",
+  "notes": "Aesthetic: Pouring jet black with a creamy tan head, this rich stout is all about indulgence Aroma: Bold notes of chocolate, toasted cacao and subtle roasted malt lead the way Palate: Smooth and velvety, finishing with a gentle habanero warmth that complements the chocolate Hops: Pacific Gem"
+ },
+ {
+  "brewery": "Good George Brewing Co.",
+  "page_brewery": "Good George Brewing Co.",
+  "slug": "good-george-brewing-co",
+  "name": "Fog City",
+  "abv": 5.8,
+  "style": "Hazy IPA",
+  "notes": "Aesthetic: Pale gold and hazy. Pillow white foam Aroma: Peach, nectarine with tropical notes in the background Palate: Full mouthfeel with citrus tones on palate. Light grainy flavours, low bitterness Hops: Pacific Jade, Mosaic, Citra & Amarillo NZ BEER AWARDS 2026 Best Juicy/Hazy Pale Ale - Trophy + Gold Medal"
+ },
+ {
+  "brewery": "Good George Brewing Co.",
+  "page_brewery": "Good George Brewing Co.",
+  "slug": "good-george-brewing-co",
+  "name": "Frankton",
+  "abv": 5.8,
+  "style": "Bright IPA",
+  "notes": "Aesthetic: Bright with an straw like golden hue Aroma: Resinous hoppy with citrus andtropical notes Palate: A balanced malty base with a strong bitterness and a crisp, clean finish Hops: Galaxy, Mosaic & Centennial NZ BEER AWARDS 2026 Best International Pale Ale - Trophy + Gold Medal"
+ },
+ {
+  "brewery": "Good George Brewing Co.",
+  "page_brewery": "Good George Brewing Co.",
+  "slug": "good-george-brewing-co",
+  "name": "Haze of Glory",
+  "abv": 7,
+  "style": "NZIPA",
+  "notes": "Aesthetic: Impenetrably hazy and full. Golden in colour with a thick white foam Aroma: Intensely hoppy, fruity with a variety of tropical fruits \u2013 passionfruit, mango, pineapple Palate: Sweet malty flavour with very low bitterness. Like drinking juice Hops: SuperDelic, Nelson Sauvin, Riwaka & Nectaron NZ BEER AWARDS 2026 Silver Medal"
+ },
+ {
+  "brewery": "Good George Brewing Co.",
+  "page_brewery": "Good George Brewing Co.",
+  "slug": "good-george-brewing-co",
+  "name": "Old School Alcoholic Peach Wave",
+  "abv": 4,
+  "style": "Brewed Alcoholic Soda",
+  "notes": "Aesthetic: Hazy, blush-tinted, effervescent shimmer Aroma: Lush sun-ripened peaches, citrus zest and a hint of floral breeze. Palate: Juicy, ripe peaches, a gentle tartness carried on fine, lively bubbles that crest into a smooth refreshing finish"
+ },
+ {
+  "brewery": "Heyday Beer Co.",
+  "page_brewery": "Heyday Beer Co.",
+  "slug": "heyday_beer_co",
+  "name": "Beer Friends: ESB",
+  "abv": 5,
+  "style": "ESB",
+  "notes": ""
+ },
+ {
+  "brewery": "Heyday Beer Co.",
+  "page_brewery": "Heyday Beer Co.",
+  "slug": "heyday_beer_co",
+  "name": "Beer Friends: Hoppy Porter",
+  "abv": 5,
+  "style": "Porter",
+  "notes": ""
+ },
+ {
+  "brewery": "Heyday Beer Co.",
+  "page_brewery": "Heyday Beer Co.",
+  "slug": "heyday_beer_co",
+  "name": "Jeremiah Imperial",
+  "abv": 6.3,
+  "style": "New Zealand Pilsner",
+  "notes": ""
+ },
+ {
+  "brewery": "Heyday Beer Co.",
+  "page_brewery": "Heyday Beer Co.",
+  "slug": "heyday_beer_co",
+  "name": "Mr Blue Sky",
+  "abv": 6.3,
+  "style": "New Zealand IPA",
+  "notes": ""
+ },
+ {
+  "brewery": "Heyday Beer Co.",
+  "page_brewery": "Heyday Beer Co.",
+  "slug": "heyday_beer_co",
+  "name": "Odd Assembly: Quadrupel",
+  "abv": 9.9,
+  "style": "Quadrupel",
+  "notes": ""
+ },
+ {
+  "brewery": "Horseshoe Brewing Company",
+  "page_brewery": "Horseshoe Brewing Company",
+  "slug": "horseshoe-brewing-company",
+  "name": "Hard Limonade",
+  "abv": 5,
+  "style": "Hard Lemonade",
+  "notes": "Just like an old fashioned lemonade. Sweet and tart with a great taste of lime. If you want a wee rest from beer this is good option. It's 5 ABV and honestly the words most commonly used to describe it are \"Ooo that's dangerous\"."
+ },
+ {
+  "brewery": "Horseshoe Brewing Company",
+  "page_brewery": "Horseshoe Brewing Company",
+  "slug": "horseshoe-brewing-company",
+  "name": "Raspberry Stout",
+  "abv": 5.8,
+  "style": "Raspberry Stout",
+  "notes": "Raspberry Stout"
+ },
+ {
+  "brewery": "Horseshoe Brewing Company",
+  "page_brewery": "Horseshoe Brewing Company",
+  "slug": "horseshoe-brewing-company",
+  "name": "Wairarapa IPA",
+  "abv": 5.9,
+  "style": "New Zealand IPA",
+  "notes": "The highest praised beer of Beervana 2025 returns! Winner of all four sessions. Hoppy and malty with a balancing bitterness, it's made for pints. No gimmics just good tasty beer."
+ },
+ {
+  "brewery": "Liberty Brewing Co.",
+  "page_brewery": "Liberty Brewing Co.",
+  "slug": "liberty_brewing",
+  "name": "Divine Wind",
+  "abv": 5,
+  "style": "Japanese Lager",
+  "notes": "Lager, Lager, Lager what more can i say. so clean and refreshing just what you need to cleanse the pallet. NZBA 2025 GOLD MEDAL"
+ },
+ {
+  "brewery": "Liberty Brewing Co.",
+  "page_brewery": "Liberty Brewing Co.",
+  "slug": "liberty_brewing",
+  "name": "Hopsicle",
+  "abv": 6,
+  "style": "Hard Soda",
+  "notes": "Hard soda thats actually incrediably gentle, on your waistline as well as the eyes. This unique product has so much going for it you need to try it to believe it."
+ },
+ {
+  "brewery": "Liberty Brewing Co.",
+  "page_brewery": "Liberty Brewing Co.",
+  "slug": "liberty_brewing",
+  "name": "Hunched",
+  "abv": 7,
+  "style": "West Coast IPA",
+  "notes": "Our 2026 entry into the famous Malthosue WCIPA challenge, think massive fruity hops on the nose followed by smooth bitteness."
+ },
+ {
+  "brewery": "Liberty Brewing Co.",
+  "page_brewery": "Liberty Brewing Co.",
+  "slug": "liberty_brewing",
+  "name": "Jungle Juice",
+  "abv": 6.6,
+  "style": "Hazy IPA",
+  "notes": "Juicy fruity and filling to boot! this hazy IPA never dissapoints the taste buds."
+ },
+ {
+  "brewery": "Liberty Brewing Co.",
+  "page_brewery": "Liberty Brewing Co.",
+  "slug": "liberty_brewing",
+  "name": "Little Liberty",
+  "abv": 2.5,
+  "style": "Hazy Pale Ale",
+  "notes": ""
+ },
+ {
+  "brewery": "Liberty Brewing Co.",
+  "page_brewery": "Liberty Brewing Co.",
+  "slug": "liberty_brewing",
+  "name": "Oh Bro",
+  "abv": 5.1,
+  "style": "Pale Ale",
+  "notes": "Our classic pale ale, sturdy and bold it holds its own in place in our hearts."
+ },
+ {
+  "brewery": "Liberty Brewing Co.",
+  "page_brewery": "Liberty Brewing Co.",
+  "slug": "liberty_brewing",
+  "name": "Peached Az",
+  "abv": 4,
+  "style": "Cocktail",
+  "notes": "Get one of your 5+ a day here with this moreish peach and vodka blend and taste that NZ peach puree for yourself."
+ },
+ {
+  "brewery": "Liberty Brewing Co.",
+  "page_brewery": "Liberty Brewing Co.",
+  "slug": "liberty_brewing",
+  "name": "Pivo Pilsner",
+  "abv": 5,
+  "style": "Pilsner",
+  "notes": "A glorious Czech style pilsner that reminds you of trips taken long ago."
+ },
+ {
+  "brewery": "Liberty Brewing Co.",
+  "page_brewery": "Liberty Brewing Co.",
+  "slug": "liberty_brewing",
+  "name": "Prohibiton Porter 2025",
+  "abv": 13.9,
+  "style": "Bourbon Barrel-aged Porter",
+  "notes": "Not enough words for this delight. Rich smooth and creamy, decadant with a beautiful warming you will want to savour."
+ },
+ {
+  "brewery": "Martinborough Brewery",
+  "page_brewery": "Martinborough Brewery",
+  "slug": "martinborough-brewery",
+  "name": "Hinakura Hazy",
+  "abv": 4.9,
+  "style": "Hazy Pale Ale",
+  "notes": "Juicy and full bodied NZ hazy pale ale, with big tropical notes of pineapple and passionfruit, peach and ripe citrus. Hops - Nelson Sauvin, Nectaron, Motueka, Superdelic."
+ },
+ {
+  "brewery": "Martinborough Brewery",
+  "page_brewery": "Martinborough Brewery",
+  "slug": "martinborough-brewery",
+  "name": "Juice Experiment #7",
+  "abv": 5.9,
+  "style": "Hazy IPA",
+  "notes": "Soft and light malt background from lager, pilsner, oats and chit malts. Strata and Superdelic Hops bring notes of strawberry, melon and pineapple with a hint of coconut."
+ },
+ {
+  "brewery": "Martinborough Brewery",
+  "page_brewery": "Martinborough Brewery",
+  "slug": "martinborough-brewery",
+  "name": "Longbush Lager",
+  "abv": 4,
+  "style": "Munich Helles",
+  "notes": "Brewed with 100% NZ hops and malt for a truly local take on a German classic. Expect that crisp, classic lager snap, soft floral notes, and a gentle hint of citrus."
+ },
+ {
+  "brewery": "Martinborough Brewery",
+  "page_brewery": "Martinborough Brewery",
+  "slug": "martinborough-brewery",
+  "name": "MB Brown",
+  "abv": 5.5,
+  "style": "Brown Ale",
+  "notes": "On hand pull. Aromas of toasted malt, chocolate and caramel, and a hint of spice from the small addition of rye malt. Medium bitter not overly sweet."
+ },
+ {
+  "brewery": "Martinborough Brewery",
+  "page_brewery": "Martinborough Brewery",
+  "slug": "martinborough-brewery",
+  "name": "MB Ginger Beer",
+  "abv": 4,
+  "style": "Ginger Beer",
+  "notes": "Zesty and refreshing. Made by us, with real ginger and lemon juice. Semi dry."
+ },
+ {
+  "brewery": "Martinborough Brewery",
+  "page_brewery": "Martinborough Brewery",
+  "slug": "martinborough-brewery",
+  "name": "NITRO Imperial coffee caramel stout",
+  "abv": 5.8,
+  "style": "Imperial Stout",
+  "notes": "Get your caramel latte fix \u2014 in beer form. This rich and creamy oatmeal stout is conditioned on locally roasted Martinborough Coffee beans, lactose and caramel, delivering smooth roasted coffee flavours with a touch of caramel sweetness. Served on nitro for an extra velvety finish."
+ },
+ {
+  "brewery": "Mean Doses",
+  "page_brewery": "Mean Doses",
+  "slug": "mean-doses",
+  "name": "BIG",
+  "abv": 9.9,
+  "style": "Double IPA",
+  "notes": "You remember this one. We made it years ago - a double IPA with Centennial, Simcoe and Sabro. Lots of pine and citrus, deep yet refreshing. We often work an 80s retro vibe so we named it after the 1988 Tom Hanks comedy. You know, the one with the dodgy plot in which - never mind. Anyway, the beer. I think maybe we were thinking it was a one off but it turned out really good so we kept making it. And making it, and making it. So here we are, it's Beervana \u201926, Big is our centrepiece, and it\u2019s bigger. We have a sick Zoltar machine. We have a whole line-up with names referencing the Tom Hanks movie. And I\u2019m going to come up with tasting notes for every single one."
+ },
+ {
+  "brewery": "Mean Doses",
+  "page_brewery": "Mean Doses",
+  "slug": "mean-doses",
+  "name": "Cavern of the Evil Wizard",
+  "abv": 5.4,
+  "style": "Wilding Dry Hopped Saison",
+  "notes": "Yep, okay. We're definitely running with that as the name? Nice. I feel like the Tom Hanks theme is distracting us here, but whatever, I used to play Zork and D&D, I'm down with it. Ahem: In the cavern of the... evil wizard... the eternal battle between Saaz, Wai-iti and native NZ \"Wilding\" yeasts... uh... begins anew. And hence a great Saison is... um, unleashed. Upon the land."
+ },
+ {
+  "brewery": "Mean Doses",
+  "page_brewery": "Mean Doses",
+  "slug": "mean-doses",
+  "name": "I Get To Be On Top",
+  "abv": 5,
+  "style": "Fruited Sour",
+  "notes": "For God's sake guys you did it you named a beer after the one scene in the movie I was trying to gloss over what the hell is wrong with you why can't you just make a 5 fruited sour and call it \"Mean Fruited Sour\" or some shit I mean it's got guava and passionfruit so call it \"Guava Sour\" or \"Passionfruit Sour\" and there that's done, we got there without retraumatising the punters it's not difficult"
+ },
+ {
+  "brewery": "Mean Doses",
+  "page_brewery": "Mean Doses",
+  "slug": "mean-doses",
+  "name": "Verify",
+  "abv": 5.7,
+  "style": "West Coast Pilsner",
+  "notes": "Verily, the mists of time have parted. Verily, the future stands revealed: it's a West Coast Pilsner and yea, it is crisp and refreshing. Verily we have used Simcoe, Citra, Ekuanot and Riwaka, so verily it doth taste of citrus, resin and passionfruit, bright and sharp and excellent. Verily, we are milking the Big theme a bit too much by this point."
+ },
+ {
+  "brewery": "Mean Doses",
+  "page_brewery": "Mean Doses",
+  "slug": "mean-doses",
+  "name": "You Must Be This Big To Ride",
+  "abv": 4,
+  "style": "Session Double IPA",
+  "notes": "You're confused because it's a session double IPA. Nah, you're confused because it's Beervana and a three metre tall fortune teller machine is talking at you. This beer is also a magic trick in that it gives full double IPA flavour with just a 4 hit. Amarillo, Ekuanot and Waimea, so it's all citrus and tropical with resin and guava. The name reflects our collective childhood memories of fairgrounds etc. You could choose to see it that way and not necessarily as a reference to the 1988 Tom Hanks vehicle."
+ },
+ {
+  "brewery": "Mean Doses",
+  "page_brewery": "Mean Doses",
+  "slug": "mean-doses",
+  "name": "Your Wish Is Granted",
+  "abv": 7,
+  "style": "Hazy IPA",
+  "notes": "Maybe you didn't know that this is what you wanted. Well no take-backs. Zoltar has searched your soul and determined that instead of world peace or an end to social media disinformation you actually just want a strong hazy with Nelson Sauvin, Motueka and Simcoe. It tastes of grape, lime and tropical fruit. Maybe a little pine too. Mistrusting the soul's true desires is a central theme of Andrei Tarkovsky's 1979 film Stalker, a quiet masterpiece of Soviet-era science fiction and a much better film than Big."
+ },
+ {
+  "brewery": "MorningCider",
+  "page_brewery": "MorningCider",
+  "slug": "morningcider",
+  "name": "Apple IPA",
+  "abv": 6,
+  "style": "Apple IPA",
+  "notes": ""
+ },
+ {
+  "brewery": "MorningCider",
+  "page_brewery": "MorningCider",
+  "slug": "morningcider",
+  "name": "Black Cider",
+  "abv": 4.5,
+  "style": "Cider",
+  "notes": ""
+ },
+ {
+  "brewery": "MorningCider",
+  "page_brewery": "MorningCider",
+  "slug": "morningcider",
+  "name": "Boozy Slushie",
+  "abv": 6,
+  "style": "Boozy",
+  "notes": ""
+ },
+ {
+  "brewery": "MorningCider",
+  "page_brewery": "MorningCider",
+  "slug": "morningcider",
+  "name": "Classic Cider",
+  "abv": 4.9,
+  "style": "Cider",
+  "notes": ""
+ },
+ {
+  "brewery": "MorningCider",
+  "page_brewery": "MorningCider",
+  "slug": "morningcider",
+  "name": "Lemonade",
+  "abv": 6,
+  "style": "Hard Lemonade",
+  "notes": ""
+ },
+ {
+  "brewery": "MorningCider",
+  "page_brewery": "MorningCider",
+  "slug": "morningcider",
+  "name": "Mulled Cider",
+  "abv": 6,
+  "style": "Mulled Cider",
+  "notes": ""
+ },
+ {
+  "brewery": "MorningCider",
+  "page_brewery": "MorningCider",
+  "slug": "morningcider",
+  "name": "Pavlova Cider",
+  "abv": 4.9,
+  "style": "Cider (Flavoured)",
+  "notes": ""
+ },
+ {
+  "brewery": "MorningCider",
+  "page_brewery": "MorningCider",
+  "slug": "morningcider",
+  "name": "Spicy Margaritta",
+  "abv": 4.5,
+  "style": "Cocktail",
+  "notes": ""
+ },
+ {
+  "brewery": "Mount Brewing Co.",
+  "page_brewery": "Mount Brewing Co.",
+  "slug": "mount-brewing",
+  "name": "Flow State",
+  "abv": 9,
+  "style": "Dessert Stout w/ Raspberry, Chocolate & Coconut",
+  "notes": "Rich cocoa, toasted coconut and fresh raspberry layered over smooth caramel, with a full, silky body and a long, decadent finish."
+ },
+ {
+  "brewery": "Mount Brewing Co.",
+  "page_brewery": "Mount Brewing Co.",
+  "slug": "mount-brewing",
+  "name": "Harley's Nitro Irish Stout",
+  "abv": 4.2,
+  "style": "Irish Stout",
+  "notes": "Rich dark chocolate and toffee layered with freshly roasted espresso, finishing smooth, creamy and exceptionally sessionable."
+ },
+ {
+  "brewery": "Mount Brewing Co.",
+  "page_brewery": "Mount Brewing Co.",
+  "slug": "mount-brewing",
+  "name": "Highline",
+  "abv": 4.2,
+  "style": "Low Carb Hazy Pale Ale",
+  "notes": "Juicy tropical fruit and bright citrus with a refreshing hazy finish. Light-bodied, low in carbs and packed with flavour."
+ },
+ {
+  "brewery": "Mount Brewing Co.",
+  "page_brewery": "Mount Brewing Co.",
+  "slug": "mount-brewing",
+  "name": "Sea Beast",
+  "abv": 6,
+  "style": "New Zealand IPA",
+  "notes": "Pine, citrus and delicate floral aromas lead into a medium-bodied IPA with bold New Zealand hop character, balanced by a firm, refreshing bitterness."
+ },
+ {
+  "brewery": "Mount Brewing Co.",
+  "page_brewery": "Mount Brewing Co.",
+  "slug": "mount-brewing",
+  "name": "The Trifecta",
+  "abv": 6.5,
+  "style": "New Zealand IPA",
+  "notes": "White peach, ripe mango and passionfruit, layered with bright citrus, fresh lime zest and a clean grapefruit finish. Crisp, dry and low in bitterness."
+ },
+ {
+  "brewery": "Neck of the Woods Beer Co.",
+  "page_brewery": "Neck of the Woods Beer Co.",
+  "slug": "neck-of-the-woods-beer-co",
+  "name": "Blood Moon",
+  "abv": 5.5,
+  "style": "Stout",
+  "notes": "As the Bloodmoon rises, dark chocolate gives way to a slow, smouldering warmth. Layers of rich roasted malt, creamy lactose, and velvety chocolate malt create a smooth, full- bodied stout, while chipotle adds a smoky heat that lingers long after each sip. This rare fiery Bloodmoon is a decadent stout where sweetness, spice, and smoke eclipse one another in perfect harmony."
+ },
+ {
+  "brewery": "Neck of the Woods Beer Co.",
+  "page_brewery": "Neck of the Woods Beer Co.",
+  "slug": "neck-of-the-woods-beer-co",
+  "name": "COBRA KAI",
+  "abv": 5.8,
+  "style": "Hazy NZIPA",
+  "notes": "NZIPA Peoples Choice Winner"
+ },
+ {
+  "brewery": "Neck of the Woods Beer Co.",
+  "page_brewery": "Neck of the Woods Beer Co.",
+  "slug": "neck-of-the-woods-beer-co",
+  "name": "Kinky M.I.L.F",
+  "abv": 6.3,
+  "style": "West Coast IPA",
+  "notes": "MALTHOUSE WCIPA Challenge winner"
+ },
+ {
+  "brewery": "Neck of the Woods Beer Co.",
+  "page_brewery": "Neck of the Woods Beer Co.",
+  "slug": "neck-of-the-woods-beer-co",
+  "name": "P.O.E.T.S",
+  "abv": 4.7,
+  "style": "Pale Ale",
+  "notes": "Gold Medal NZ Beer Awards 2026"
+ },
+ {
+  "brewery": "Neck of the Woods Beer Co.",
+  "page_brewery": "Neck of the Woods Beer Co.",
+  "slug": "neck-of-the-woods-beer-co",
+  "name": "RUSTY DINGO",
+  "abv": 5.6,
+  "style": "Brown Ale",
+  "notes": "Gold Medal NZ Beer Awards 2026"
+ },
+ {
+  "brewery": "Neck of the Woods Beer Co.",
+  "page_brewery": "Neck of the Woods Beer Co.",
+  "slug": "neck-of-the-woods-beer-co",
+  "name": "The Hef",
+  "abv": 5.4,
+  "style": "German Wheat Beer",
+  "notes": "Fresh Hop German Hazy"
+ },
+ {
+  "brewery": "No8 Distillery",
+  "page_brewery": "No8 Distillery",
+  "slug": "no8-distillery",
+  "name": "Blue Lady",
+  "abv": 9,
+  "style": "Cocktail",
+  "notes": "Gin, Blue curacao, Lemon Juice, Aquafaba, Soda water"
+ },
+ {
+  "brewery": "No8 Distillery",
+  "page_brewery": "No8 Distillery",
+  "slug": "no8-distillery",
+  "name": "Enceladus  Gin & Tonic",
+  "abv": 6,
+  "style": "Cocktail",
+  "notes": "Dry Gin - Limited edition"
+ },
+ {
+  "brewery": "No8 Distillery",
+  "page_brewery": "No8 Distillery",
+  "slug": "no8-distillery",
+  "name": "Limoncello Fizz",
+  "abv": 2.4,
+  "style": "Farmhouse Ale",
+  "notes": "Low Alcohol drink - No8 Limoncello, Lemon juice and mixer"
+ },
+ {
+  "brewery": "No8 Distillery",
+  "page_brewery": "No8 Distillery",
+  "slug": "no8-distillery",
+  "name": "No8 Beer Mojito",
+  "abv": 5,
+  "style": "Beer-based Cocktail",
+  "notes": "No8 Golden Rum, Pilsner, Lime juice, Sugar, Lemonade"
+ },
+ {
+  "brewery": "No8 Distillery",
+  "page_brewery": "No8 Distillery",
+  "slug": "no8-distillery",
+  "name": "No8 Gin & Tonic",
+  "abv": 6,
+  "style": "Other",
+  "notes": "No8 Horoptito (Classic), No8 Dunners Dry or No8 Hibiscus (Ruby) Gin"
+ },
+ {
+  "brewery": "No8 Distillery",
+  "page_brewery": "No8 Distillery",
+  "slug": "no8-distillery",
+  "name": "No8 Rum Sour",
+  "abv": 9,
+  "style": "Cocktail",
+  "notes": "BaBin Golden Rum, Tiger Lily Liqueur, Lemon Juice, Aquafaba"
+ },
+ {
+  "brewery": "No8 Distillery",
+  "page_brewery": "No8 Distillery",
+  "slug": "no8-distillery",
+  "name": "Raspberry Martini",
+  "abv": 7,
+  "style": "Other",
+  "notes": "No8 Vodka, Limoncello, Raspberry pure, Triple Sec, Soda water"
+ },
+ {
+  "brewery": "No8 Distillery",
+  "page_brewery": "No8 Distillery",
+  "slug": "no8-distillery",
+  "name": "Sweet & Sassy",
+  "abv": 7,
+  "style": "Other",
+  "notes": "No8 Gin, Grapefruit Liqueur, Campari, Honey, Lemon Juice, Tonic"
+ },
+ {
+  "brewery": "No8 Distillery",
+  "page_brewery": "No8 Distillery",
+  "slug": "no8-distillery",
+  "name": "White Mocka",
+  "abv": 8,
+  "style": "London Porter Beer ingredient",
+  "notes": "No8 Moka Gin, butterscotch, No8 Cocoa liqueur, coffe, London Porter reduction, Cream"
+ },
+ {
+  "brewery": "North End Brewery",
+  "page_brewery": "North End Brewery",
+  "slug": "north-end-brewery",
+  "name": "Beach Hoist",
+  "abv": 6.5,
+  "style": "American IPA",
+  "notes": "Our American style India Pale Ale started out as a collaboration with a legendary brewer from Oregon in the North West United States. We took the American IPA style and substituted American varieties of hops for New Zealand grown ones. We have tweaked the recipe and made it our own. Piney, grippy and citrus laden."
+ },
+ {
+  "brewery": "North End Brewery",
+  "page_brewery": "North End Brewery",
+  "slug": "north-end-brewery",
+  "name": "Become the Ocean",
+  "abv": 5,
+  "style": "Gose",
+  "notes": "For hundreds of years brewers in the German state of Saxony produced tart, salty, spicy wheat beers called Gose. The style was all but extinct when new world craft brewers discovered it and started to brew versions with increasingly off the wall flavourings. We decided to do something revolutionary and brew a Gose using only the traditional ingredients of water, malt, hops, salt, coriander seeds and yeast. Fruity, tart and just a little salty, we think Become the Ocean is the perfect match to a plate of shellfish"
+ },
+ {
+  "brewery": "North End Brewery",
+  "page_brewery": "North End Brewery",
+  "slug": "north-end-brewery",
+  "name": "Bitter Sea",
+  "abv": 4.7,
+  "style": "ESB",
+  "notes": "Inspired by our ancestors who travelled across the seas to forge a new life in this land we set about brewing a full bodied strong London style bitter. We combined New Zealand Ale Malt, two different crystal malts, a little wheat, tangy English Goldings and Fuggels hops with our fruity English Ale yeast to create a sociable, sessionable taste of the old country."
+ },
+ {
+  "brewery": "North End Brewery",
+  "page_brewery": "North End Brewery",
+  "slug": "north-end-brewery",
+  "name": "Hill Road",
+  "abv": 6,
+  "style": "Hazy IPA",
+  "notes": "North End Core Range You'd often catch Basil at the Hill Road lookout, scoping out his next fishing trip. Peering through the mist and glimpsing a hazy horizon - the inspiration for this brew. This tin cracks open with passionfruit and mango, layered with tropical citrus. Smooth and juicy, with a pithy, balanced bitterness."
+ },
+ {
+  "brewery": "North End Brewery",
+  "page_brewery": "North End Brewery",
+  "slug": "north-end-brewery",
+  "name": "Iron Sands",
+  "abv": 6,
+  "style": "Oat Rye Stout - Hand Pull",
+  "notes": "Inspired by the wild iron-rich beaches of the west coast we devised a smooth warming stout that combines oats, caramelized rye, and chocolate wheat malt with our fruity English yeast strain and some lightly zesty Nelson hops. The result is a stout fit to fortify against wild west coast winter storms and the perfect match to a night beside the fire. Smooth, rich stout. Fruity notes with layers of chocolate and coffee."
+ },
+ {
+  "brewery": "North End Brewery",
+  "page_brewery": "North End Brewery",
+  "slug": "north-end-brewery",
+  "name": "Petit Luna",
+  "abv": 2.5,
+  "style": "Hibiscus & Lime Sour Ale",
+  "notes": "Just because something is small doesn't mean it won't pack a punch. The little, delicate, dried flowers of the hibiscus plant are a case in point as they lend a pungent, fruity character, and deep pink colour when added to beer. The same can be said of Petit Luna. Hibiscus, kaffir lime, spicy Belgian yeast, and lactic tartness all brew up to a big refreshing blast of flavour fired by a light, low alcohol beer."
+ },
+ {
+  "brewery": "North End Brewery",
+  "page_brewery": "North End Brewery",
+  "slug": "north-end-brewery",
+  "name": "Pilspresso",
+  "abv": 4.8,
+  "style": "Coffee Pilsner",
+  "notes": "North End Salty's Pilspresso In collaboration with Salty's Roastery, we've layered their first-ever roast into this pilsner to bring together the best of both worlds. Coffee was hot side extracted for 10 minutes, followed by a 24 hour cold conditioning stage at 8\u00b0c, allowing the coffee aromatics to integrate seamlessly with the crisp pilsner profile. Sweet expresso, subtle toasted grain and a clean crisp finish."
+ },
+ {
+  "brewery": "North End Brewery",
+  "page_brewery": "North End Brewery",
+  "slug": "north-end-brewery",
+  "name": "Super Alpha",
+  "abv": 5,
+  "style": "Pacific Pale Ale",
+  "notes": "Super Alpha is a hoppy refreshing Pacific Pale Ale that uses the crisp tartness of wheat malt and a blast of fruity New Zealand hops to create a crisp refreshing beer. Super Alpha takes it\u2019s name from an unusual variety of New Zealand hop that gives the beer its trademark lemon grass character. The ultimate end to a summer\u2019s day."
+ },
+ {
+  "brewery": "One Drop Brewing Co",
+  "page_brewery": "One Drop Brewing Co",
+  "slug": "one-drop-brewing-co",
+  "name": "All Day",
+  "abv": 8,
+  "style": "Imperial Cream Pastry Stout",
+  "notes": "PEANUT BUTTER, NOUGAT, CARAMEL & ICE CREAM"
+ },
+ {
+  "brewery": "One Drop Brewing Co",
+  "page_brewery": "One Drop Brewing Co",
+  "slug": "one-drop-brewing-co",
+  "name": "Aunties Pudding",
+  "abv": 6.5,
+  "style": "Smoothie Pastry Sour",
+  "notes": "STEAMED PUDDING, GOLDEN SYRUP, PINEAPPLE CUSTARD & COCONUT CREAM"
+ },
+ {
+  "brewery": "One Drop Brewing Co",
+  "page_brewery": "One Drop Brewing Co",
+  "slug": "one-drop-brewing-co",
+  "name": "Disconnection Notice",
+  "abv": 7.3,
+  "style": "Fruited Sour",
+  "notes": "MANGO, PINEAPPLE, PASSIONFRUIT & COCONUT WATER"
+ },
+ {
+  "brewery": "One Drop Brewing Co",
+  "page_brewery": "One Drop Brewing Co",
+  "slug": "one-drop-brewing-co",
+  "name": "Double Take",
+  "abv": 10,
+  "style": "Imperial Cream Fruited Sour",
+  "notes": "420G/L BOYSENBERRY JUICE + COCONUT CREAM"
+ },
+ {
+  "brewery": "One Drop Brewing Co",
+  "page_brewery": "One Drop Brewing Co",
+  "slug": "one-drop-brewing-co",
+  "name": "Echo Chamber",
+  "abv": 6.1,
+  "style": "Fruited Pulp sour",
+  "notes": "PEACH, RASPBERRY, GUAVA & BANANA"
+ },
+ {
+  "brewery": "One Drop Brewing Co",
+  "page_brewery": "One Drop Brewing Co",
+  "slug": "one-drop-brewing-co",
+  "name": "Feel It",
+  "abv": 8.2,
+  "style": "Cream Smoothie Sour",
+  "notes": "MANGO, BLUEBERRY, ICE CREAM & LEMON"
+ },
+ {
+  "brewery": "One Drop Brewing Co",
+  "page_brewery": "One Drop Brewing Co",
+  "slug": "one-drop-brewing-co",
+  "name": "Join the Dots",
+  "abv": 6,
+  "style": "Ice Cream Sour",
+  "notes": "MANGO, RASPBERRY, BLACKCURRANT, VANILLA ICE CREAM & MARSHMALLOW"
+ },
+ {
+  "brewery": "One Drop Brewing Co",
+  "page_brewery": "One Drop Brewing Co",
+  "slug": "one-drop-brewing-co",
+  "name": "Just an Illusion",
+  "abv": 6.8,
+  "style": "Fruited Pulp Sour",
+  "notes": "COLLAB WITH TEENAGE BREWING, JP. NASHI PEAR, PEACH & STRAWBERRY"
+ },
+ {
+  "brewery": "One Drop Brewing Co",
+  "page_brewery": "One Drop Brewing Co",
+  "slug": "one-drop-brewing-co",
+  "name": "On The Edge",
+  "abv": 9,
+  "style": "Imperial Cream Pastry Stout",
+  "notes": "STICKY CARAMEL, CHOCOLATE & COCONUT'"
+ },
+ {
+  "brewery": "One Drop Brewing Co",
+  "page_brewery": "One Drop Brewing Co",
+  "slug": "one-drop-brewing-co",
+  "name": "Ride Or Die",
+  "abv": 6.7,
+  "style": "Cream Smoothie Sour",
+  "notes": "BANANA, PINEAPPLE, LARAHA ORANGE & COCONUT CREAM"
+ },
+ {
+  "brewery": "One Drop Brewing Co",
+  "page_brewery": "One Drop Brewing Co",
+  "slug": "one-drop-brewing-co",
+  "name": "The Countdown",
+  "abv": 8,
+  "style": "Saturated DDH DIPA",
+  "notes": "10g/L MOTUEKA, PEACHARINE, CITRA + CLEAN FUSION"
+ },
+ {
+  "brewery": "One Drop Brewing Co",
+  "page_brewery": "One Drop Brewing Co",
+  "slug": "one-drop-brewing-co",
+  "name": "Wipe Me Down",
+  "abv": 6,
+  "style": "Cream Smoothie Sour",
+  "notes": "BOYSENBERRY, RASPBERRY, VANILLA ICE CREAM, LEMON MERINGUE & MAPLE"
+ },
+ {
+  "brewery": "Panhead Brewery",
+  "page_brewery": "Panhead Brewery",
+  "slug": "panhead-brewery",
+  "name": "Barrel Aged Stout with Vanilla",
+  "abv": 7,
+  "style": "Stout with Vanilla",
+  "notes": "A complex and mix of raisin, coconut, vanilla, chocolate aromas and flavours. Some bourbon booziness, oak tannins and a hint of balsamic acidity add to the impact and complexity of this enticing beer."
+ },
+ {
+  "brewery": "Panhead Brewery",
+  "page_brewery": "Panhead Brewery",
+  "slug": "panhead-brewery",
+  "name": "Double Dry-hopped Supercharger",
+  "abv": 5.7,
+  "style": "American Pale Ale",
+  "notes": "Big, punchy aroma with a heap of grapefruit, stonefruit, tropical & pine. A lot like Supercharger, but hoppier."
+ },
+ {
+  "brewery": "Panhead Brewery",
+  "page_brewery": "Panhead Brewery",
+  "slug": "panhead-brewery",
+  "name": "Double Quickchange",
+  "abv": 7,
+  "style": "XXPA",
+  "notes": "Bursting with tropical, citrus, passionfruit and white-grape flavour. Fresh, punchy and delicious. Everything you like about Quickchange, but more of it!"
+ },
+ {
+  "brewery": "Panhead Brewery",
+  "page_brewery": "Panhead Brewery",
+  "slug": "panhead-brewery",
+  "name": "Hazy Vandal",
+  "abv": 6.2,
+  "style": "New Zealand IPA",
+  "notes": "Packed full of passionfruit, white-grape, tropical, pine & citrus.This beer combines classic kiwi hop flavour with some more modern, fruit-forward hop expression. Soft & juicy, yet resinous & punchy."
+ },
+ {
+  "brewery": "Panhead Brewery",
+  "page_brewery": "Panhead Brewery",
+  "slug": "panhead-brewery",
+  "name": "Pickup",
+  "abv": 5.9,
+  "style": "Hazy IPA",
+  "notes": "Notes of pineapple, papaya, nectarines, citrus and melon. Juicy and soft bodied, with some bitterness in the back end. Using Motueka, Cascade Mosaic & Eclipse hops."
+ },
+ {
+  "brewery": "Panhead Brewery",
+  "page_brewery": "Panhead Brewery",
+  "slug": "panhead-brewery",
+  "name": "Port Road Pilsner",
+  "abv": 5.2,
+  "style": "Pilsner",
+  "notes": "Light and crisp. Notes of grapefruit, gooseberry and passion fruit rather like the famous NZ Sauvignon blanc. A gentle malt body to balance the hops and a robust, dry bitter finish."
+ },
+ {
+  "brewery": "Panhead Brewery",
+  "page_brewery": "Panhead Brewery",
+  "slug": "panhead-brewery",
+  "name": "Six Splitter",
+  "abv": 6.8,
+  "style": "West Coast IPA",
+  "notes": "Big, punchy aromas of grapefruit, tropical fruit and pine lead the charge, followed by layers of dankness and sweet fruit. A lean malt base lets the hops shine bright, while a firm bitterness cuts cleanly through the finish."
+ },
+ {
+  "brewery": "Good George Brewing",
+  "page_brewery": "Pink Boots Society  New Zealand",
+  "slug": "pink_boots_society_of_new_zealand",
+  "name": "Cleveland Lager",
+  "abv": 5.5,
+  "style": "American Brown Lager",
+  "notes": "Kicking off a (fingers crossed) winning season for the Cleveland Browns with caramel, chocolate malt notes and a lightly spiced American hop character."
+ },
+ {
+  "brewery": "Colab Brewing",
+  "page_brewery": "Pink Boots Society  New Zealand",
+  "slug": "pink_boots_society_of_new_zealand",
+  "name": "New Squeeze",
+  "abv": 5.5,
+  "style": "NEIPA",
+  "notes": "A nose full of tropical fruit straight out of the gate. This \u2018new squeeze\u2019 is not afraid to make itself known. The hazy nature lures you in with intrigue and leaves you with beautiful mouth feel and a palate full of tropical fruit and citrus."
+ },
+ {
+  "brewery": "Isthmus Brew Co.",
+  "page_brewery": "Pink Boots Society  New Zealand",
+  "slug": "pink_boots_society_of_new_zealand",
+  "name": "Pineapple and Lime Sour",
+  "abv": 3.8,
+  "style": "Sour Ale",
+  "notes": "Tantalise your taste buds with this refreshingly complex kettle soured ale. Brewed with the traditional process, which gives acidity to the beer, the incredible fruit taste comes from the beer being fermented with a crazy amount of fruit juice. We've paired a tart citrus burst of lime juice with the sweet, tangy flesh of pineapples to create a refreshing and fruity ale."
+ },
+ {
+  "brewery": "Twofold Brewing",
+  "page_brewery": "Pink Boots Society  New Zealand",
+  "slug": "pink_boots_society_of_new_zealand",
+  "name": "The Goat and the Goose",
+  "abv": 6,
+  "style": "West Coast Pilsner",
+  "notes": "Twofold x Pink Boots Collaboration for International Women\u2019s Day. Brewed on a bed of NZ-grown German-style pilsner malts and Light Lager, hopped with scrummy Riwaka from Clayton Hops and the latest Pink Boots Blend, flown fresh from the hop press by Yakima Chief. This year\u2019s blend features Ekuanot, Centennial, HBC 638, and Mosaic. Expect crisp, clean malt backbone with tropical and stone fruit notes, bright citrus, and a touch of resinous pine."
+ },
+ {
+  "brewery": "Rocky Knob Brewing Company",
+  "page_brewery": "Rocky Knob Brewing Company",
+  "slug": "rocky-knob-brewing-company",
+  "name": "Base Camp",
+  "abv": 5.7,
+  "style": "APA",
+  "notes": "Tropical fruits and tangerine with a sweet malty base."
+ },
+ {
+  "brewery": "Rocky Knob Brewing Company",
+  "page_brewery": "Rocky Knob Brewing Company",
+  "slug": "rocky-knob-brewing-company",
+  "name": "Funk Junk",
+  "abv": 6,
+  "style": "Hazy IPA",
+  "notes": "Fruit-forward and juicy on a light, sweet malt base."
+ },
+ {
+  "brewery": "Rocky Knob Brewing Company",
+  "page_brewery": "Rocky Knob Brewing Company",
+  "slug": "rocky-knob-brewing-company",
+  "name": "Ride On",
+  "abv": 4,
+  "style": "Lager",
+  "notes": "Crisp, clean, and ultra-refreshing lager"
+ },
+ {
+  "brewery": "Rocky Knob Brewing Company",
+  "page_brewery": "Rocky Knob Brewing Company",
+  "slug": "rocky-knob-brewing-company",
+  "name": "Sin Bin",
+  "abv": 5.5,
+  "style": "Red IPA",
+  "notes": "Red IPA with a rich malt character balanced with punchy hop flavour."
+ },
+ {
+  "brewery": "Rocky Knob Brewing Company",
+  "page_brewery": "Rocky Knob Brewing Company",
+  "slug": "rocky-knob-brewing-company",
+  "name": "Snapper Head",
+  "abv": 7.4,
+  "style": "IPA",
+  "notes": "Triple Award Winner. Tropical punch with passionfruit tang."
+ },
+ {
+  "brewery": "Rocky Knob Brewing Company",
+  "page_brewery": "Rocky Knob Brewing Company",
+  "slug": "rocky-knob-brewing-company",
+  "name": "Undies Mini IPA",
+  "abv": 2.5,
+  "style": "American IPA",
+  "notes": "Big on Hops small on Booze. Its a big beer hiding in those undies."
+ },
+ {
+  "brewery": "Rocky Knob Brewing Company",
+  "page_brewery": "Rocky Knob Brewing Company",
+  "slug": "rocky-knob-brewing-company",
+  "name": "Zipline",
+  "abv": 6,
+  "style": "IPA",
+  "notes": "Dank and fruity full-bodied IPA."
+ },
+ {
+  "brewery": "Rudi's Beer",
+  "page_brewery": "Rudi's Beer",
+  "slug": "rudi-s-beer",
+  "name": "Butterfly Cider",
+  "abv": 4,
+  "style": "Cider (Flavoured)",
+  "notes": "Bright and unexpected, Rudi&rsquo;s Butterfly Lime Cider blends zesty lime with a hint of floral flair. Brewed with butterfly pea flower, it pours a subtle blush that deepens with citrus - an enchanting visual twist. Lightly tart and ultra-refreshing, it finishes crisp and dry. This is Rudi with a wink - colourful, cool, and cheekily unconventional."
+ },
+ {
+  "brewery": "Rudi's Beer",
+  "page_brewery": "Rudi's Beer",
+  "slug": "rudi-s-beer",
+  "name": "Rudi's Double Hazy",
+  "abv": 8,
+  "style": "Hazy Pale Ale",
+  "notes": "Unfiltered, and irresistibly juicy - Rudi&rsquo;s Double Hazy is a bold hop bomb wrapped in velvet. It pours a glowing golden haze crowned with creamy foam. Aromas erupt with mango smoothie, ripe peach, passionfruit, and citrus zest. The mouthfeel is pillowy, thanks to oats and wheat. Saturated yet smooth, it&rsquo;s Rudi unleashed - cloudy, confident, and dangerously drinkable."
+ },
+ {
+  "brewery": "Rudi's Beer",
+  "page_brewery": "Rudi's Beer",
+  "slug": "rudi-s-beer",
+  "name": "Rudi's Hazy",
+  "abv": 6.4,
+  "style": "Hazy Pale Ale",
+  "notes": "Our Hazy Pale Ale showcases the vibrant character of New Zealand hops in a smooth, juicy pour. Bursting with tropical fruit, citrus, and a touch of white grape &ndash; it&rsquo;s brewed with Dr Rudi, Motueka, Nelson Sauvin, and Kohatu. Soft on the palate with a gentle haze &ndash; bold, fruity, and effortlessly drinkable from first sip to last."
+ },
+ {
+  "brewery": "Rudi's Beer",
+  "page_brewery": "Rudi's Beer",
+  "slug": "rudi-s-beer",
+  "name": "Rudi's IPA",
+  "abv": 6.4,
+  "style": "IPA",
+  "notes": "Rudi&rsquo;s IPA bursts with bold American Simcoe hops, layered with the unique complexity of New Zealand varieties. Expect vibrant notes of tropical fruit, pine, and a hint of passionfruit. This punchy yet balanced brew finishes lush without overwhelming the palate. A confident, hop-forward IPA that&rsquo;s refreshingly bold, smooth, and unmistakably Rudi&rsquo;s."
+ },
+ {
+  "brewery": "Rudi's Beer",
+  "page_brewery": "Rudi's Beer",
+  "slug": "rudi-s-beer",
+  "name": "Rudi's Lager",
+  "abv": 5,
+  "style": "Lager",
+  "notes": "Sessionable and award-winning, Rudi&rsquo;s Lager is a super clean, crisp New-World brew featuring Dr Rudi hops &ndash; named after the man himself. Nelson Sauvin adds lift and character, striking a bold balance between a firm slap to the face and a warm embrace. Thirst-quenching &ndash; bloody refreshing &ndash; it&rsquo;s lager the Rudi&rsquo;s way: no fuss, all flavour. NZBA 2025 BRONZE MEDAL"
+ },
+ {
+  "brewery": "Rudi's Beer",
+  "page_brewery": "Rudi's Beer",
+  "slug": "rudi-s-beer",
+  "name": "Rudi's Pilsner",
+  "abv": 5,
+  "style": "Pilsner",
+  "notes": "Our award-winning New Zealand Pilsner showcases the distinctive character of local hops, delivering a fuller body with layered flavour. Clean, crisp, and mid-dry &ndash; it strikes a perfect balance between subtle malt and the vibrant lift of four NZ hops: Dr Rudi, Motueka, Nelson Sauvin, and Kohatu. A modern classic with a proudly Kiwi soul. NZBA 2025 GOLD MEDAL"
+ },
+ {
+  "brewery": "Saint Leonards Brewing",
+  "page_brewery": "Saint Leonards Brewing",
+  "slug": "saint-leonards-brewing",
+  "name": "Bog WC Pilsner",
+  "abv": 5.4,
+  "style": "West Coast Pilsner",
+  "notes": ""
+ },
+ {
+  "brewery": "Saint Leonards Brewing",
+  "page_brewery": "Saint Leonards Brewing",
+  "slug": "saint-leonards-brewing",
+  "name": "Boysenberry Sour",
+  "abv": 5,
+  "style": "Fruited Sour",
+  "notes": ""
+ },
+ {
+  "brewery": "Saint Leonards Brewing",
+  "page_brewery": "Saint Leonards Brewing",
+  "slug": "saint-leonards-brewing",
+  "name": "Dunkelsbock",
+  "abv": 6.8,
+  "style": "dunkelsbock",
+  "notes": ""
+ },
+ {
+  "brewery": "Saint Leonards Brewing",
+  "page_brewery": "Saint Leonards Brewing",
+  "slug": "saint-leonards-brewing",
+  "name": "German Pilsner",
+  "abv": 5.8,
+  "style": "Pilsner",
+  "notes": ""
+ },
+ {
+  "brewery": "Saint Leonards Brewing",
+  "page_brewery": "Saint Leonards Brewing",
+  "slug": "saint-leonards-brewing",
+  "name": "Golden Goblin",
+  "abv": 5.4,
+  "style": "Hazy Pale Ale",
+  "notes": ""
+ },
+ {
+  "brewery": "Saint Leonards Brewing",
+  "page_brewery": "Saint Leonards Brewing",
+  "slug": "saint-leonards-brewing",
+  "name": "Grove Grapefruit Pale",
+  "abv": 5,
+  "style": "Fruited Pale Ale",
+  "notes": ""
+ },
+ {
+  "brewery": "Saint Leonards Brewing",
+  "page_brewery": "Saint Leonards Brewing",
+  "slug": "saint-leonards-brewing",
+  "name": "Hop Soda",
+  "abv": 0,
+  "style": "Hopped Soda",
+  "notes": ""
+ },
+ {
+  "brewery": "Saint Leonards Brewing",
+  "page_brewery": "Saint Leonards Brewing",
+  "slug": "saint-leonards-brewing",
+  "name": "Ritual Nitro Stout6.8",
+  "abv": 6.8,
+  "style": "Foreign Export Stout",
+  "notes": ""
+ },
+ {
+  "brewery": "Saint Leonards Brewing",
+  "page_brewery": "Saint Leonards Brewing",
+  "slug": "saint-leonards-brewing",
+  "name": "Warrior X",
+  "abv": 6.9,
+  "style": "West Coast IPA",
+  "notes": ""
+ },
+ {
+  "brewery": "Scapegrace Gin + Thunderdonk Whiskey",
+  "page_brewery": "Scapegrace Gin + Thunderdonk Whiskey",
+  "slug": "scapegrace-gin-thunderdonk-whiskey",
+  "name": "GIN RADLER",
+  "abv": 7,
+  "style": "Beer-based Cocktail",
+  "notes": "Gin, Beers Lager Lager, Citrus"
+ },
+ {
+  "brewery": "Scapegrace Gin + Thunderdonk Whiskey",
+  "page_brewery": "Scapegrace Gin + Thunderdonk Whiskey",
+  "slug": "scapegrace-gin-thunderdonk-whiskey",
+  "name": "GIN & TONICS",
+  "abv": 8.6,
+  "style": "Cocktail",
+  "notes": "Classic / Black / Blood Moon"
+ },
+ {
+  "brewery": "Scapegrace Gin + Thunderdonk Whiskey",
+  "page_brewery": "Scapegrace Gin + Thunderdonk Whiskey",
+  "slug": "scapegrace-gin-thunderdonk-whiskey",
+  "name": "IMPERIAL COFFEE",
+  "abv": 8.5,
+  "style": "Beer-based Cocktail",
+  "notes": ""
+ },
+ {
+  "brewery": "Scapegrace Gin + Thunderdonk Whiskey",
+  "page_brewery": "Scapegrace Gin + Thunderdonk Whiskey",
+  "slug": "scapegrace-gin-thunderdonk-whiskey",
+  "name": "STONEFRUIT ALE",
+  "abv": 8.6,
+  "style": "Cocktail",
+  "notes": "Single Malt, Peach, Tea, Ginger Ale"
+ },
+ {
+  "brewery": "Scapegrace Gin + Thunderdonk Whiskey",
+  "page_brewery": "Scapegrace Gin + Thunderdonk Whiskey",
+  "slug": "scapegrace-gin-thunderdonk-whiskey",
+  "name": "TROPICAL PUNCH",
+  "abv": 8.4,
+  "style": "Other",
+  "notes": "Salted Caramel, Banana, Pineapple, Coconut"
+ },
+ {
+  "brewery": "Scapegrace Gin + Thunderdonk Whiskey",
+  "page_brewery": "Scapegrace Gin + Thunderdonk Whiskey",
+  "slug": "scapegrace-gin-thunderdonk-whiskey",
+  "name": "WESTERN RUBY",
+  "abv": 7.3,
+  "style": "Other",
+  "notes": "Spiced Maple, Grapefruit, Lime"
+ },
+ {
+  "brewery": "Scapegrace Gin + Thunderdonk Whiskey",
+  "page_brewery": "Scapegrace Gin + Thunderdonk Whiskey",
+  "slug": "scapegrace-gin-thunderdonk-whiskey",
+  "name": "WHISKY HIGHBALLS",
+  "abv": 8.3,
+  "style": "Cocktail",
+  "notes": "Anthem Vanguard"
+ },
+ {
+  "brewery": "Searchlight Brewery",
+  "page_brewery": "Searchlight Brewery",
+  "slug": "searchlight-brewery",
+  "name": "Champagne Pilsner",
+  "abv": 5.9,
+  "style": "Pilsner",
+  "notes": "Crisp Pilsner meets brut-style bubbles: bright, bone-dry, and refreshingly sparkling, Using noble German hops and a touch of NZ Riwaka, fermented with lager and wine yeast ."
+ },
+ {
+  "brewery": "Searchlight Brewery",
+  "page_brewery": "Searchlight Brewery",
+  "slug": "searchlight-brewery",
+  "name": "Ella's Escape",
+  "abv": 4.8,
+  "style": "Low Carb Lager",
+  "notes": "Naturally unfiltered and bright straw in colour, this beer showcases Ella hops with soft citrus and floral aromas. Light and dry on the palate, it delivers gentle grapefruit pith flavours and a smooth, balanced bitterness."
+ },
+ {
+  "brewery": "Searchlight Brewery",
+  "page_brewery": "Searchlight Brewery",
+  "slug": "searchlight-brewery",
+  "name": "Ginger Beer",
+  "abv": 4,
+  "style": "Gigner Beer",
+  "notes": "Zesty hard ginger beer, little bit sweet, little bit ginger, little bit refreshing."
+ },
+ {
+  "brewery": "Searchlight Brewery",
+  "page_brewery": "Searchlight Brewery",
+  "slug": "searchlight-brewery",
+  "name": "John Beer",
+  "abv": 6.7,
+  "style": "NZ Hazy IPA",
+  "notes": "A big, juicy hazy packed with Motueka, Riwaka, and Nelson Sauvin hops. Bursting with tropical mango, guava, and citrus aromas, it\u2019s full-bodied, creamy, and loaded with that unmistakable hazy goodness."
+ },
+ {
+  "brewery": "Searchlight Brewery",
+  "page_brewery": "Searchlight Brewery",
+  "slug": "searchlight-brewery",
+  "name": "Lady of the Lake",
+  "abv": 4.6,
+  "style": "ESB",
+  "notes": "Handpull - Orange marmalade, earthy notes and toffee biscuit with a soft, balanced bitterness."
+ },
+ {
+  "brewery": "Searchlight Brewery",
+  "page_brewery": "Searchlight Brewery",
+  "slug": "searchlight-brewery",
+  "name": "Lembas Bread Ale",
+  "abv": 4,
+  "style": "Unknown Style",
+  "notes": "Handpull - Inspired by the legendary Lembas bread of Middle-earth, this collaboration with Choice Bros Brewing takes the idea of bread and turns it into beer. A soft, hazy pale ale with a distinctly bready and biscuit-like character, complemented by a gentle touch of vanilla. Malt-forward and comforting, with a creamy texture and just enough sweetness to evoke the rich, sustaining character of the Elves' famous travelling bread. A beer made for journeys, adventures, and second breakfasts."
+ },
+ {
+  "brewery": "Searchlight Brewery",
+  "page_brewery": "Searchlight Brewery",
+  "slug": "searchlight-brewery",
+  "name": "Peaches & Cream",
+  "abv": 3.7,
+  "style": "Sour Ale",
+  "notes": "A light, refreshing sour with juicy peach flavour and a smooth, creamy finish. Softly tart, easy-drinking."
+ },
+ {
+  "brewery": "Searchlight Brewery",
+  "page_brewery": "Searchlight Brewery",
+  "slug": "searchlight-brewery",
+  "name": "Plum Sake Stout",
+  "abv": 6.2,
+  "style": "Plum Sake Stout",
+  "notes": "A rich and velvety stout brewed with plum and sake from Zenkuro. Deep roasted malt, dark chocolate and coffee notes meet juicy plum, subtle vanilla and a gentle sake character, finishing smooth, warming and beautifully balanced."
+ },
+ {
+  "brewery": "Searchlight Brewery",
+  "page_brewery": "Searchlight Brewery",
+  "slug": "searchlight-brewery",
+  "name": "Queenstown Draught",
+  "abv": 4.5,
+  "style": "NZ Draught",
+  "notes": "Golden, glowing, and godlike, this easy-drinking beer is pure Queenstown charm in a pint. Brewed with Nelson Sauvin and Pacific Jade hops, it opens with soft malt, a hint of toffee, and the feeling of morning sunshine over a green pitch. With biscuit notes, subtle bitterness, and a full-bodied \u201ccan-do\u201d attitude, Queenstown Draught tastes like weekend sport, mountain air, and local pride refreshment built for legends."
+ },
+ {
+  "brewery": "Searchlight Brewery",
+  "page_brewery": "Searchlight Brewery",
+  "slug": "searchlight-brewery",
+  "name": "Stained Glass",
+  "abv": 8.6,
+  "style": "Abbey Tripel",
+  "notes": "A bold Belgian-style Tripel with a modern hop twist, brewed with Citra, Nelson Sauvin and Hallertau Blanc. Bright, clear and golden with a soft white head, it opens with aromas of citrus, peach and subtle clove. Flavours of citrus, stone fruit and honey follow, supported by classic Belgian fruity esters, gentle spice and a warming character. It finishes dry and clean, with a light, balanced bitterness."
+ },
+ {
+  "brewery": "Searchlight Brewery",
+  "page_brewery": "Searchlight Brewery",
+  "slug": "searchlight-brewery",
+  "name": "Trench Coat",
+  "abv": 7,
+  "style": "West Coast IPA",
+  "notes": "A bold West Coast IPA bringing together the punchy character of US hops with a bright NZ hop edge. A sturdy malt base gives the beer a rich deep-gold colour and a touch of chewy malt sweetness, providing balance against a firm bitterness and generous hop load. Aromas of ripe stone fruit and dank pine resin lead into a subtle citrus undertone, with the US hops taking centre stage while the NZ varieties add brightness and lift. Full of character, bitter, resinous and built for hop lovers."
+ },
+ {
+  "brewery": "Seeker Brewing (AUS)",
+  "page_brewery": "Seeker Brewing (AUS)",
+  "slug": "seeker-brewing-aus",
+  "name": "Belgian Quad",
+  "abv": 10,
+  "style": "Belgian Quad",
+  "notes": "Dark fruit, fig and raisin with a classic Belgian spice character."
+ },
+ {
+  "brewery": "Seeker Brewing (AUS)",
+  "page_brewery": "Seeker Brewing (AUS)",
+  "slug": "seeker-brewing-aus",
+  "name": "Daydream",
+  "abv": 5,
+  "style": "XPA",
+  "notes": "Aussie style pale ale with a classic passionfruit and citrus flavour."
+ },
+ {
+  "brewery": "Seeker Brewing (AUS)",
+  "page_brewery": "Seeker Brewing (AUS)",
+  "slug": "seeker-brewing-aus",
+  "name": "Eisbock",
+  "abv": 10,
+  "style": "Freeze-distilled Weizen Doppelbock",
+  "notes": "Freeze distilled weizen doppelbock to showcase an intense banana malty sweetness with a silky smooth finish."
+ },
+ {
+  "brewery": "Seeker Brewing (AUS)",
+  "page_brewery": "Seeker Brewing (AUS)",
+  "slug": "seeker-brewing-aus",
+  "name": "Mystic",
+  "abv": 6.2,
+  "style": "Hazy IPA",
+  "notes": "Flavours of tropical fruit, coconut with a touch of candy character."
+ },
+ {
+  "brewery": "Seeker Brewing (AUS)",
+  "page_brewery": "Seeker Brewing (AUS)",
+  "slug": "seeker-brewing-aus",
+  "name": "Rookie",
+  "abv": 6.8,
+  "style": "Hazy IPA",
+  "notes": "Bright citrus and pineapple character ."
+ },
+ {
+  "brewery": "Seeker Brewing (AUS)",
+  "page_brewery": "Seeker Brewing (AUS)",
+  "slug": "seeker-brewing-aus",
+  "name": "Rum Barrel-aged Stout",
+  "abv": 14,
+  "style": "Imperial Stout",
+  "notes": "Dark chocolate, rum and vanilla with toasted coconut."
+ },
+ {
+  "brewery": "Seeker Brewing (AUS)",
+  "page_brewery": "Seeker Brewing (AUS)",
+  "slug": "seeker-brewing-aus",
+  "name": "Veteran",
+  "abv": 6.8,
+  "style": "Hazy IPA",
+  "notes": "Complex tropical, white wine and peach notes."
+ },
+ {
+  "brewery": "Shining Peak Brewing",
+  "page_brewery": "Shining Peak Brewing",
+  "slug": "shining_peak_brewing",
+  "name": "Black Doris Plum Sour Ale - Oak Barrel Aged",
+  "abv": 6.3,
+  "style": "Barrel Aged Sour Ale",
+  "notes": "This Belgian inspired Sour Beer is a mix of 12 and 24 month old mixed ferment Oak Barrel Aged Ales rested on crushed Black Doris Plums and then conditioned in bottle with fresh Brettanomyces yeast. Store upright in the fridge for at least 24 hours before gently decanting. Limited to 1200 wax dipped and hand labelled bottles, and one festival keg exclusively for Beervana 2026."
+ },
+ {
+  "brewery": "Shining Peak Brewing",
+  "page_brewery": "Shining Peak Brewing",
+  "slug": "shining_peak_brewing",
+  "name": "Bogworks Pilsner",
+  "abv": 5.2,
+  "style": "New Zealand Pilsner",
+  "notes": "\"Sick as, bruh\" meant something different for New Plymouth's surfers back in the day. It was probably what they were telling their General Practitioner after paddling through the proverbial let go from the town's 'revolutionary' sewerage system installed in 1933. Thankfully, things have been cleaned up since then, allowing for a much more refreshing ocean experience at the surf break known as 'Bogworks', located directly outside our Brewery. A combination of clean, light malts and crisp Riwaka hops make this New Zealand Pilsner the perfect way to cap off a day catching the big ones."
+ },
+ {
+  "brewery": "Shining Peak Brewing",
+  "page_brewery": "Shining Peak Brewing",
+  "slug": "shining_peak_brewing",
+  "name": "Bravo! WCIPA",
+  "abv": 6,
+  "style": "West Coast IPA",
+  "notes": "In 1969, backing the arts in New Plymouth was enough to get you spat on in the street. Then-president of the Operatic Society, John Murphy, copped some ill-directed spray while fighting to save the Opera House from demolition. Thankfully, it wasn\u2019t curtains after all, with Murphy\u2019s efforts helping ensure the Showplace lived on \u2014 and continues to host world-class productions to this day. This West Coast IPA celebrates 100 years of the New Plymouth Operatic Society with a proper ensemble of old-school and modern hops. Pine, citrus and tropical resin take centre stage atop a lean malt base, creating a brew that hits like a standing ovation on closing night."
+ },
+ {
+  "brewery": "Shining Peak Brewing",
+  "page_brewery": "Shining Peak Brewing",
+  "slug": "shining_peak_brewing",
+  "name": "Dicky Barrett's English Bitter",
+  "abv": 5.2,
+  "style": "ESB",
+  "notes": "Dicky Barrett, renowned for being as wide as he was short, became somewhat of a hero around these shores. Lovingly given the moniker Tiki Parete by local iwi, he fought alongside his M\u0101ori brothers against the cowbell-ringing enemy from the north. Legend has it he died from injuries while battling a whale, but other reports state a botched double bypass may have been the cause. In honour of Dicky\u2019s girth, this English Bitter boasts a full body, balanced with herbal Antipodean hops. Served on Handpull."
+ },
+ {
+  "brewery": "Shining Peak Brewing",
+  "page_brewery": "Shining Peak Brewing",
+  "slug": "shining_peak_brewing",
+  "name": "Feijoa Sour Ale - Oak Barrel Aged",
+  "abv": 6.8,
+  "style": "Barrel Aged Sour Ale",
+  "notes": "This Belgian inspired Sour Beer is a mix of 12 and 24 month old mixed ferment, oak barrel aged ales rested on freshly picked Feijoas from Oakura Farms Orchard on Ahu Ahu Road, and then conditioned in bottle with fresh Brettanomyces Yeast. Store upright in the fridge for at least 24 hours before gently decanting. Limited to 1200 hand labelled, wax dipped and individually number bottles, plus a limited number of kegs for special events like Beervana 2026."
+ },
+ {
+  "brewery": "Shining Peak Brewing",
+  "page_brewery": "Shining Peak Brewing",
+  "slug": "shining_peak_brewing",
+  "name": "Flemish Bruin Ale - Oak Barrel Aged",
+  "abv": 6.6,
+  "style": "Flanders Oud Bruin",
+  "notes": "Smooth, complex, and beautifully balanced, our Flemish Bruin pours a deep mahogany with ruby highlights, crowned by a wispy, off-white head. On the nose, it opens with inviting aromas of dark cherries, dates, and a hint of balsamic, intertwined with gentle oak and a complex earthiness. The malt base boasts notes of caramel and toffee, quickly met by a bright, tangy acidity that adds lift and vibrancy. A hint of oak lingers in the background thanks to nearly 24 months of careful maturation. The finish is dry, slightly tart, and refreshingly clean, leaving you ready for another sip. Perfect for slow sipping by the fire reading a leather bound dictionary, pairing with rich meats, or matching with aged cheeses."
+ },
+ {
+  "brewery": "Shining Peak Brewing",
+  "page_brewery": "Shining Peak Brewing",
+  "slug": "shining_peak_brewing",
+  "name": "Little Fake",
+  "abv": 2.5,
+  "style": "XPA",
+  "notes": "Far away in England an art forger called James Edward Little specialised in forgeries of Maori and Pacific art, even though he&rsquo;d never been near our neck of the woods. He fooled a lot of &ldquo;experts&rdquo; and consequently Puke Ariki has the biggest collection of Little Fakes in the world. This extra pale ale deceives by fronting big Amarillo and Mosaic without the alcohol kick. NZBA 2025 TROPHY NO, LOW & REDUCED ALCOHOL NZBA 2025 GOLD MDEAL"
+ },
+ {
+  "brewery": "Shining Peak Brewing",
+  "page_brewery": "Shining Peak Brewing",
+  "slug": "shining_peak_brewing",
+  "name": "Magic Dart",
+  "abv": 5.3,
+  "style": "Pale Ale",
+  "notes": "Back in the day, Whare Matangi, estranged son of Ngarue, was given a magic dart, or tara, that would lead him to his father. After a few throws the tara hit Ngarue&rsquo;s house at the mouth of the river. The place became known as Te Whai-tara uni-a-Ngarue, or Waitara. Our own Magic Dart aims for an American-style golden ale with a combo of US and kiwi hops combining sweet stonefruit and tropical aromas."
+ },
+ {
+  "brewery": "Shining Peak Brewing",
+  "page_brewery": "Shining Peak Brewing",
+  "slug": "shining_peak_brewing",
+  "name": "Raspberry Sour Ale - Oak Barrel Aged",
+  "abv": 6.4,
+  "style": "Barrel Aged Sour",
+  "notes": "This Belgian inspired Sour Beer is a mix of 12 and 24 month old mixed ferment, oak barrel aged ales rested on raspberries picked from Windermere Berry Farm in Whanganui, and then conditioned in bottle and keg with fresh Brettanomyces Yeast. BREWERS NOTES: We found a blend from four different barrels that we thought would match perfectly to the sweet tang of Raspberry. We blended the beer in tank with the fruit and let it re-ferment for four months before bottling with priming sugar and a fresh pitch of Brettanomyces yeast. The beer itself is earthy, funky and tart with a big fresh punch of the iconic Raspberry, and vivid colour."
+ },
+ {
+  "brewery": "Shining Peak Brewing",
+  "page_brewery": "Shining Peak Brewing",
+  "slug": "shining_peak_brewing",
+  "name": "Rustic Sour",
+  "abv": 5,
+  "style": "Oak Barrel-aged Sout",
+  "notes": "This Belgian inspired Sour Beer is a blend of two mixed ferment beers, a 12-month Chardonnay barrel\u2013aged ale and a 24-month bourbon barrel\u2013aged ale. After blending, the sour ale was pitched with Brettanomyces yeast and bottle conditioned for four months, adding layers of complexity and funk to the barrel character and balanced sourness. The finished beer is beautifully complex. Notes from the Chardonnay barrels are clearly present but never overwhelming. Malt character provides balance and length, leading to a moreish, satisfying finish."
+ },
+ {
+  "brewery": "Shining Peak Brewing",
+  "page_brewery": "Shining Peak Brewing",
+  "slug": "shining_peak_brewing",
+  "name": "Rustic Sour",
+  "abv": 5,
+  "style": "Oak-Barrel-aged Sour",
+  "notes": "This Belgian inspired Sour Beer is a blend of two mixed ferment beers, a 12-month Chardonnay barrel\u2013aged ale and a 24-month bourbon barrel\u2013aged ale. After blending, the sour ale was pitched with Brettanomyces yeast and bottle conditioned for four months, adding layers of complexity and funk to the barrel character and balanced sourness. The finished beer is beautifully complex. Notes from the Chardonnay barrels are clearly present but never overwhelming. Malt character provides balance and length, leading to a moreish, satisfying finish."
+ },
+ {
+  "brewery": "Shining Peak Brewing",
+  "page_brewery": "Shining Peak Brewing",
+  "slug": "shining_peak_brewing",
+  "name": "Skunk Juice",
+  "abv": 6.2,
+  "style": "Hazy IPA",
+  "notes": "The impressive brains in the natural gas industry once came up with a genius solution to a dangerous problem. The problem? Natural gas doesn't have an odour and hazardous leaks were going undetected. The solution? Skunk Juice! What is Skunk Juice you ask? It's a pungent brew of Sulphide and Methyl Mercaptan that can be smelled almost three kilometres from its source. It pongs so bad, it once shut down the town of Stratford for a whole day! Our version of Skunk Juice harnesses a hazy chemical brew of Mosaic and Citra hops, that unlike its namesake, gives off a beautiful tropical and citrus aromas, so you'"
+ },
+ {
+  "brewery": "Shining Peak Brewing",
+  "page_brewery": "Shining Peak Brewing",
+  "slug": "shining_peak_brewing",
+  "name": "Vintage Stout 2024 - P\u014dkeno Whisky Barrel Aged",
+  "abv": 11,
+  "style": "Barrel Aged Imperial Stout",
+  "notes": "The 2024 Vintage Stout is the sixth release of our \u2018Vintage\u2019 range of yearly Barrel Aged releases. This Imperial Stout was brewed with a \u2018Reiterated\u2019 Double Mashing schedule, in which the second mash is mixed in with high gravity Wort from the first mash. This process allows us to extract a more concentrated sweet Wort, which feeds the yeast to create a higher alcohol brew. A small addition of dextrose sugar in the fermenter added an extra hit of alcohol which gives this beer a warming balance to the oak tannins. We then decanted the beer into New Zealand Whisky Barrels from P\u014dkeno Distillery, and left the beer to rest for nine months. The process of Oak ageing creates a chemical reaction between the wood and the beer, in which flavour compounds such as tannins and vanillins leach into the beer, creating a rounded and complex flavour. By treating the oak barrel as an additional \u2018ingredient\u2019 we\u2019ve been able to create this complex and rich brew that is perfect for winter nights, and will also cellar extremely well as it gains complexity with ageing."
+ },
+ {
+  "brewery": "Sunshine Brewery",
+  "page_brewery": "Sunshine Brewery",
+  "slug": "sunshine_brewery",
+  "name": "Gisborne Black Milk Stout",
+  "abv": 4.5,
+  "style": "Milk Stout",
+  "notes": "A very moreish and drinkable milk stout, with smooth chocolate, rich malt flavours with an underlying milk creaminess. A perfect session worthy stout!"
+ },
+ {
+  "brewery": "Sunshine Brewery",
+  "page_brewery": "Sunshine Brewery",
+  "slug": "sunshine_brewery",
+  "name": "Gisborne Gold",
+  "abv": 3.8,
+  "style": "Light Lager",
+  "notes": "This is still NZ's longest running craft lager in the country. 34 years of Gisborne Gold, has supreme champion status, multiple gold medals, and a true cult following. NZBA 2025 SILVER MEDAL"
+ },
+ {
+  "brewery": "Sunshine Brewery",
+  "page_brewery": "Sunshine Brewery",
+  "slug": "sunshine_brewery",
+  "name": "Imperial Brown Ale",
+  "abv": 10,
+  "style": "Strong Aged Brown Ale",
+  "notes": "Aged in ex-port and Pinot Noir barrels for 8 months before blending. Hazelnuts, vanilla, and cocoa nib additions blend together with rich caramel, toffee, and chocolate notes imparted by the malts. This beer has been aging at the brewery for 4 years and now shows great nutty, vinous and vanilla notes."
+ },
+ {
+  "brewery": "Sunshine Brewery",
+  "page_brewery": "Sunshine Brewery",
+  "slug": "sunshine_brewery",
+  "name": "Les Hopserables",
+  "abv": 6.5,
+  "style": "West Coast IPA",
+  "notes": "A West Coast IPA with a Broadway-sized cast of classic hops. Chinook, Citra, Centennial and Simcoe take centre stage, delivering bright citrus, pine, and dank resin over a crisp, dry finish. Brewed by Sunshine and Three Sisters for the Malthouse WCIPA Challenge, this is a tale of bold bitterness, big aroma and hop redemption. Sing it loud: do you hear the hops sing?"
+ },
+ {
+  "brewery": "Sunshine Brewery",
+  "page_brewery": "Sunshine Brewery",
+  "slug": "sunshine_brewery",
+  "name": "Sea Fog Hazy IPA",
+  "abv": 4.9,
+  "style": "Hazy Pale Ale",
+  "notes": "This easy-going Hazy Pale Ale is like drinking a bowl of ripe summer fruit. It's packed with soft juicy peach and sweet apricot, rounded out by bright citrus zest. Because it's lighter at 4.9, it feels incredibly approachable and sessionable - perfect for hanging out on the patio. Expect a fluffy, hazy texture and a gentle, fruity sweetness that keeps you coming back for another sip."
+ },
+ {
+  "brewery": "Te Aro Brewery",
+  "page_brewery": "Te Aro Brewery",
+  "slug": "te-aro-brewery",
+  "name": "Brewing Spotlight No IV",
+  "abv": 5,
+  "style": "Pale Ale",
+  "notes": "Festival Release Once off Pale Ale"
+ },
+ {
+  "brewery": "Te Aro Brewery",
+  "page_brewery": "Te Aro Brewery",
+  "slug": "te-aro-brewery",
+  "name": "Dubh X Oatmeal Milk Stout",
+  "abv": 5.2,
+  "style": "Oatmeal Stout",
+  "notes": "Velvety mouthfeel with chocolate and coffee notes."
+ },
+ {
+  "brewery": "The Roxy",
+  "page_brewery": "The Roxy",
+  "slug": "the-roxy",
+  "name": "Fizz Pop and Hop",
+  "abv": 3.9,
+  "style": "Beer Inspired Cocktail",
+  "notes": "Ingredients: * VAI Vodka * Lemongrass syrup * Cranberry juice * Lemon/Lime Juice * Mango hop foam * The most Instagrammable/TikTok-worthy cocktail you will see at Beervana . Flavours that are zingy, hoppy, sweet, and balanced citrusy that it'll make your mind POP . Also available \u2018guilt free\u2019 (non-alc) in case you\u2019ve had too many beersie."
+ },
+ {
+  "brewery": "The Roxy",
+  "page_brewery": "The Roxy",
+  "slug": "the-roxy",
+  "name": "Fizz Pop and Hop - NON ALC",
+  "abv": 0,
+  "style": "Beer Inspired Cocktail",
+  "notes": ""
+ },
+ {
+  "brewery": "The Roxy",
+  "page_brewery": "The Roxy",
+  "slug": "the-roxy",
+  "name": "Koko (Espresso) Martini",
+  "abv": 3.9,
+  "style": "Beer Inspired Cocktail",
+  "notes": "Ingredients: * VAI Vodka * Koko Samoa * Koko Liqueur * Green bullet (hop) syrup * Chocolate-drizzled marshmallows (garnish) * Consider your standard espresso martini officially retired. We brought the real deal straight from Samoa, teaming up authentic Koko Samoa and Koko Liqueur with VAI Vodka . Finished with chocolate-drizzled marshmallows, this is sweet, rich, and straight-up paradise in a glass ."
+ },
+ {
+  "brewery": "The Roxy",
+  "page_brewery": "The Roxy",
+  "slug": "the-roxy",
+  "name": "Koko (Espresso) Martini NON ALC",
+  "abv": 0,
+  "style": "Beer Inspired Cocktail",
+  "notes": ""
+ },
+ {
+  "brewery": "The Roxy",
+  "page_brewery": "The Roxy",
+  "slug": "the-roxy",
+  "name": "Monkey Colada a.k.a. Ohh, Ahh, Umaga",
+  "abv": 3.9,
+  "style": "Beer Inspired Cocktail",
+  "notes": "Ingredients: * Dancing Sands Coconut & Vanilla Rum * Coconut Water * Coconut Milk * Coconut syrup * Spiced Pineapple and Hop Juice * If you can't escape to Fiji for a holiday, then we will bring the holiday in Fiji to you, but in your cup . Creamy, smooth, fruity and fresh, just what you need after another heavy hopped IPA . Also available \u2018guilt free\u2019 (non-alc) in case you are the responsible adult ."
+ },
+ {
+  "brewery": "The Roxy",
+  "page_brewery": "The Roxy",
+  "slug": "the-roxy",
+  "name": "Monkey Colada a.k.a. Ohh, Ahh, Umaga (NON ALC)",
+  "abv": 9,
+  "style": "Beer Inspired Cocktail",
+  "notes": ""
+ },
+ {
+  "brewery": "The Roxy",
+  "page_brewery": "The Roxy",
+  "slug": "the-roxy",
+  "name": "Pacific Dark & Stormy",
+  "abv": 3.9,
+  "style": "Beer Inspired Cocktail",
+  "notes": "Ingredients: * Dancing Sands Coconut & Vanilla Rum * Ginger Hop Soda * Lemon * Angostura Bitters * Ginger and spice and everything nice with a good splash of Dancing Sands Coconut & Vanilla Rum . Having the Pacific Dark & Stormy 'guilt free' (non-alc) is just as delicious ."
+ },
+ {
+  "brewery": "The Roxy",
+  "page_brewery": "The Roxy",
+  "slug": "the-roxy",
+  "name": "Pacific Dark & Stormy NON ALC",
+  "abv": 0,
+  "style": "Beer Inspired Cocktail",
+  "notes": ""
+ },
+ {
+  "brewery": "The Roxy",
+  "page_brewery": "The Roxy",
+  "slug": "the-roxy",
+  "name": "Roxy Rosebud",
+  "abv": 3.9,
+  "style": "Beer Inspired Cocktail",
+  "notes": "Ingredients: * VAI Vodka * Cranberry and Pineapple juice * Passionfruit * Lemon Juice * Vanilla Green bullet (hop) syrup * It's a ROSEBUD made by the #RW team from ROXY and infused with HOPS , literally the most delicious non-beer beverage your palate will enjoy. Only thing that could be better is fried chicken... unless you\u2019re vegetarian . Also available \u2018guilt free\u2019 (non-alc) in case your Beervana allowance is running low ."
+ },
+ {
+  "brewery": "The Roxy",
+  "page_brewery": "The Roxy",
+  "slug": "the-roxy",
+  "name": "Roxy Rosebud NON ALC",
+  "abv": 0,
+  "style": "Beer Inspired Cocktail",
+  "notes": ""
+ },
+ {
+  "brewery": "The Roxy",
+  "page_brewery": "The Roxy",
+  "slug": "the-roxy",
+  "name": "The Bling Blossom",
+  "abv": 3.9,
+  "style": "Beer Inspired Cocktail",
+  "notes": "Ingredients: * VAI Vodka * Sparkling Fresh Green Apple hoppy Juice * Lime * Triple Berry bubbles * Bling Bling Coaster * Get ready to glow! This bad boy mixes VAI vodka with zingy sparkling green apple and a splash of lime . Topped with fluffy, vibrant triple berry bubbles, it's basically a party in a glass . Oh, and did we mention it sits on a Bling Bling Coaster that lights up?! Seriously insta-worthy, super refreshing, and just a whole lotta fun. Wanna keep it chill? Grab the non-alc version!"
+ },
+ {
+  "brewery": "The Roxy",
+  "page_brewery": "The Roxy",
+  "slug": "the-roxy",
+  "name": "The Bling Blossom NON ALC",
+  "abv": 0,
+  "style": "Beer Inspired Cocktail",
+  "notes": ""
+ },
+ {
+  "brewery": "Three Sisters Brewery",
+  "page_brewery": "Three Sisters Brewery",
+  "slug": "three_sisters_brewery",
+  "name": "Big Pink Energy",
+  "abv": 5.5,
+  "style": "Watermelon and Passionfruit Ice Cream Smoothie Sour",
+  "notes": "A bright pink smoothie sour loaded with watermelon, passionfruit and banana, then softened with vanilla ice cream for a creamy, juicy finish. Big Pink Energy is fruity, tangy and a little bit ridiculous \u2014 like a watermelon sundae with main character confidence."
+ },
+ {
+  "brewery": "Three Sisters Brewery",
+  "page_brewery": "Three Sisters Brewery",
+  "slug": "three_sisters_brewery",
+  "name": "Dragonfruit Smoothie",
+  "abv": 5.5,
+  "style": "Smoothie Sour",
+  "notes": "Dragonfruit, banana and vanilla come together in this bright, creamy smoothie sour. Dragonfruit Smoothie is juicy, tangy and wildly pink \u2014 soft, tropical and just weird enough to keep things interesting."
+ },
+ {
+  "brewery": "Three Sisters Brewery",
+  "page_brewery": "Three Sisters Brewery",
+  "slug": "three_sisters_brewery",
+  "name": "Fuzzy Panda",
+  "abv": 5.8,
+  "style": "Hazy Pale Ale",
+  "notes": "A juicy Hazy Pale Ale with Cryo Mosaic, Citra, and Motueka, double dry hopped, Maris Otter malt base with oats and wheat\u2026things might get fuzzy!"
+ },
+ {
+  "brewery": "Three Sisters Brewery",
+  "page_brewery": "Three Sisters Brewery",
+  "slug": "three_sisters_brewery",
+  "name": "Oakura Blonde",
+  "abv": 4.8,
+  "style": "Blonde Ale",
+  "notes": "Classic Blonde Ale, easy drinker"
+ },
+ {
+  "brewery": "Three Sisters Brewery",
+  "page_brewery": "Three Sisters Brewery",
+  "slug": "three_sisters_brewery",
+  "name": "Papaya Don't Preach",
+  "abv": 5.5,
+  "style": "Papaya, Coconut, Mango Ice Cream Smoothie Sour",
+  "notes": "Mango, papaya and banana get the full tropical treatment with coconut and vanilla ice cream in this thick, creamy smoothie sour. Papaya Don\u2019t Preach is soft, golden and gently tangy \u2014 all fruit, all fluff, no judgment."
+ },
+ {
+  "brewery": "Three Sisters Brewery",
+  "page_brewery": "Three Sisters Brewery",
+  "slug": "three_sisters_brewery",
+  "name": "Rain In The Face",
+  "abv": 6.5,
+  "style": "American Pale Ale",
+  "notes": "One of the original beers to come out of Three Sisters and the start of the journey. Big in your face American Pale Ale, double dry hopped, Chinook and Simcoe come together on a generous base of Maris Otter malts."
+ },
+ {
+  "brewery": "Three Sisters Brewery",
+  "page_brewery": "Three Sisters Brewery",
+  "slug": "three_sisters_brewery",
+  "name": "So Much Noise",
+  "abv": 10.5,
+  "style": "Triple Hazy IPA",
+  "notes": "A big, bold beer that's citrusy with lime and grapefruit notes. It's mildly sweet and full-bodied with a juicy, fruity finish. Strong but surprisingly drinkable for its size."
+ },
+ {
+  "brewery": "Tuatara Brewery",
+  "page_brewery": "Tuatara Brewery",
+  "slug": "tuatara_brewery",
+  "name": "Hazy IPA",
+  "abv": 5.7,
+  "style": "Hazy IPA",
+  "notes": ""
+ },
+ {
+  "brewery": "Tuatara Brewery",
+  "page_brewery": "Tuatara Brewery",
+  "slug": "tuatara_brewery",
+  "name": "Interstellar",
+  "abv": 6.1,
+  "style": "IPA",
+  "notes": "Citra, Amarillo and Motueka hops giving citrus and stonefruit hop flavour balanced with a nutty malt base. Moderate bitterness."
+ },
+ {
+  "brewery": "Tuatara Brewery",
+  "page_brewery": "Tuatara Brewery",
+  "slug": "tuatara_brewery",
+  "name": "Nitro Espresso Stoutini",
+  "abv": 8.2,
+  "style": "Stout Cocktail",
+  "notes": "Roasted coffee and chocolate notes with a hint of vanilla sweetness. Served on nitro to give a smooth velvet body."
+ },
+ {
+  "brewery": "Tuatara Brewery",
+  "page_brewery": "Tuatara Brewery",
+  "slug": "tuatara_brewery",
+  "name": "Plum Baltic Porter",
+  "abv": 7.5,
+  "style": "Baltic Porter",
+  "notes": ""
+ },
+ {
+  "brewery": "Tuatara Brewery",
+  "page_brewery": "Tuatara Brewery",
+  "slug": "tuatara_brewery",
+  "name": "Regenerate Pilsner",
+  "abv": 5,
+  "style": "Pilsner",
+  "notes": ""
+ },
+ {
+  "brewery": "Tuatara Brewery",
+  "page_brewery": "Tuatara Brewery",
+  "slug": "tuatara_brewery",
+  "name": "Yuzu Hazy",
+  "abv": 5.5,
+  "style": "Hazy Pale Ale",
+  "notes": ""
+ },
+ {
+  "brewery": "Good George Distilling x Pink Boots NZ",
+  "page_brewery": "Urbanaut Brewing Co.",
+  "slug": "urbanaut-brewery",
+  "name": "Boots N Soda",
+  "abv": 4,
+  "style": "Gin & Soda",
+  "notes": "Combining all that is GOOD! Pink Boots and Good George Distilling Lemon Myrtle, Makrut Lime Leaf and Rosemary gin is paired with a classic soda. Think Citrus Bomb without all the fruit getting in the way."
+ },
+ {
+  "brewery": "Urbanaut Brewing Co.",
+  "page_brewery": "Urbanaut Brewing Co.",
+  "slug": "urbanaut-brewery",
+  "name": "Calamansi Hazy IPA",
+  "abv": 5.7,
+  "style": "Hazy IPA",
+  "notes": ""
+ },
+ {
+  "brewery": "Urbanaut Brewing Co.",
+  "page_brewery": "Urbanaut Brewing Co.",
+  "slug": "urbanaut-brewery",
+  "name": "Karma Cola Sour",
+  "abv": 6,
+  "style": "Cola Sour",
+  "notes": "Karma Cola Sour"
+ },
+ {
+  "brewery": "Urbanaut Brewing Co.",
+  "page_brewery": "Urbanaut Brewing Co.",
+  "slug": "urbanaut-brewery",
+  "name": "Kingsland Reaper",
+  "abv": 4.5,
+  "style": "chilli pilsner",
+  "notes": ""
+ },
+ {
+  "brewery": "Urbanaut Brewing Co.",
+  "page_brewery": "Urbanaut Brewing Co.",
+  "slug": "urbanaut-brewery",
+  "name": "Little Rock",
+  "abv": 0.5,
+  "style": "non-alc IPA",
+  "notes": ""
+ },
+ {
+  "brewery": "Urbanaut Brewing Co.",
+  "page_brewery": "Urbanaut Brewing Co.",
+  "slug": "urbanaut-brewery",
+  "name": "Raspberry Wheat Beer",
+  "abv": 5.5,
+  "style": "Raspberry Wheat Beer",
+  "notes": ""
+ },
+ {
+  "brewery": "Urbanaut Brewing Co.",
+  "page_brewery": "Urbanaut Brewing Co.",
+  "slug": "urbanaut-brewery",
+  "name": "Salted Caramel Stout",
+  "abv": 6,
+  "style": "Sweet Stout",
+  "notes": "Rich, creamy and velvety with layered notes of caramel, coffee and roasted malts balanced by a delicate saline edge that lingers on the finish. Decadent yet well-rounded and full-bodied from the addition of oats to the grain bill, this beer is full-flavoured and delicious - the perfect mid-winter treat."
+ },
+ {
+  "brewery": "Urbanaut Brewing Co.",
+  "page_brewery": "Urbanaut Brewing Co.",
+  "slug": "urbanaut-brewery",
+  "name": "Salted Caramel Stout",
+  "abv": 6,
+  "style": "Salted Caramel Stout",
+  "notes": ""
+ },
+ {
+  "brewery": "Urbanaut Brewing Co.",
+  "page_brewery": "Urbanaut Brewing Co.",
+  "slug": "urbanaut-brewery",
+  "name": "SLUSHIE Lemonade & Pickle Sour",
+  "abv": 4.5,
+  "style": "SLUSHIE",
+  "notes": ""
+ },
+ {
+  "brewery": "Urbanaut Brewing Co.",
+  "page_brewery": "Urbanaut Brewing Co.",
+  "slug": "urbanaut-brewery",
+  "name": "SLUSHIE Raspberry Sour",
+  "abv": 3.8,
+  "style": "SLUSHIE",
+  "notes": ""
+ },
+ {
+  "brewery": "Urbanaut Brewing Co.",
+  "page_brewery": "Urbanaut Brewing Co.",
+  "slug": "urbanaut-brewery",
+  "name": "Time Warp",
+  "abv": 6.3,
+  "style": "West Coast IPA",
+  "notes": ""
+ },
+ {
+  "brewery": "Urbanaut Brewing Co.",
+  "page_brewery": "Urbanaut Brewing Co.",
+  "slug": "urbanaut-brewery",
+  "name": "Yuzu Miami Lager",
+  "abv": 5,
+  "style": "Yuzu Lager",
+  "notes": ""
+ },
+ {
+  "brewery": "Yellow Monkey Brewing",
+  "page_brewery": "Yellow Monkey Brewing",
+  "slug": "yellow-monkey-brewing",
+  "name": "Barrel Aged Imperial IPA",
+  "abv": 9.5,
+  "style": "Barrel Aged Imperial IPA",
+  "notes": "An Imperial IPA brewed with generous New Zealand malts, then aged for 18 months in Chardonnay barrels from INVIVO Winery. Elegant barrel aromatics, delicate acidity, and rounded richness come together in layered harmony."
+ },
+ {
+  "brewery": "Yellow Monkey Brewing",
+  "page_brewery": "Yellow Monkey Brewing",
+  "slug": "yellow-monkey-brewing",
+  "name": "ChaChaCha",
+  "abv": 6,
+  "style": "Japanese Green Tea Beer",
+  "notes": "Captured the delicate \"umami\" of Japanese green tea in a beer. Blending three carefully selected teas and using an optimal cold-steeping method, we bring out deep umami and a lingering finish. Brewed clean and simple, with gentle malt and hops that elevate the elegance of the tea. Japanese green tea takes the spotlight."
+ },
+ {
+  "brewery": "Yellow Monkey Brewing",
+  "page_brewery": "Yellow Monkey Brewing",
+  "slug": "yellow-monkey-brewing",
+  "name": "GOHOBI",
+  "abv": 6,
+  "style": "New Zealand IPA",
+  "notes": "Brewed in Japan by Japanese brewer Kengo Saito, who learned his craft here in Wellington, this NZ IPA is a homecoming of sorts. Bright and citrus-forward, with vibrant aromas of orange and grapefruit layered over the fresh, green character of New Zealand hops. Tropical yeast notes add depth, leading to a flavorful, refreshing IPA with a clean and satisfying finish. Born from Kengo\u2019s time in Wellington, brewed in Yokohama, and now back in New Zealand."
+ },
+ {
+  "brewery": "Yellow Monkey Brewing",
+  "page_brewery": "Yellow Monkey Brewing",
+  "slug": "yellow-monkey-brewing",
+  "name": "KAIZOKU",
+  "abv": 4.5,
+  "style": "Japanese Umami Lager",
+  "notes": "A bold lager that captures the essence of Japanese \"umami\". Inspired by the clarity and refinement of Japanese cuisine, this lager delivers a light, smooth drinking experience with a deep sense of umami."
+ },
+ {
+  "brewery": "Yellow Monkey Brewing",
+  "page_brewery": "Yellow Monkey Brewing",
+  "slug": "yellow-monkey-brewing",
+  "name": "TORIAEZU",
+  "abv": 5.5,
+  "style": "Sake Yeast IPA",
+  "notes": "Featuring the fresh and vibrant aroma of NZ Riwaka hops, the refined character of sake yeast, and the rich umami of traditional Japanese ingredients such as Kombu kelp, Shiitake mashroom, and bonito flakes bring depth and lasting complexity."
+ },
+ {
+  "brewery": "Yellow Monkey Brewing",
+  "page_brewery": "Yellow Monkey Brewing",
+  "slug": "yellow-monkey-brewing",
+  "name": "UTSUROI",
+  "abv": 8,
+  "style": "Japanese Style Strong Ale",
+  "notes": "UTSUROI deliberately brings the ginjo-like aromatics of sake yeast to the forefront. The aroma is reminiscent of Japanese sake, with expressive notes of ripe melon and pear. Rice koji, polished rice bran, and wasanbon sugar contribute soft, layered umami, giving the beer a delicate yet complex depth. To further explore umami as a defining element of Japanese food culture, we also used Kombu kelp, bonito flakes, and Shiitake mushrooms. The result is a clean, refined beer with a quiet, savoury finish that continues to unfold long after each sip."
+ }
+]
