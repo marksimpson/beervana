@@ -440,18 +440,24 @@ if os.path.exists(manual_path):
     for b in beers:
         stand_breweries[b['exhibitor']].add(b['brewery'])
 
+    # Shorthand that shares no words with the stand's real name.
+    MANUAL_ALIASES = {'nkotb': 'New Kids on the Block'}
+
     for name, aisle in manual.items():
-        target = brewery_norm(name)
-        hit = None
-        for stand, brews in stand_breweries.items():
-            names = [stand, *brews]
-            if any(brewery_norm(x) == target for x in names):
-                hit = stand
-                break
-            if hit is None and any(
-                    brewery_tokens(x) and brewery_tokens(x) == brewery_tokens(name)
-                    for x in names):
-                hit = stand
+        lookup = MANUAL_ALIASES.get(name.strip().lower(), name)
+        target, target_tokens = brewery_norm(lookup), brewery_tokens(lookup)
+        # Exact wins over fuzzy, across every stand. Tokens drop anything under
+        # three characters, so "One Drop #1" and "One Drop #2" reduce to the
+        # same two words - settling that on the fuzzy pass picks whichever
+        # stand happens to come first.
+        hit = next((stand for stand, brews in stand_breweries.items()
+                    if any(brewery_norm(x) == target for x in [stand, *brews])), None)
+        if hit is None and target_tokens:
+            # A stand's own words contained in what was written down, e.g.
+            # "Te Aro & Rocky Knob" covering the Te Aro stand.
+            hit = next((stand for stand, brews in stand_breweries.items()
+                        if any(brewery_tokens(x) and brewery_tokens(x) <= target_tokens
+                               for x in [stand, *brews])), None)
         if hit:
             aisle_of[hit] = aisle
         else:
