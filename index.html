@@ -76,6 +76,8 @@ main { padding: 12px var(--pad) 40px; }
 .row.had { opacity: .45; }
 .grow { flex: 1; min-width: 0; }
 .name { font-weight: 600; line-height: 1.3; }
+.who { font-size: 13px; color: var(--amber-dim); margin-top: 2px; font-weight: 550;
+       overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .meta { font-size: 13px; color: var(--muted); margin-top: 3px;
         overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .count { font-size: 13px; color: var(--muted); flex: 0 0 auto; padding-top: 2px; }
@@ -207,7 +209,9 @@ function ratingBit(b) {
   return b.url ? 'New' : 'N/A';
 }
 
-function beerRow(b) {
+// showBrewery is off inside a single-brewery stand, where it would just repeat
+// the heading, and on everywhere else.
+function beerRow(b, showBrewery) {
   const bits = [b.style || 'Unknown style'];
   if (b.abv) bits.push(b.abv + '%');
   bits.push(`<span class="rating">${ratingBit(b)}</span>`);
@@ -217,6 +221,7 @@ function beerRow(b) {
   return `<button class="row ${isHad(b) ? 'had' : ''}" data-beer="${esc(key(b))}">
     <div class="grow">
       <div class="name">${esc(b.name)} ${tag}</div>
+      ${showBrewery ? `<div class="who">${esc(b.brewery)}</div>` : ''}
       <div class="meta">${bits.join(' &middot; ')}</div>
     </div>${score}</button>`;
 }
@@ -319,7 +324,8 @@ function render() {
     $('#title').textContent = stand;
     $('#sub').textContent = (info?.aisle ? `Aisle ${info.aisle} · ` : '') +
       `${list.length} on offer` + (left < list.length ? ` · ${left} still to try` : '');
-    main.innerHTML = list.length ? list.map(beerRow).join('')
+    const mixed = (info?.breweries.length ?? 1) > 1;
+    main.innerHTML = list.length ? list.map(b => beerRow(b, mixed)).join('')
       : '<p class="empty">Nothing here matches.</p>';
     return;
   }
@@ -373,10 +379,11 @@ function render() {
     const order = Object.keys(groups).sort((a, c) =>
       (groups[c][0].weight ?? 0) - (groups[a][0].weight ?? 0));
     main.innerHTML = order.map(f =>
-      `<h2>${esc(f)}</h2>` + groups[f].slice(0, 8).map(beerRow).join('')).join('')
+      `<h2>${esc(f)}</h2>` +
+      groups[f].slice(0, 8).map(b => beerRow(b, true)).join('')).join('')
       || '<p class="empty">Nothing to suggest.</p>';
   } else {
-    main.innerHTML = list.length ? list.map(beerRow).join('')
+    main.innerHTML = list.length ? list.map(b => beerRow(b, true)).join('')
       : '<p class="empty">No beers match.</p>';
   }
 }
