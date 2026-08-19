@@ -369,34 +369,61 @@ function render() {
   }
 }
 
-$('#main').addEventListener('click', e => {
-  const s = e.target.closest('[data-stand]'), b = e.target.closest('[data-beer]');
-  if (s) { stand = s.dataset.stand; view = 'stand'; query = ''; $('#q').value = ''; scrollTo(0,0); render(); }
-  else if (b) { beer = DATA.beers.find(x => key(x) === b.dataset.beer); view = 'beer'; scrollTo(0,0); render(); }
+// Every move between screens becomes a history entry, so the phone's back
+// gesture walks back through them instead of leaving the app.
+function syncTabs() {
+  const active = view === 'stand' ? 'stands' : view;   // a stand lives under Stands
+  [...$('#tabs').children].forEach(x =>
+    x.setAttribute('aria-pressed', x.dataset.view === active));
+}
+
+function go(patch) {
+  if ('view' in patch) view = patch.view;
+  if ('stand' in patch) stand = patch.stand;
+  if ('beer' in patch) beer = patch.beer;
+  history.pushState({ view, stand, beerKey: beer ? key(beer) : null }, '');
+  syncTabs(); scrollTo(0, 0); render();
+}
+
+addEventListener('popstate', e => {
+  const s = e.state || { view: 'stands', stand: null, beerKey: null };
+  view = s.view;
+  stand = s.stand;
+  beer = s.beerKey && DATA ? DATA.beers.find(x => key(x) === s.beerKey) : null;
+  syncTabs(); scrollTo(0, 0); render();
 });
 
-$('#gear').onclick = () => { view = 'settings'; scrollTo(0, 0); render(); };
+$('#main').addEventListener('click', e => {
+  const s = e.target.closest('[data-stand]'), b = e.target.closest('[data-beer]');
+  if (s) {
+    query = ''; $('#q').value = '';
+    go({ stand: s.dataset.stand, view: 'stand' });
+  } else if (b) {
+    go({ beer: DATA.beers.find(x => key(x) === b.dataset.beer), view: 'beer' });
+  }
+});
 
-$('#back').onclick = () => {
-  if (view === 'settings') view = 'stands';
-  else if (view === 'beer') view = stand ? 'stand' : 'picks';
-  else view = 'stands';
-  if (view === 'stands') stand = null;
-  scrollTo(0, 0); render();
-};
+$('#gear').onclick = () => go({ view: 'settings' });
+
+// Mirrors the platform gesture rather than doing its own thing, so the two
+// can never disagree about where "back" goes.
+$('#back').onclick = () => history.back();
 
 $('#tabs').addEventListener('click', e => {
   const btn = e.target.closest('button[data-view]');
-  if (!btn) return;
-  view = btn.dataset.view; stand = null;
-  [...$('#tabs').children].forEach(x => x.setAttribute('aria-pressed', x === btn));
-  scrollTo(0, 0); render();
+  if (!btn || btn.dataset.view === view) return;
+  go({ view: btn.dataset.view, stand: null });
 });
 
 $('#q').addEventListener('input', e => { query = e.target.value.trim(); render(); });
 
-fetch('data.json').then(r => r.json()).then(d => { DATA = d; render(); })
-  .catch(() => { $('#main').innerHTML = '<p class="empty">Could not load the beer list.</p>'; });
+fetch('data.json').then(r => r.json()).then(d => {
+  DATA = d;
+  history.replaceState({ view, stand: null, beerKey: null }, '');
+  render();
+}).catch(() => {
+  $('#main').innerHTML = '<p class="empty">Could not load the beer list.</p>';
+});
 
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 </script>
