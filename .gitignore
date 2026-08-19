@@ -4,3 +4,11 @@
 # Algolia response cache - regenerable, and large
 .algolia-cache.json
 .req.json
+
+# Personal Untappd check-in history - never commit
+untappd-history.json
+
+# Generated from the map PDF
+map-bbox.xml
+mapfull-*.png
+crop-*.png

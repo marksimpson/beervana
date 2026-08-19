@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#1a1410">
+<title>Beervana 2026</title>
+<link rel="manifest" href="manifest.json">
+<style>
+:root {
+  --bg: #14100d;
+  --surface: #1f1813;
+  --surface-2: #2a211a;
+  --line: #3a2e24;
+  --text: #f3ece4;
+  --muted: #a2907e;
+  --amber: #f0a830;
+  --amber-dim: #8a6220;
+  --green: #6fbf73;
+  --pad: 16px;
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
+body {
+  font: 16px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  padding-bottom: env(safe-area-inset-bottom);
+  overscroll-behavior-y: none;
+}
+header {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(20,16,13,.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  padding: calc(env(safe-area-inset-top) + 10px) var(--pad) 0;
+}
+.bar { display: flex; align-items: center; gap: 10px; min-height: 34px; }
+.back {
+  background: none; border: 0; color: var(--amber); font-size: 17px;
+  padding: 4px 6px 4px 0; margin: 0; cursor: pointer;
+}
+h1 { font-size: 19px; margin: 0; font-weight: 650; letter-spacing: -.01em; flex: 1;
+     overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sub { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
+input[type=search] {
+  width: 100%; margin: 8px 0 10px; padding: 10px 12px;
+  background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px;
+  color: var(--text); font-size: 16px; -webkit-appearance: none;
+}
+nav { display: flex; gap: 6px; padding-bottom: 10px; overflow-x: auto; }
+[hidden] { display: none !important; }
+nav button {
+  flex: 0 0 auto; background: var(--surface-2); border: 1px solid var(--line);
+  color: var(--muted); padding: 7px 13px; border-radius: 999px;
+  font-size: 14px; cursor: pointer;
+}
+nav button[aria-pressed=true] { background: var(--amber); border-color: var(--amber); color: #241a0c; font-weight: 600; }
+main { padding: 12px var(--pad) 40px; }
+.row {
+  display: flex; align-items: flex-start; gap: 12px; width: 100%;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  padding: 12px; margin-bottom: 8px; text-align: left; color: inherit;
+  font: inherit; cursor: pointer;
+}
+.row.had { opacity: .45; }
+.grow { flex: 1; min-width: 0; }
+.name { font-weight: 600; line-height: 1.3; }
+.meta { font-size: 13px; color: var(--muted); margin-top: 3px;
+        overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.count { font-size: 13px; color: var(--muted); flex: 0 0 auto; padding-top: 2px; }
+.pill {
+  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .04em;
+  text-transform: uppercase; padding: 2px 7px; border-radius: 5px; vertical-align: 2px;
+}
+.pill.had { background: var(--surface-2); color: var(--muted); border: 1px solid var(--line); }
+.pill.new { background: rgba(240,168,48,.15); color: var(--amber); }
+.score {
+  flex: 0 0 auto; width: 42px; text-align: center; font-weight: 700; font-size: 15px;
+  color: var(--amber); padding-top: 1px;
+}
+.score small { display: block; font-size: 10px; font-weight: 500; color: var(--muted);
+               text-transform: uppercase; letter-spacing: .05em; }
+.aisle {
+  flex: 0 0 auto; width: 40px; text-align: center; font-weight: 700; font-size: 17px;
+  background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px;
+  padding: 5px 0 3px; color: var(--text);
+}
+.aisle small { display: block; font-size: 9px; font-weight: 500; color: var(--muted);
+               text-transform: uppercase; letter-spacing: .06em; }
+.rating { color: var(--green); font-weight: 600; }
+h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .07em;
+     color: var(--muted); margin: 22px 0 8px; font-weight: 600; }
+h2:first-child { margin-top: 4px; }
+.empty { color: var(--muted); text-align: center; padding: 40px 20px; }
+
+/* detail sheet */
+.detail { padding: 4px 0 0; }
+.detail .style { color: var(--amber); font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+.detail h3 { font-size: 24px; margin: 0 0 4px; line-height: 1.2; letter-spacing: -.015em; }
+.detail .by { color: var(--muted); margin: 0 0 14px; }
+.notes { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+         padding: 14px; margin: 14px 0; font-size: 15px; line-height: 1.5; }
+.facts { display: flex; gap: 10px; margin: 14px 0; }
+.fact { flex: 1; background: var(--surface); border: 1px solid var(--line);
+        border-radius: 12px; padding: 12px; text-align: center; }
+.fact b { display: block; font-size: 19px; }
+.fact span { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.actions { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+.btn {
+  display: block; width: 100%; padding: 15px; border-radius: 12px; border: 0;
+  font-size: 17px; font-weight: 650; text-align: center; text-decoration: none;
+  cursor: pointer;
+}
+.btn.primary { background: var(--amber); color: #241a0c; }
+.btn.ghost { background: var(--surface-2); color: var(--text); border: 1px solid var(--line); }
+.btn.on { background: rgba(111,191,115,.15); color: var(--green); border: 1px solid var(--green); }
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <button class="back" id="back" hidden>&lsaquo; Back</button>
+    <h1 id="title">Beervana 2026</h1>
+  </div>
+  <p class="sub" id="sub"></p>
+  <input type="search" id="q" placeholder="Search beers, styles, breweries" autocomplete="off">
+  <nav id="tabs">
+    <button data-view="stands" aria-pressed="true">Stands</button>
+    <button data-view="picks" aria-pressed="false">Top picks</button>
+    <button data-view="all" aria-pressed="false">All beers</button>
+  </nav>
+</header>
+<main id="main"><p class="empty">Loading…</p></main>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => (s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+let DATA = null;
+let view = 'stands';        // stands | picks | all | stand | beer
+let stand = null;
+let beer = null;
+let query = '';
+
+// Beers ticked off during the festival, on top of the baked-in history.
+const had = new Set(JSON.parse(localStorage.getItem('had') || '[]'));
+const key = b => b.stand + '|' + b.name;
+const isHad = b => b.drunk || had.has(key(b));
+const saveHad = () => localStorage.setItem('had', JSON.stringify([...had]));
+
+// Sort: not-yet-had first, then by weighting, then alphabetically.
+function rank(a, b) {
+  const ha = isHad(a), hb = isHad(b);
+  if (ha !== hb) return ha ? 1 : -1;
+  const wa = a.weight ?? -1, wb = b.weight ?? -1;
+  if (wa !== wb) return wb - wa;
+  return a.name.localeCompare(b.name);
+}
+
+function matches(b, q) {
+  if (!q) return true;
+  return (b.name + ' ' + b.brewery + ' ' + b.stand + ' ' + (b.style || '')).toLowerCase().includes(q);
+}
+
+function beerRow(b) {
+  const bits = [b.style || 'Unknown style'];
+  if (b.abv) bits.push(b.abv + '%');
+  if (b.rating) bits.push(`<span class="rating">${b.rating.toFixed(2)}</span>`);
+  const tag = isHad(b) ? '<span class="pill had">had it</span>'
+            : (b.is_beer && !b.rating ? '<span class="pill new">new</span>' : '');
+  const score = b.weight != null && !isHad(b)
+    ? `<div class="score">${Math.round(b.weight)}<small>pick</small></div>` : '';
+  return `<button class="row ${isHad(b) ? 'had' : ''}" data-beer="${esc(key(b))}">
+    <div class="grow">
+      <div class="name">${esc(b.name)} ${tag}</div>
+      <div class="meta">${bits.join(' &middot; ')}</div>
+    </div>${score}</button>`;
+}
+
+function render() {
+  const main = $('#main'), q = query.toLowerCase();
+  $('#back').hidden = !(view === 'stand' || view === 'beer');
+  $('#tabs').hidden = (view === 'beer');
+  $('#q').hidden = (view === 'beer');
+
+  if (view === 'beer') {
+    const b = beer;
+    $('#title').textContent = b.brewery;
+    $('#sub').textContent = [b.aisle ? 'Aisle ' + b.aisle : '',
+                             b.stand !== b.brewery ? 'at ' + b.stand : '']
+                            .filter(Boolean).join(' · ');
+    const ticked = had.has(key(b));
+    main.innerHTML = `<div class="detail">
+      <div class="style">${esc(b.style || 'Unknown style')}</div>
+      <h3>${esc(b.name)}</h3>
+      <p class="by">${esc(b.brewery)}</p>
+      <div class="facts">
+        ${b.abv ? `<div class="fact"><b>${esc(b.abv)}%</b><span>ABV</span></div>` : ''}
+        <div class="fact"><b class="${b.rating ? 'rating' : ''}">${b.rating ? b.rating.toFixed(2) : '—'}</b>
+          <span>${b.rating ? b.rating_count.toLocaleString() + ' ratings' : 'unrated'}</span></div>
+        ${b.weight != null ? `<div class="fact"><b style="color:var(--amber)">${Math.round(b.weight)}</b><span>pick</span></div>` : ''}
+      </div>
+      ${b.drunk ? '<p class="sub">You have checked this in before.</p>' : ''}
+      ${b.notes ? `<div class="notes">${esc(b.notes)}</div>` : ''}
+      <div class="actions">
+        ${b.url ? `<a class="btn primary" href="${esc(b.url)}">Check in on Untappd &rarr;</a>`
+                : `<a class="btn ghost" href="https://untappd.com/search?q=${encodeURIComponent(b.brewery + ' ' + b.name)}">Search Untappd &rarr;</a>`}
+        <button class="btn ${ticked ? 'on' : 'ghost'}" id="tick">
+          ${ticked ? '&check; Had it today' : 'Mark as had it'}
+        </button>
+      </div></div>`;
+    $('#tick').onclick = () => {
+      ticked ? had.delete(key(b)) : had.add(key(b));
+      saveHad(); render();
+    };
+    return;
+  }
+
+  if (view === 'stand') {
+    const list = DATA.beers.filter(b => b.stand === stand && matches(b, q)).sort(rank);
+    const left = list.filter(b => !isHad(b)).length;
+    const info = DATA.stands.find(s => s.name === stand);
+    $('#title').textContent = stand;
+    $('#sub').textContent = (info?.aisle ? `Aisle ${info.aisle} · ` : '') +
+      `${list.length} on offer · ${left} you haven't had`;
+    main.innerHTML = list.length ? list.map(beerRow).join('')
+      : '<p class="empty">Nothing here matches.</p>';
+    return;
+  }
+
+  $('#title').textContent = 'Beervana 2026';
+
+  if (view === 'stands') {
+    const stands = DATA.stands
+      .map(s => {
+        const bs = DATA.beers.filter(b => b.stand === s.name);
+        const hit = q ? bs.filter(b => matches(b, q)) : bs;
+        return { ...s, total: bs.length, left: bs.filter(b => !isHad(b)).length, hits: hit.length };
+      })
+      .filter(s => s.hits > 0 || (!q && s.total))
+      .sort((a, b) => (a.aisle ?? 99) - (b.aisle ?? 99) || a.name.localeCompare(b.name));
+    $('#sub').textContent = `${stands.length} stands, in aisle order`;
+    main.innerHTML = stands.length ? stands.map(s => `
+      <button class="row" data-stand="${esc(s.name)}">
+        ${s.aisle ? `<div class="aisle">${s.aisle}<small>aisle</small></div>` : ''}
+        <div class="grow">
+          <div class="name">${esc(s.name)}</div>
+          <div class="meta">${s.breweries.length > 1 ? esc(s.breweries.join(', ')) : (s.left + ' to try')}</div>
+        </div>
+        <div class="count">${s.left}/${s.total}</div>
+      </button>`).join('') : '<p class="empty">No stands match.</p>';
+    return;
+  }
+
+  // picks | all
+  let list = DATA.beers.filter(b => matches(b, q));
+  if (view === 'picks') list = list.filter(b => b.is_beer && !isHad(b) && b.weight != null);
+  list.sort(rank);
+  $('#sub').textContent = view === 'picks'
+    ? `${list.length} you haven't had, best first`
+    : `${list.length} beers`;
+
+  if (view === 'picks') {
+    // Group by style family so the IPAs don't bury everything else.
+    const fam = b => (b.style || '').split(' - ')[0] || 'Other';
+    const groups = {};
+    for (const b of list) (groups[fam(b)] ||= []).push(b);
+    const order = Object.keys(groups).sort((a, c) =>
+      (groups[c][0].weight ?? 0) - (groups[a][0].weight ?? 0));
+    main.innerHTML = order.map(f =>
+      `<h2>${esc(f)}</h2>` + groups[f].slice(0, 8).map(beerRow).join('')).join('')
+      || '<p class="empty">Nothing to suggest.</p>';
+  } else {
+    main.innerHTML = list.length ? list.map(beerRow).join('')
+      : '<p class="empty">No beers match.</p>';
+  }
+}
+
+$('#main').addEventListener('click', e => {
+  const s = e.target.closest('[data-stand]'), b = e.target.closest('[data-beer]');
+  if (s) { stand = s.dataset.stand; view = 'stand'; query = ''; $('#q').value = ''; scrollTo(0,0); render(); }
+  else if (b) { beer = DATA.beers.find(x => key(x) === b.dataset.beer); view = 'beer'; scrollTo(0,0); render(); }
+});
+
+$('#back').onclick = () => {
+  view = (view === 'beer' && stand) ? 'stand' : (view === 'beer' ? 'picks' : 'stands');
+  if (view === 'stands') stand = null;
+  scrollTo(0, 0); render();
+};
+
+$('#tabs').addEventListener('click', e => {
+  const btn = e.target.closest('button[data-view]');
+  if (!btn) return;
+  view = btn.dataset.view; stand = null;
+  [...$('#tabs').children].forEach(x => x.setAttribute('aria-pressed', x === btn));
+  scrollTo(0, 0); render();
+});
+
+$('#q').addEventListener('input', e => { query = e.target.value.trim(); render(); });
+
+fetch('data.json').then(r => r.json()).then(d => { DATA = d; render(); })
+  .catch(() => { $('#main').innerHTML = '<p class="empty">Could not load the beer list.</p>'; });
+
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+</body>
+</html>

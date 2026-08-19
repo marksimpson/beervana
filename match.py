@@ -99,7 +99,8 @@ def sim(a, b):
 rows = []
 with open(os.path.join(HERE, 'beervana-2026-beer-list.csv'), encoding='utf-8-sig') as f:
     for r in csv.DictReader(f):
-        r = {k: (v or '').strip() for k, v in r.items() if k}
+        # Header names carry stray whitespace ("ABV "), so strip keys too.
+        r = {k.strip(): (v or '').strip() for k, v in r.items() if k}
         if r.get('BEER NAME'):
             rows.append(r)
 
@@ -296,9 +297,6 @@ for b in beers:
         bw_bias = max(-1.0, min((bw_avg - overall_avg) / 0.4, 1.0)) * bw_conf
     else:
         bw_avg, bw_bias = None, 0.0
-    b['brewery_avg'] = round(bw_avg, 2) if bw_avg else None
-    b['brewery_n'] = len(bw)
-
     rating = b['rating']
     n = b['rating_count']
     if n >= 5:
@@ -313,9 +311,42 @@ for b in beers:
     b['score'] = round(100 * (0.55 * aff + 0.33 * quality + novelty + award
                               + bw_weight * bw_bias), 1)
 
+# --------------------------------------------------------------------------
+# Publishable data. This file ships with the app and is world-readable, so it
+# carries only the festival list plus two derived fields: whether Mark has had
+# the beer, and a 0-100 nudge. No check-in history, ratings or counts.
+# --------------------------------------------------------------------------
+stands = collections.OrderedDict()
+for b in beers:
+    stands.setdefault(b['exhibitor'], set()).add(b['brewery'])
+
+# Aisle numbers scraped from the venue map, if map_aisles.py has been run.
+aisle_path = os.path.join(HERE, 'stand-aisles.json')
+aisle_of = json.load(open(aisle_path)) if os.path.exists(aisle_path) else {}
+
+public = {
+    'generated': time.strftime('%Y-%m-%d'),
+    'stands': [{'name': s, 'breweries': sorted(bw), 'aisle': aisle_of.get(s)}
+               for s, bw in sorted(stands.items())],
+    'beers': [{
+        'stand': b['exhibitor'],
+        'aisle': aisle_of.get(b['exhibitor']),
+        'brewery': b['brewery'],
+        'name': b['name'],
+        'style': b['style'] or b['sheet_style'],
+        'abv': b['abv'],
+        'notes': b['notes'],
+        'url': b['url'],
+        'rating': b['rating'] if b['rating_count'] >= 5 else None,
+        'rating_count': b['rating_count'] if b['rating_count'] >= 5 else 0,
+        'label': b['label'],
+        'is_beer': b['is_beer'],
+        'drunk': b['drunk'],
+        'weight': b['score'],
+    } for b in beers],
+}
 with open(os.path.join(HERE, 'data.json'), 'w') as f:
-    json.dump({'profile': profile, 'beers': beers,
-               'overall_avg': round(overall_avg, 2)}, f)
+    json.dump(public, f, separators=(',', ':'))
 
 # ---- report ----
 n = len(beers)
