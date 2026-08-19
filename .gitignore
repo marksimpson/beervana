@@ -1,0 +1,6 @@
+# Excel lock file
+~$*.xlsx
+
+# Algolia response cache - regenerable, and large
+.algolia-cache.json
+.req.json
