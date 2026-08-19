@@ -126,6 +126,7 @@ h2:first-child { margin-top: 4px; }
 .btn.on { background: rgba(111,191,115,.15); color: var(--green); border: 1px solid var(--green); }
 .btn:disabled { opacity: .4; cursor: default; }
 .btn.danger { color: #e8735f; border-color: #6b3229; }
+.btn.armed { background: #b3352a; border-color: #b3352a; color: #fff; }
 </style>
 </head>
 <body>
@@ -186,6 +187,12 @@ function rank(a, b) {
   }
   return a.name.localeCompare(b.name);
 }
+
+// You come in at aisle 16, so that is where the list starts and it wraps round
+// the concourse from there: 16 to 36, then 1 to 15.
+const ENTRANCE = 16;
+const AISLES = 36;
+const walkOrder = a => a == null ? 999 : (a - ENTRANCE + AISLES) % AISLES;
 
 function matches(b, q) {
   if (!q) return true;
@@ -264,6 +271,7 @@ function render() {
       } else {
         reset.dataset.armed = '1';
         reset.textContent = 'Tap again to erase';
+        reset.classList.add('armed');
       }
     };
     return;
@@ -326,8 +334,8 @@ function render() {
         return { ...s, total: bs.length, left: bs.filter(b => !isHad(b)).length, hits: hit.length };
       })
       .filter(s => s.hits > 0 || (!q && s.total))
-      .sort((a, b) => (a.aisle ?? 99) - (b.aisle ?? 99) || a.name.localeCompare(b.name));
-    $('#sub').textContent = `${stands.length} stands, in aisle order`;
+      .sort((a, b) => walkOrder(a.aisle) - walkOrder(b.aisle) || a.name.localeCompare(b.name));
+    $('#sub').textContent = `${stands.length} stands, from the entrance`;
     main.innerHTML = stands.length ? stands.map(s => `
       <button class="row" data-stand="${esc(s.name)}">
         ${s.aisle ? `<div class="aisle">${s.aisle}<small>aisle</small></div>` : ''}
@@ -353,9 +361,13 @@ function render() {
                        : `${list.length} beers, best rated first`)
     : `${list.length} beers`;
 
-  if (view === 'picks') {
-    // Group by style family so the IPAs don't bury everything else.
-    const fam = b => (b.style || '').split(' - ')[0] || 'Other';
+  if (view === 'picks' && MODE === 'mark') {
+    // Group by style family so the IPAs don't bury everything else. Only worth
+    // doing for a personal ranking; a straight rating sort has no such bias.
+    // Only a matched beer has a canonical "Family - Sub" style. Unmatched ones
+    // fall back to the spreadsheet's free text, which is one-of-a-kind prose
+    // and would give every such beer its own heading.
+    const fam = b => (b.url && (b.style || '').split(' - ')[0]) || 'Other';
     const groups = {};
     for (const b of list) (groups[fam(b)] ||= []).push(b);
     const order = Object.keys(groups).sort((a, c) =>
