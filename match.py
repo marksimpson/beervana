@@ -104,6 +104,111 @@ with open(os.path.join(HERE, 'beervana-2026-beer-list.csv'), encoding='utf-8-sig
         if r.get('BEER NAME'):
             rows.append(r)
 
+# --------------------------------------------------------------------------
+# Fold in anything the spreadsheet is missing.
+#
+# The spreadsheet is an earlier cut than the website: it has no Canyon Brewing,
+# MorningCider or Saint Leonards at all, and is short a handful of beers at
+# breweries it does list. fetch_site.py pulls the current list off
+# beervana.co.nz; anything there that is not already here gets appended.
+# --------------------------------------------------------------------------
+BREWERY_NOISE = (r'\b(brewing|brewery|breweries|brewers|beer|beers|co|company|'
+                 r'ltd|limited|taproom|the|nz|society|new|zealand|gin|whiskey|'
+                 r'whisky|distilling|distillery|mixology|aus)\b')
+
+
+def brewery_norm(s):
+    return re.sub(r'[^a-z0-9]', '', re.sub(BREWERY_NOISE, ' ', (s or '').lower()))
+
+
+def brewery_tokens(s):
+    """Distinctive words only. 'Scapegrace Gin + Thunderdonk Whiskey' and
+    'Scapegrace + Thunderdonk' share both of theirs; comparing the strings
+    whole does not get you there."""
+    return {t for t in re.split(r'[^a-z0-9]+', re.sub(BREWERY_NOISE, ' ', (s or '').lower()))
+            if len(t) > 2}
+
+
+site_path = os.path.join(HERE, 'site-beers.json')
+added_beers, added_stands = 0, set()
+if os.path.exists(site_path):
+    site = json.load(open(site_path))
+
+    # What the spreadsheet already covers, keyed by normalised brewery.
+    have = collections.defaultdict(set)
+    exhibitor_of, brewery_label, tokens_of = {}, {}, {}
+    for r in rows:
+        bn = brewery_norm(r['BREWERY'])
+        have[bn].add(r['BEER NAME'])
+        exhibitor_of.setdefault(bn, r['EXHIBITOR'])
+        brewery_label.setdefault(bn, r['BREWERY'])
+        tokens_of.setdefault(bn, brewery_tokens(r['BREWERY']))
+
+    def same_brewery(site_name):
+        """Map a website brewery onto a spreadsheet one, or None if new."""
+        n = brewery_norm(site_name)
+        if n in have:
+            return n
+        t = brewery_tokens(site_name)
+        for k in have:
+            if len(n) > 4 and (n in k or k in n):
+                return k
+            if difflib.SequenceMatcher(None, n, k).ratio() > 0.85:
+                return k
+            # One name being a fuller version of the other, e.g. the site's
+            # "Scapegrace Gin + Thunderdonk Whiskey" and the sheet's
+            # "Scapegrace + Thunderdonk".
+            other = tokens_of[k]
+            if t and other and (t <= other or other <= t):
+                return k
+        return None
+
+    def without_brewery(bn, beer_name):
+        """The sheet says "Cassels APA" where the site says "APA". Drop any
+        brewery words from the name so the two land on the same key."""
+        drop = tokens_of.get(bn, set())
+        toks = [t for t in re.split(r'[^a-z0-9]+', (beer_name or '').lower())
+                if t and t not in drop]
+        return ''.join(toks) or norm(beer_name)
+
+    def already_listed(bn, beer_name):
+        # have[bn] holds raw names, not normalised ones: stripping the brewery
+        # prefix needs the word boundaries to still be there.
+        target, stripped = norm(beer_name), without_brewery(bn, beer_name)
+        for raw in have[bn]:
+            existing = norm(raw)
+            if target == existing or stripped == without_brewery(bn, raw):
+                return True
+            if len(target) >= 4 and (target in existing or existing in target):
+                return True
+            if difflib.SequenceMatcher(None, target, existing).ratio() > 0.85:
+                return True
+        return False
+
+    for b in site:
+        if not b['name']:
+            continue
+        bn = same_brewery(b['brewery'])
+        if bn is None:                      # a brewery the sheet never had
+            bn = brewery_norm(b['brewery'])
+            exhibitor_of.setdefault(bn, b['brewery'])
+            brewery_label.setdefault(bn, b['brewery'])
+            tokens_of.setdefault(bn, brewery_tokens(b['brewery']))
+            have.setdefault(bn, set())
+            added_stands.add(b['brewery'])
+        elif already_listed(bn, b['name']):
+            continue
+        rows.append({
+            'EXHIBITOR': exhibitor_of[bn],
+            'BREWERY': brewery_label[bn],
+            'BEER NAME': b['name'],
+            'Tasting Notes': b['notes'],
+            'ABV': str(b['abv']) if b['abv'] is not None else '',
+            'STYLE': b['style'],
+        })
+        have[bn].add(b['name'])
+        added_beers += 1
+
 history = json.load(open(os.path.join(HERE, 'untappd-history.json')))
 drunk_bids = {c['bid'] for c in history if c.get('bid')}
 drunk_names = {(norm(c['brewery_name']), norm(c['beer_name'])) for c in history}
@@ -324,6 +429,34 @@ for b in beers:
 aisle_path = os.path.join(HERE, 'stand-aisles.json')
 aisle_of = json.load(open(aisle_path)) if os.path.exists(aisle_path) else {}
 
+# Read off the map by hand, and therefore right where the scraper is only
+# close. Keys may name either the stand or one of its breweries, since the two
+# differ at the shared stands. These win over anything scraped.
+manual_path = os.path.join(HERE, 'aisles-manual.json')
+manual_unmatched = []
+if os.path.exists(manual_path):
+    manual = json.load(open(manual_path))
+    stand_breweries = collections.defaultdict(set)
+    for b in beers:
+        stand_breweries[b['exhibitor']].add(b['brewery'])
+
+    for name, aisle in manual.items():
+        target = brewery_norm(name)
+        hit = None
+        for stand, brews in stand_breweries.items():
+            names = [stand, *brews]
+            if any(brewery_norm(x) == target for x in names):
+                hit = stand
+                break
+            if hit is None and any(
+                    brewery_tokens(x) and brewery_tokens(x) == brewery_tokens(name)
+                    for x in names):
+                hit = stand
+        if hit:
+            aisle_of[hit] = aisle
+        else:
+            manual_unmatched.append(name)
+
 public = {
     'generated': time.strftime('%Y-%m-%d'),
     'stands': [{'name': s, 'breweries': sorted(bw), 'aisle': aisle_of.get(s)}
@@ -357,6 +490,9 @@ drunk = [b for b in matched if b['drunk']]
 rated = [b for b in matched if b['rating_count'] >= 5]
 
 print(f"beers in list          : {n}   (actual beer: {len(real)}, other drinks: {n-len(real)})")
+if added_beers:
+    print(f"  added from website   : {added_beers}"
+          + (f", new stands: {', '.join(sorted(added_stands))}" if added_stands else ""))
 print(f"matched on Untappd     : {len(matched)} ({len(matched)/n:.0%})"
       f"   of real beer: {len(matched_real)}/{len(real)} ({len(matched_real)/len(real):.0%})")
 print(f"  by tier              : " + ", ".join(
@@ -364,6 +500,12 @@ print(f"  by tier              : " + ", ".join(
 print(f"have a rating (>=5)    : {len(rated)} ({len(rated)/len(matched):.0%} of matched)")
 print(f"already drunk          : {len(drunk)} ({len(drunk)/len(matched):.0%} of matched)")
 print(f"breweries resolved     : {len(brewery_map)}/{len(brewery_names)}")
+missing_aisle = [s for s, bw in stands.items() if not aisle_of.get(s)]
+print(f"stands with an aisle   : {len(stands) - len(missing_aisle)}/{len(stands)}"
+      + (f"   missing: {', '.join(sorted(missing_aisle))}" if missing_aisle else ""))
+if manual_unmatched:
+    print(f"  !! aisles-manual.json names nothing recognises: "
+          f"{', '.join(manual_unmatched)}")
 print()
 print("your taste profile (top families by affinity):")
 for f, p in sorted(profile.items(), key=lambda kv: -kv[1]['affinity'])[:8]:
