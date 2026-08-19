@@ -234,8 +234,8 @@ function sortAll(list) {
 }
 
 // You come in at aisle 16, so that is where the list starts and it wraps round
-// the concourse from there: 16 to 36, then 1 to 15. Reversed, it wraps the
-// other way for when you turn round and walk back.
+// the concourse from there: 16 to 36, then 1 to 15, which is anti-clockwise.
+// Reversed, it wraps the other way for when you turn round and walk clockwise.
 const ENTRANCE = 16;
 const AISLES = 36;
 let reversed = localStorage.getItem('dir') === 'rev';
@@ -393,7 +393,7 @@ function render() {
       .filter(s => s.hits > 0 || (!q && s.total))
       .sort((a, b) => walkOrder(a.aisle) - walkOrder(b.aisle) || a.name.localeCompare(b.name));
     $('#sub').textContent = `${stands.length} stands, `
-      + (reversed ? 'walking back' : 'from the entrance');
+      + (reversed ? 'walking clockwise' : 'walking anti-clockwise');
     main.innerHTML = stands.length ? stands.map(s => `
       <button class="row" data-stand="${esc(s.name)}">
         ${s.aisle ? `<div class="aisle">${s.aisle}<small>aisle</small></div>` : ''}
