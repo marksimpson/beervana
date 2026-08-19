@@ -40,6 +40,16 @@ header {
   background: none; border: 0; color: var(--amber); font-size: 17px;
   padding: 4px 6px 4px 0; margin: 0; cursor: pointer;
 }
+.gear {
+  background: none; border: 0; color: var(--muted); font-size: 21px;
+  padding: 2px 0 2px 8px; margin: 0; cursor: pointer; line-height: 1;
+}
+.setting {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  padding: 14px; margin-bottom: 10px;
+}
+.setting h4 { margin: 0 0 4px; font-size: 15px; }
+.setting p { margin: 0 0 10px; font-size: 13px; color: var(--muted); line-height: 1.45; }
 h1 { font-size: 19px; margin: 0; font-weight: 650; letter-spacing: -.01em; flex: 1;
      overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .sub { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
@@ -115,6 +125,8 @@ h2:first-child { margin-top: 4px; }
 .btn.primary { background: var(--amber); color: #241a0c; }
 .btn.ghost { background: var(--surface-2); color: var(--text); border: 1px solid var(--line); }
 .btn.on { background: rgba(111,191,115,.15); color: var(--green); border: 1px solid var(--green); }
+.btn:disabled { opacity: .4; cursor: default; }
+.btn.danger { color: #e8735f; border-color: #6b3229; }
 </style>
 </head>
 <body>
@@ -122,6 +134,7 @@ h2:first-child { margin-top: 4px; }
   <div class="bar">
     <button class="back" id="back" hidden>&lsaquo; Back</button>
     <h1 id="title">Beervana 2026</h1>
+    <button class="gear" id="gear" title="Settings">&#9881;</button>
   </div>
   <p class="sub" id="sub"></p>
   <input type="search" id="q" placeholder="Search beers, styles, breweries" autocomplete="off">
@@ -138,23 +151,40 @@ const $ = s => document.querySelector(s);
 const esc = s => (s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 let DATA = null;
-let view = 'stands';        // stands | picks | all | stand | beer
+let view = 'stands';        // stands | picks | all | stand | beer | settings
 let stand = null;
 let beer = null;
 let query = '';
 
-// Beers ticked off during the festival, on top of the baked-in history.
-const had = new Set(JSON.parse(localStorage.getItem('had') || '[]'));
+// Two modes. "mark" uses Mark's Untappd history: beers he has already checked
+// in are marked and demoted, and each beer carries a personal weighting.
+// "guest" ignores all of that and ranks on the public Untappd rating instead.
+// Visiting with ?mark switches this device over for good; ?guest switches back.
+const params = new URLSearchParams(location.search);
+if (params.has('mark')) localStorage.setItem('mode', 'mark');
+if (params.has('guest')) localStorage.setItem('mode', 'guest');
+if (params.has('mark') || params.has('guest')) {
+  history.replaceState({}, '', location.pathname);
+}
+let MODE = localStorage.getItem('mode') === 'mark' ? 'mark' : 'guest';
+
+// Beers ticked off during the festival, on top of any baked-in history.
+let had = new Set(JSON.parse(localStorage.getItem('had') || '[]'));
 const key = b => b.stand + '|' + b.name;
-const isHad = b => b.drunk || had.has(key(b));
+const isHad = b => (MODE === 'mark' && b.drunk) || had.has(key(b));
 const saveHad = () => localStorage.setItem('had', JSON.stringify([...had]));
 
-// Sort: not-yet-had first, then by weighting, then alphabetically.
+// Sort: not-yet-had first, then by whichever signal this mode trusts.
 function rank(a, b) {
   const ha = isHad(a), hb = isHad(b);
   if (ha !== hb) return ha ? 1 : -1;
-  const wa = a.weight ?? -1, wb = b.weight ?? -1;
-  if (wa !== wb) return wb - wa;
+  if (MODE === 'mark') {
+    const wa = a.weight ?? -1, wb = b.weight ?? -1;
+    if (wa !== wb) return wb - wa;
+  } else {
+    const ra = a.rating ?? 0, rb = b.rating ?? 0;
+    if (ra !== rb) return rb - ra;
+  }
   return a.name.localeCompare(b.name);
 }
 
@@ -169,7 +199,7 @@ function beerRow(b) {
   if (b.rating) bits.push(`<span class="rating">${b.rating.toFixed(2)}</span>`);
   const tag = isHad(b) ? '<span class="pill had">had it</span>'
             : (b.is_beer && !b.rating ? '<span class="pill new">new</span>' : '');
-  const score = b.weight != null && !isHad(b)
+  const score = MODE === 'mark' && b.weight != null && !isHad(b)
     ? `<div class="score">${Math.round(b.weight)}<small>pick</small></div>` : '';
   return `<button class="row ${isHad(b) ? 'had' : ''}" data-beer="${esc(key(b))}">
     <div class="grow">
@@ -180,9 +210,58 @@ function beerRow(b) {
 
 function render() {
   const main = $('#main'), q = query.toLowerCase();
-  $('#back').hidden = !(view === 'stand' || view === 'beer');
-  $('#tabs').hidden = (view === 'beer');
-  $('#q').hidden = (view === 'beer');
+  $('#tabs').children[1].textContent = MODE === 'mark' ? 'Top picks' : 'Top rated';
+  const detail = (view === 'beer' || view === 'settings');
+  $('#back').hidden = !(view === 'stand' || detail);
+  $('#tabs').hidden = detail;
+  $('#q').hidden = detail;
+  $('#gear').hidden = detail;
+
+  if (view === 'settings') {
+    $('#title').textContent = 'Settings';
+    $('#sub').textContent = '';
+    const ticked = had.size;
+    main.innerHTML = `
+      <div class="setting">
+        <h4>Recommendations</h4>
+        <p>${MODE === 'mark'
+          ? 'Using Mark&rsquo;s Untappd history: beers he has already checked in are '
+            + 'marked and pushed down, and each beer gets a personal pick score.'
+          : 'Ranking by public Untappd rating. No personal history is applied.'}</p>
+        <button class="btn ghost" id="mode">
+          ${MODE === 'mark' ? 'Switch to everyone&rsquo;s ratings' : 'Use Mark&rsquo;s recommendations'}
+        </button>
+      </div>
+      <div class="setting">
+        <h4>Beers you have ticked off</h4>
+        <p>${ticked
+          ? `${ticked} beer${ticked === 1 ? '' : 's'} marked as had, stored on this device only.`
+          : 'Nothing marked yet. Anything you tick off is stored on this device only.'}</p>
+        <button class="btn ghost danger" id="reset" ${ticked ? '' : 'disabled'}>
+          Reset everything on this device
+        </button>
+      </div>
+      <p class="sub">Beer list generated ${esc(DATA.generated || '')}.</p>`;
+    $('#mode').onclick = () => {
+      MODE = MODE === 'mark' ? 'guest' : 'mark';
+      localStorage.setItem('mode', MODE);
+      render();
+    };
+    const reset = $('#reset');
+    if (reset) reset.onclick = () => {
+      if (reset.dataset.armed) {
+        had = new Set();
+        localStorage.removeItem('had');
+        localStorage.removeItem('mode');
+        MODE = 'guest';
+        render();
+      } else {
+        reset.dataset.armed = '1';
+        reset.textContent = 'Tap again to erase';
+      }
+    };
+    return;
+  }
 
   if (view === 'beer') {
     const b = beer;
@@ -199,9 +278,10 @@ function render() {
         ${b.abv ? `<div class="fact"><b>${esc(b.abv)}%</b><span>ABV</span></div>` : ''}
         <div class="fact"><b class="${b.rating ? 'rating' : ''}">${b.rating ? b.rating.toFixed(2) : '—'}</b>
           <span>${b.rating ? b.rating_count.toLocaleString() + ' ratings' : 'unrated'}</span></div>
-        ${b.weight != null ? `<div class="fact"><b style="color:var(--amber)">${Math.round(b.weight)}</b><span>pick</span></div>` : ''}
+        ${MODE === 'mark' && b.weight != null
+          ? `<div class="fact"><b style="color:var(--amber)">${Math.round(b.weight)}</b><span>pick</span></div>` : ''}
       </div>
-      ${b.drunk ? '<p class="sub">You have checked this in before.</p>' : ''}
+      ${MODE === 'mark' && b.drunk ? '<p class="sub">You have checked this in before.</p>' : ''}
       ${b.notes ? `<div class="notes">${esc(b.notes)}</div>` : ''}
       <div class="actions">
         ${b.url ? `<a class="btn primary" href="${esc(b.url)}">Check in on Untappd &rarr;</a>`
@@ -223,7 +303,7 @@ function render() {
     const info = DATA.stands.find(s => s.name === stand);
     $('#title').textContent = stand;
     $('#sub').textContent = (info?.aisle ? `Aisle ${info.aisle} · ` : '') +
-      `${list.length} on offer · ${left} you haven't had`;
+      `${list.length} on offer` + (left < list.length ? ` · ${left} still to try` : '');
     main.innerHTML = list.length ? list.map(beerRow).join('')
       : '<p class="empty">Nothing here matches.</p>';
     return;
@@ -246,7 +326,8 @@ function render() {
         ${s.aisle ? `<div class="aisle">${s.aisle}<small>aisle</small></div>` : ''}
         <div class="grow">
           <div class="name">${esc(s.name)}</div>
-          <div class="meta">${s.breweries.length > 1 ? esc(s.breweries.join(', ')) : (s.left + ' to try')}</div>
+          <div class="meta">${s.breweries.length > 1 ? esc(s.breweries.join(', '))
+            : (s.left < s.total ? s.left + ' still to try' : s.total + ' beers')}</div>
         </div>
         <div class="count">${s.left}/${s.total}</div>
       </button>`).join('') : '<p class="empty">No stands match.</p>';
@@ -255,10 +336,14 @@ function render() {
 
   // picks | all
   let list = DATA.beers.filter(b => matches(b, q));
-  if (view === 'picks') list = list.filter(b => b.is_beer && !isHad(b) && b.weight != null);
+  if (view === 'picks') {
+    list = list.filter(b => b.is_beer && !isHad(b) &&
+      (MODE === 'mark' ? b.weight != null : b.rating));
+  }
   list.sort(rank);
   $('#sub').textContent = view === 'picks'
-    ? `${list.length} you haven't had, best first`
+    ? (MODE === 'mark' ? `${list.length} you haven't had, best first`
+                       : `${list.length} beers, best rated first`)
     : `${list.length} beers`;
 
   if (view === 'picks') {
@@ -283,8 +368,12 @@ $('#main').addEventListener('click', e => {
   else if (b) { beer = DATA.beers.find(x => key(x) === b.dataset.beer); view = 'beer'; scrollTo(0,0); render(); }
 });
 
+$('#gear').onclick = () => { view = 'settings'; scrollTo(0, 0); render(); };
+
 $('#back').onclick = () => {
-  view = (view === 'beer' && stand) ? 'stand' : (view === 'beer' ? 'picks' : 'stands');
+  if (view === 'settings') view = 'stands';
+  else if (view === 'beer') view = stand ? 'stand' : 'picks';
+  else view = 'stands';
   if (view === 'stands') stand = null;
   scrollTo(0, 0); render();
 };
