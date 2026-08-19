@@ -134,6 +134,12 @@ added_beers, added_stands = 0, set()
 if os.path.exists(site_path):
     site = json.load(open(site_path))
 
+    # Every beer name the spreadsheet lists, whoever it credits. The two sources
+    # sometimes disagree about whose beer it is - the site puts Boss Level under
+    # Emerson's, the sheet and Untappd both say Garage Project - and adding it
+    # again under the other brewery would put one beer at two stands.
+    sheet_beers = {norm(r['BEER NAME']) for r in rows}
+
     # What the spreadsheet already covers, keyed by normalised brewery.
     have = collections.defaultdict(set)
     exhibitor_of, brewery_label, tokens_of = {}, {}, {}
@@ -145,23 +151,29 @@ if os.path.exists(site_path):
         tokens_of.setdefault(bn, brewery_tokens(r['BREWERY']))
 
     def same_brewery(site_name):
-        """Map a website brewery onto a spreadsheet one, or None if new."""
-        n = brewery_norm(site_name)
-        if n in have:
-            return n
-        t = brewery_tokens(site_name)
+        """Every spreadsheet brewery a website brewery could be, best first.
+
+        One brewery can hold more than one stand - One Drop pours from "One
+        Drop 1" and "One Drop 2", and the website lists all twelve beers on a
+        single page. Returning only the first match makes the other stand's
+        beers look absent, and they get appended to the wrong stand."""
+        n, t = brewery_norm(site_name), brewery_tokens(site_name)
+        # An exact match does not end the search: "Mean Doses" matches its own
+        # stand exactly and still has a sibling in "Mean Doses Zoltar".
+        hits = [n] if n in have else []
         for k in have:
+            if k == n:
+                continue
             if len(n) > 4 and (n in k or k in n):
-                return k
-            if difflib.SequenceMatcher(None, n, k).ratio() > 0.85:
-                return k
+                hits.append(k)
+            elif difflib.SequenceMatcher(None, n, k).ratio() > 0.85:
+                hits.append(k)
             # One name being a fuller version of the other, e.g. the site's
             # "Scapegrace Gin + Thunderdonk Whiskey" and the sheet's
             # "Scapegrace + Thunderdonk".
-            other = tokens_of[k]
-            if t and other and (t <= other or other <= t):
-                return k
-        return None
+            elif t and tokens_of[k] and (t <= tokens_of[k] or tokens_of[k] <= t):
+                hits.append(k)
+        return hits          # exact first, then siblings
 
     def without_brewery(bn, beer_name):
         """The sheet says "Cassels APA" where the site says "APA". Drop any
@@ -188,16 +200,21 @@ if os.path.exists(site_path):
     for b in site:
         if not b['name']:
             continue
-        bn = same_brewery(b['brewery'])
-        if bn is None:                      # a brewery the sheet never had
+        if norm(b['name']) in sheet_beers:
+            continue                        # the sheet already has it somewhere
+        keys = same_brewery(b['brewery'])
+        if not keys:                        # a brewery the sheet never had
             bn = brewery_norm(b['brewery'])
             exhibitor_of.setdefault(bn, b['brewery'])
             brewery_label.setdefault(bn, b['brewery'])
             tokens_of.setdefault(bn, brewery_tokens(b['brewery']))
             have.setdefault(bn, set())
             added_stands.add(b['brewery'])
-        elif already_listed(bn, b['name']):
-            continue
+        else:
+            # Present at any of the brewery's stands means it is already listed.
+            if any(already_listed(k, b['name']) for k in keys):
+                continue
+            bn = keys[0]
         rows.append({
             'EXHIBITOR': exhibitor_of[bn],
             'BREWERY': brewery_label[bn],
@@ -506,6 +523,18 @@ print(f"  by tier              : " + ", ".join(
 print(f"have a rating (>=5)    : {len(rated)} ({len(rated)/len(matched):.0%} of matched)")
 print(f"already drunk          : {len(drunk)} ({len(drunk)/len(matched):.0%} of matched)")
 print(f"breweries resolved     : {len(brewery_map)}/{len(brewery_names)}")
+
+# One beer at two stands usually means the merge put it in the wrong place, or
+# the two sources disagree about whose beer it is. Neither is silent-worthy.
+seen_at = collections.defaultdict(set)
+for b in beers:
+    seen_at[norm(b['name'])].add(b['exhibitor'])
+cross = {k: v for k, v in seen_at.items() if len(v) > 1}
+if cross:
+    print(f"  !! {len(cross)} beer(s) listed at more than one stand:")
+    for k, v in cross.items():
+        label = next(b['name'] for b in beers if norm(b['name']) == k)
+        print(f"       {label[:44]:<44} {', '.join(sorted(v))}")
 missing_aisle = [s for s, bw in stands.items() if not aisle_of.get(s)]
 print(f"stands with an aisle   : {len(stands) - len(missing_aisle)}/{len(stands)}"
       + (f"   missing: {', '.join(sorted(missing_aisle))}" if missing_aisle else ""))
