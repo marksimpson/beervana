@@ -158,29 +158,36 @@ let stand = null;
 let beer = null;
 let query = '';
 
-// Two modes. "mark" uses Mark's Untappd history: beers he has already checked
-// in are marked and demoted, and each beer carries a personal weighting.
-// "guest" ignores all of that and ranks on the public Untappd rating instead.
-// Visiting with ?mark switches this device over for good; ?guest switches back.
+// Whose Untappd history is baked into data.json. If you fork this for your own
+// history, this is the only name to change.
+const OWNER = 'Mark';
+
+// Two modes. "mine" uses OWNER's Untappd history: beers already checked in are
+// marked and demoted, and each beer carries a personal weighting. "guest"
+// ignores all of that and ranks on the public Untappd rating instead.
+// Visiting with ?mine switches this device over for good; ?guest switches back.
 const params = new URLSearchParams(location.search);
-if (params.has('mark')) localStorage.setItem('mode', 'mark');
+// ?mark is the original spelling of ?mine, kept so home screen icons and
+// devices set up before the rename carry on working.
+if (params.has('mine') || params.has('mark')) localStorage.setItem('mode', 'mine');
 if (params.has('guest')) localStorage.setItem('mode', 'guest');
-if (params.has('mark') || params.has('guest')) {
+if (params.has('mine') || params.has('mark') || params.has('guest')) {
   history.replaceState({}, '', location.pathname);
 }
-let MODE = localStorage.getItem('mode') === 'mark' ? 'mark' : 'guest';
+const saved = localStorage.getItem('mode');
+let MODE = (saved === 'mine' || saved === 'mark') ? 'mine' : 'guest';
 
 // Beers ticked off during the festival, on top of any baked-in history.
 let had = new Set(JSON.parse(localStorage.getItem('had') || '[]'));
 const key = b => b.stand + '|' + b.name;
-const isHad = b => (MODE === 'mark' && b.drunk) || had.has(key(b));
+const isHad = b => (MODE === 'mine' && b.drunk) || had.has(key(b));
 const saveHad = () => localStorage.setItem('had', JSON.stringify([...had]));
 
 // Sort: not-yet-had first, then by whichever signal this mode trusts.
 function rank(a, b) {
   const ha = isHad(a), hb = isHad(b);
   if (ha !== hb) return ha ? 1 : -1;
-  if (MODE === 'mark') {
+  if (MODE === 'mine') {
     const wa = a.weight ?? -1, wb = b.weight ?? -1;
     if (wa !== wb) return wb - wa;
   } else {
@@ -216,7 +223,7 @@ function beerRow(b, showBrewery) {
   if (b.abv) bits.push(b.abv + '%');
   bits.push(`<span class="rating">${ratingBit(b)}</span>`);
   const tag = isHad(b) ? '<span class="pill had">had it</span>' : '';
-  const score = MODE === 'mark' && b.weight != null && !isHad(b)
+  const score = MODE === 'mine' && b.weight != null && !isHad(b)
     ? `<div class="score">${Math.round(b.weight)}<small>pick</small></div>` : '';
   return `<button class="row ${isHad(b) ? 'had' : ''}" data-beer="${esc(key(b))}">
     <div class="grow">
@@ -228,7 +235,7 @@ function beerRow(b, showBrewery) {
 
 function render() {
   const main = $('#main'), q = query.toLowerCase();
-  $('#tabs').children[1].textContent = MODE === 'mark' ? 'Top picks' : 'Top rated';
+  $('#tabs').children[1].textContent = MODE === 'mine' ? 'Top picks' : 'Top rated';
   const detail = (view === 'beer' || view === 'settings');
   $('#back').hidden = !(view === 'stand' || detail);
   $('#tabs').hidden = detail;
@@ -242,12 +249,13 @@ function render() {
     main.innerHTML = `
       <div class="setting">
         <h4>Recommendations</h4>
-        <p>${MODE === 'mark'
-          ? 'Using Mark&rsquo;s Untappd history: beers he has already checked in are '
+        <p>${MODE === 'mine'
+          ? `Using ${esc(OWNER)}&rsquo;s Untappd history: beers already checked in are `
             + 'marked and pushed down, and each beer gets a personal pick score.'
           : 'Ranking by public Untappd rating. No personal history is applied.'}</p>
         <button class="btn ghost" id="mode">
-          ${MODE === 'mark' ? 'Switch to everyone&rsquo;s ratings' : 'Use Mark&rsquo;s recommendations'}
+          ${MODE === 'mine' ? 'Switch to everyone&rsquo;s ratings'
+                            : `Use ${esc(OWNER)}&rsquo;s recommendations`}
         </button>
       </div>
       <div class="setting">
@@ -261,7 +269,7 @@ function render() {
       </div>
       <p class="sub">Beer list generated ${esc(DATA.generated || '')}.</p>`;
     $('#mode').onclick = () => {
-      MODE = MODE === 'mark' ? 'guest' : 'mark';
+      MODE = MODE === 'mine' ? 'guest' : 'mine';
       localStorage.setItem('mode', MODE);
       render();
     };
@@ -298,10 +306,10 @@ function render() {
         <div class="fact"><b class="rating">${ratingBit(b)}</b>
           <span>${b.rating ? b.rating_count.toLocaleString() + ' ratings'
                  : (b.url ? 'barely rated yet' : 'not found on Untappd')}</span></div>
-        ${MODE === 'mark' && b.weight != null
+        ${MODE === 'mine' && b.weight != null
           ? `<div class="fact"><b style="color:var(--amber)">${Math.round(b.weight)}</b><span>pick</span></div>` : ''}
       </div>
-      ${MODE === 'mark' && b.drunk ? '<p class="sub">You have checked this in before.</p>' : ''}
+      ${MODE === 'mine' && b.drunk ? '<p class="sub">You have checked this in before.</p>' : ''}
       ${b.notes ? `<div class="notes">${esc(b.notes)}</div>` : ''}
       <div class="actions">
         ${b.url ? `<a class="btn primary" href="${esc(b.url)}">Check in on Untappd &rarr;</a>`
@@ -359,15 +367,15 @@ function render() {
   let list = DATA.beers.filter(b => matches(b, q));
   if (view === 'picks') {
     list = list.filter(b => b.is_beer && !isHad(b) &&
-      (MODE === 'mark' ? b.weight != null : b.rating));
+      (MODE === 'mine' ? b.weight != null : b.rating));
   }
   list.sort(rank);
   $('#sub').textContent = view === 'picks'
-    ? (MODE === 'mark' ? `${list.length} you haven't had, best first`
+    ? (MODE === 'mine' ? `${list.length} you haven't had, best first`
                        : `${list.length} beers, best rated first`)
     : `${list.length} beers`;
 
-  if (view === 'picks' && MODE === 'mark') {
+  if (view === 'picks' && MODE === 'mine') {
     // Group by style family so the IPAs don't bury everything else. Only worth
     // doing for a personal ranking; a straight rating sort has no such bias.
     // Only a matched beer has a canonical "Family - Sub" style. Unmatched ones
