@@ -1,5 +1,5 @@
 // Cache everything up front so the app works with no signal in the venue.
-const CACHE = 'beervana-v3';
+const CACHE = 'beervana-v4';
 const FILES = ['./', 'index.html', 'data.json', 'manifest.json', 'icon.svg'];
 
 self.addEventListener('install', e => {

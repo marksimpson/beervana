@@ -84,7 +84,6 @@ main { padding: 12px var(--pad) 40px; }
   text-transform: uppercase; padding: 2px 7px; border-radius: 5px; vertical-align: 2px;
 }
 .pill.had { background: var(--surface-2); color: var(--muted); border: 1px solid var(--line); }
-.pill.new { background: rgba(240,168,48,.15); color: var(--amber); }
 .score {
   flex: 0 0 auto; width: 42px; text-align: center; font-weight: 700; font-size: 15px;
   color: var(--amber); padding-top: 1px;
@@ -193,12 +192,19 @@ function matches(b, q) {
   return (b.name + ' ' + b.brewery + ' ' + b.stand + ' ' + (b.style || '')).toLowerCase().includes(q);
 }
 
+// The Untappd rating slot. A beer we matched but which has almost no ratings
+// is genuinely new; one we never matched is simply unknown, and saying so is
+// more honest than implying it is new.
+function ratingBit(b) {
+  if (b.rating) return b.rating.toFixed(2);
+  return b.url ? 'New' : 'N/A';
+}
+
 function beerRow(b) {
   const bits = [b.style || 'Unknown style'];
   if (b.abv) bits.push(b.abv + '%');
-  if (b.rating) bits.push(`<span class="rating">${b.rating.toFixed(2)}</span>`);
-  const tag = isHad(b) ? '<span class="pill had">had it</span>'
-            : (b.is_beer && !b.rating ? '<span class="pill new">new</span>' : '');
+  bits.push(`<span class="rating">${ratingBit(b)}</span>`);
+  const tag = isHad(b) ? '<span class="pill had">had it</span>' : '';
   const score = MODE === 'mark' && b.weight != null && !isHad(b)
     ? `<div class="score">${Math.round(b.weight)}<small>pick</small></div>` : '';
   return `<button class="row ${isHad(b) ? 'had' : ''}" data-beer="${esc(key(b))}">
@@ -276,8 +282,9 @@ function render() {
       <p class="by">${esc(b.brewery)}</p>
       <div class="facts">
         ${b.abv ? `<div class="fact"><b>${esc(b.abv)}%</b><span>ABV</span></div>` : ''}
-        <div class="fact"><b class="${b.rating ? 'rating' : ''}">${b.rating ? b.rating.toFixed(2) : '—'}</b>
-          <span>${b.rating ? b.rating_count.toLocaleString() + ' ratings' : 'unrated'}</span></div>
+        <div class="fact"><b class="rating">${ratingBit(b)}</b>
+          <span>${b.rating ? b.rating_count.toLocaleString() + ' ratings'
+                 : (b.url ? 'barely rated yet' : 'not found on Untappd')}</span></div>
         ${MODE === 'mark' && b.weight != null
           ? `<div class="fact"><b style="color:var(--amber)">${Math.round(b.weight)}</b><span>pick</span></div>` : ''}
       </div>
