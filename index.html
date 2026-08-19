@@ -136,6 +136,8 @@ h2:first-child { margin-top: 4px; }
   <div class="bar">
     <button class="back" id="back" hidden>&lsaquo; Back</button>
     <h1 id="title">Beervana 2026</h1>
+    <button class="gear" id="dir" title="Reverse walking direction">&#8646;</button>
+    <button class="gear" id="sort" title="Change sort">&#8645;</button>
     <button class="gear" id="gear" title="Settings">&#9881;</button>
   </div>
   <p class="sub" id="sub"></p>
@@ -197,11 +199,48 @@ function rank(a, b) {
   return a.name.localeCompare(b.name);
 }
 
+// All beers is the look-something-up view, so it can be sorted several ways.
+// "pick" only means anything when a personal weighting exists.
+const SORTS = {
+  pick:    { label: 'best pick first', sink: true,
+             cmp: (a, b) => (b.weight ?? -1) - (a.weight ?? -1) },
+  rating:  { label: 'best rated first', sink: true,
+             cmp: (a, b) => (b.rating ?? 0) - (a.rating ?? 0) },
+  name:    { label: 'by beer name', sink: false,
+             cmp: (a, b) => a.name.localeCompare(b.name) },
+  brewery: { label: 'by brewery', sink: false,
+             cmp: (a, b) => a.brewery.localeCompare(b.brewery)
+                            || a.name.localeCompare(b.name) },
+};
+const sortOrder = () => MODE === 'mine'
+  ? ['pick', 'rating', 'name', 'brewery']
+  : ['rating', 'name', 'brewery'];
+
+let sortBy = localStorage.getItem('sort') || 'pick';
+
+function sortAll(list) {
+  const order = sortOrder();
+  if (!order.includes(sortBy)) sortBy = order[0];
+  const s = SORTS[sortBy];
+  // Only the "what should I drink" sorts push what you have had to the bottom.
+  // Looking a beer up by name is easier when the order is simply the order.
+  return list.sort((a, b) => {
+    if (s.sink) {
+      const ha = isHad(a), hb = isHad(b);
+      if (ha !== hb) return ha ? 1 : -1;
+    }
+    return s.cmp(a, b) || a.name.localeCompare(b.name);
+  });
+}
+
 // You come in at aisle 16, so that is where the list starts and it wraps round
-// the concourse from there: 16 to 36, then 1 to 15.
+// the concourse from there: 16 to 36, then 1 to 15. Reversed, it wraps the
+// other way for when you turn round and walk back.
 const ENTRANCE = 16;
 const AISLES = 36;
-const walkOrder = a => a == null ? 999 : (a - ENTRANCE + AISLES) % AISLES;
+let reversed = localStorage.getItem('dir') === 'rev';
+const walkOrder = a => a == null ? 999
+  : (reversed ? (ENTRANCE - a + AISLES) : (a - ENTRANCE + AISLES)) % AISLES;
 
 function matches(b, q) {
   if (!q) return true;
@@ -241,6 +280,10 @@ function render() {
   $('#tabs').hidden = detail;
   $('#q').hidden = detail;
   $('#gear').hidden = detail;
+  $('#dir').hidden = (view !== 'stands');   // only the stand list is walk-ordered
+  $('#dir').style.color = reversed ? 'var(--amber)' : '';
+  $('#sort').hidden = (view !== 'all');     // only all beers is re-sortable
+  $('#sort').style.color = sortBy === sortOrder()[0] ? '' : 'var(--amber)';
 
   if (view === 'settings') {
     $('#title').textContent = 'Settings';
@@ -349,7 +392,8 @@ function render() {
       })
       .filter(s => s.hits > 0 || (!q && s.total))
       .sort((a, b) => walkOrder(a.aisle) - walkOrder(b.aisle) || a.name.localeCompare(b.name));
-    $('#sub').textContent = `${stands.length} stands, from the entrance`;
+    $('#sub').textContent = `${stands.length} stands, `
+      + (reversed ? 'walking back' : 'from the entrance');
     main.innerHTML = stands.length ? stands.map(s => `
       <button class="row" data-stand="${esc(s.name)}">
         ${s.aisle ? `<div class="aisle">${s.aisle}<small>aisle</small></div>` : ''}
@@ -369,11 +413,15 @@ function render() {
     list = list.filter(b => b.is_beer && !isHad(b) &&
       (MODE === 'mine' ? b.weight != null : b.rating));
   }
-  list.sort(rank);
+  if (view === 'all') {
+    sortAll(list);
+  } else {
+    list.sort(rank);
+  }
   $('#sub').textContent = view === 'picks'
     ? (MODE === 'mine' ? `${list.length} you haven't had, best first`
                        : `${list.length} beers, best rated first`)
-    : `${list.length} beers`;
+    : `${list.length} beers, ${SORTS[sortBy].label}`;
 
   if (view === 'picks' && MODE === 'mine') {
     // Group by style family so the IPAs don't bury everything else. Only worth
@@ -429,6 +477,23 @@ $('#main').addEventListener('click', e => {
     go({ beer: DATA.beers.find(x => key(x) === b.dataset.beer), view: 'beer' });
   }
 });
+
+// Reversing is a re-sort, not a screen change, so it stays out of history:
+// the back gesture should leave the stand list, not undo a sort.
+$('#dir').onclick = () => {
+  reversed = !reversed;
+  localStorage.setItem('dir', reversed ? 'rev' : 'fwd');
+  scrollTo(0, 0); render();
+};
+
+// Cycles rather than opening a menu: four options, and the subtitle says which
+// one you are on.
+$('#sort').onclick = () => {
+  const order = sortOrder();
+  sortBy = order[(order.indexOf(sortBy) + 1) % order.length];
+  localStorage.setItem('sort', sortBy);
+  scrollTo(0, 0); render();
+};
 
 $('#gear').onclick = () => go({ view: 'settings' });
 
