@@ -182,6 +182,25 @@ if os.path.exists(site_path):
                 hits.append(k)
         return hits          # exact first, then siblings
 
+    # Brewers write the same beer both ways. Expanding the short form is safe
+    # where a looser fuzzy match is not: "DDH Supercharger" and "Double
+    # Dry-hopped Supercharger" share almost no letters, while genuinely
+    # different beers like "Ginger Bear" and "Pineapple Ginger Bear" score
+    # higher on every similarity measure than that real duplicate does.
+    ABBREVIATIONS = [
+        (r'\bddh\b', 'double dry hopped'),
+        (r'\bdry[\s-]?hopped\b', 'dry hopped'),
+        (r'\bba\b', 'barrel aged'),
+        (r'\bimp\b', 'imperial'),
+        (r'\bpb\b', 'peanut butter'),
+    ]
+
+    def expand(name):
+        s = (name or '').lower()
+        for pattern, full in ABBREVIATIONS:
+            s = re.sub(pattern, full, s)
+        return re.sub(r'[^a-z0-9]', '', s)
+
     def without_brewery(bn, beer_name):
         """The sheet says "Cassels APA" where the site says "APA". Drop any
         brewery words from the name so the two land on the same key."""
@@ -194,13 +213,18 @@ if os.path.exists(site_path):
         # have[bn] holds raw names, not normalised ones: stripping the brewery
         # prefix needs the word boundaries to still be there.
         target, stripped = norm(beer_name), without_brewery(bn, beer_name)
+        expanded = expand(beer_name)
         for raw in have[bn]:
             existing = norm(raw)
             if target == existing or stripped == without_brewery(bn, raw):
                 return True
+            if expanded == expand(raw):
+                return True
             if len(target) >= 4 and (target in existing or existing in target):
                 return True
-            if difflib.SequenceMatcher(None, target, existing).ratio() > 0.85:
+            # 0.80 rather than 0.85: it separates the real duplicates in this
+            # list from the merely similar, which top out at 0.69.
+            if difflib.SequenceMatcher(None, target, existing).ratio() > 0.80:
                 return True
         return False
 
