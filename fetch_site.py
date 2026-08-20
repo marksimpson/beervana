@@ -71,6 +71,9 @@ for i, slug in enumerate(slugs, 1):
         bt = b.get('beerType') or {}
         style = (b.get('styleLabel') or '').strip() or (bt.get('typeName') or '').strip()
         out.append({
+            # The CMS record id, which is also the key the festival's live
+            # leaderboard uses in its Firebase database.
+            'dato_id': b.get('id'),
             'brewery': (b.get('displayBrewery') or '').strip() or name.strip(),
             'page_brewery': name.strip(),
             'slug': slug,

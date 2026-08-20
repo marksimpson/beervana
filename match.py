@@ -130,7 +130,7 @@ def brewery_tokens(s):
 
 
 site_path = os.path.join(HERE, 'site-beers.json')
-added_beers, added_stands = 0, set()
+added_beers, added_stands, dato_id_of = 0, set(), {}
 if os.path.exists(site_path):
     site = json.load(open(site_path))
 
@@ -139,6 +139,13 @@ if os.path.exists(site_path):
     # Emerson's, the sheet and Untappd both say Garage Project - and adding it
     # again under the other brewery would put one beer at two stands.
     sheet_beers = {norm(r['BEER NAME']) for r in rows}
+
+    # The festival's own leaderboard keys its praise counts by CMS record id,
+    # so carrying the id lets the app line the two up.
+    for b in site:
+        if b.get('dato_id') and b.get('name'):
+            dato_id_of[(brewery_norm(b['brewery']), norm(b['name']))] = b['dato_id']
+            dato_id_of[(None, norm(b['name']))] = b['dato_id']
 
     # What the spreadsheet already covers, keyed by normalised brewery.
     have = collections.defaultdict(set)
@@ -560,6 +567,8 @@ for b in beers:
     # instead of nudging every score by 0.1 on the first refresh.
     raw = (0.55 * b['aff'] + 0.33 * quality + novelty + award
            + bw_weight * b['bwb'])
+    b['dato'] = (dato_id_of.get((brewery_norm(b['brewery']), norm(b['name'])))
+                 or dato_id_of.get((None, norm(b['name']))))
     b['intent'] = intent_of.get(b['exhibitor'], intent_of.get(b['brewery'], 0))
     # Styles carry their own adjustment, tested against whichever description
     # we have: Untappd's canonical one, or the spreadsheet's own words.
@@ -646,6 +655,7 @@ public = {
         # For the app's live rating refresh: the Untappd id to look up, and the
         # parts of the weighting that do not move when the rating does.
         'bid': b['bid'],
+        'dato': b.get('dato'),
         'aff': b.get('aff'),
         'bwb': b.get('bwb'),
         'awarded': b.get('awarded', False),

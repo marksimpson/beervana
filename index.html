@@ -142,6 +142,7 @@ main { padding: 12px var(--pad) 40px; }
     <button data-view="stands" aria-pressed="true">Stands</button>
     <button data-view="picks" aria-pressed="false">Top picks</button>
     <button data-view="all" aria-pressed="false">All beers</button>
+    <button data-view="board" aria-pressed="false">Leaderboard</button>
   </nav>
 </header>
 <main id="main"><p class="empty">Loading…</p></main>
@@ -422,6 +423,34 @@ function render() {
 
   $('#title').textContent = 'Beervana 2026';
 
+  if (view === 'board') {
+    if (!board) {
+      $('#sub').textContent = 'Beervana leaderboard';
+      main.innerHTML = '<p class="empty">No praise counted yet. This fills up '
+        + 'once a session is under way.</p>';
+      return;
+    }
+    const ranked = Object.entries(board)
+      .sort((a, b) => b[1] - a[1])
+      .map(([id, count]) => ({ count, beer: DATA.beers.find(b => b.dato === id) }))
+      .filter(r => r.beer && matches(r.beer, q));
+    $('#sub').textContent = `${ranked.length} beers praised, most first`;
+    main.innerHTML = ranked.length ? ranked.map(({ count, beer }, i) => `
+      <button class="row ${isHad(beer) ? 'had' : ''}" data-beer="${esc(key(beer))}">
+        <div class="aisle">${i + 1}<small>rank</small></div>
+        <div class="grow">
+          <div class="name">${esc(beer.name)}
+            ${isHad(beer) ? '<span class="pill had">had it</span>' : ''}</div>
+          <div class="who">${esc(beer.brewery)}</div>
+          <div class="meta">Aisle ${beer.aisle ?? '?'} &middot;
+            ${esc(beer.style || 'Unknown style')}</div>
+        </div>
+        <div class="score">${count}<small>praise</small></div>
+      </button>`).join('')
+      : '<p class="empty">Nothing on the leaderboard matches.</p>';
+    return;
+  }
+
   if (view === 'stands') {
     const stands = DATA.stands
       .map(s => {
@@ -540,6 +569,49 @@ $('#q').addEventListener('input', e => { query = e.target.value.trim(); render()
 // one request and the ratings are refreshed in place. The result is kept in
 // localStorage, so the next launch has yesterday's figures even with no signal.
 // --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// The festival's own leaderboard.
+//
+// Beervana's site keeps its praise counts in a public Firebase database, keyed
+// by the CMS record id that data.json carries as "dato". That database allows
+// cross-origin reads, so this app can go straight to it; the festival's own
+// page then resolves the names through an API that does not allow us, which is
+// why the ids are baked in here instead.
+// --------------------------------------------------------------------------
+const BOARD_URL = 'https://beervana-project-default-rtdb.asia-southeast1'
+  + '.firebasedatabase.app/beers/completed-2026.json';
+const BOARD_BOOST = 10;      // added to the pick score of the top ten
+const BOARD_TOP = 10;
+
+let board = null;            // dato id -> praise count
+let boardAt = null;
+
+function applyBoard(counts) {
+  board = counts;
+  const ranked = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+  const top = new Set(ranked.slice(0, BOARD_TOP).map(([id]) => id));
+  for (const b of DATA.beers) {
+    b.praise = (b.dato && counts[b.dato]) || 0;
+    b.boardBoost = (b.dato && top.has(b.dato)) ? BOARD_BOOST : 0;
+    b.weight = weigh(b);
+  }
+}
+
+async function refreshBoard() {
+  const res = await fetch(BOARD_URL, { cache: 'no-store' });
+  if (!res.ok) throw new Error('board ' + res.status);
+  const raw = await res.json();
+  if (!raw || typeof raw !== 'object') throw new Error('board empty');
+  const counts = {};
+  for (const [id, v] of Object.entries(raw)) {
+    const n = v && typeof v === 'object' ? v.count : v;
+    if (typeof n === 'number' && n > 0) counts[id] = n;
+  }
+  localStorage.setItem('board', JSON.stringify({ at: Date.now(), counts }));
+  applyBoard(counts);
+  return Object.keys(counts).length;
+}
+
 const ALGOLIA = {
   url: 'https://9WBO4RQ3HO-dsn.algolia.net/1/indexes/*/objects',
   headers: {
@@ -559,8 +631,9 @@ function weigh(b) {
   const award = b.awarded ? 0.12 : 0;
   const raw = Math.round(1000 * (0.55 * b.aff + 0.33 * quality + novelty + award
                                  + bwWeight * (b.bwb ?? 0))) / 10;
-  // Deliberate adjustments, which must survive a rating refresh.
-  return Math.max(0, Math.min(100, raw + (b.intent ?? 0)));
+  // Deliberate adjustments, and the festival leaderboard boost, both of which
+  // must survive a rating refresh.
+  return Math.max(0, Math.min(100, raw + (b.intent ?? 0) + (b.boardBoost ?? 0)));
 }
 
 function applyRatings(fresh) {
@@ -610,6 +683,8 @@ fetch('data.json', { cache: 'no-cache' }).then(r => r.json()).then(d => {
   // Anything saved from a previous run first, so an offline launch is current
   // as of the last time there was signal.
   try {
+    const cb = JSON.parse(localStorage.getItem('board') || 'null');
+    if (cb && cb.counts) { applyBoard(cb.counts); boardAt = cb.at; }
     const cached = JSON.parse(localStorage.getItem('ratings') || 'null');
     if (cached && cached.fresh) {
       applyRatings(cached.fresh);
@@ -620,13 +695,34 @@ fetch('data.json', { cache: 'no-cache' }).then(r => r.json()).then(d => {
   render();
 
   // Then try for something newer. Failure here is expected in a stadium.
+  refreshAll();
+}).catch(() => {
+  $('#main').innerHTML = '<p class="empty">Could not load the beer list.</p>';
+});
+
+// Ratings move during a session - a beer poured for the first time can go from
+// nothing to a few dozen ratings in an afternoon. Refreshing when the app comes
+// back to the foreground matches how it gets used: out of the pocket, a look,
+// away again. A background timer would drain the battery to no purpose, and the
+// gap stops a flurry of app switches turning into a flurry of requests.
+const REFRESH_GAP = 3 * 60 * 1000;
+
+function refreshAll() {
+  // The leaderboard moves faster than the ratings, but both are one small
+  // request, so they go together.
+  refreshBoard().then(() => { boardAt = Date.now(); render(); }).catch(() => {});
   refreshRatings().then(changed => {
     if (changed == null) return;
     ratingsAt = Date.now();
     render();
   }).catch(() => {});
-}).catch(() => {
-  $('#main').innerHTML = '<p class="empty">Could not load the beer list.</p>';
+}
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState !== 'visible' || !DATA) return;
+  const last = Math.max(ratingsAt || 0, boardAt || 0);
+  if (last && Date.now() - last < REFRESH_GAP) return;
+  refreshAll();
 });
 
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
