@@ -200,8 +200,6 @@ function rank(a, b) {
 // All beers is the look-something-up view, so it can be sorted several ways.
 // "pick" only means anything when a personal weighting exists.
 const SORTS = {
-  pick:    { label: 'best pick first', sink: true,
-             cmp: (a, b) => (b.weight ?? -1) - (a.weight ?? -1) },
   rating:  { label: 'best rated first', sink: true,
              cmp: (a, b) => (b.rating ?? 0) - (a.rating ?? 0) },
   name:    { label: 'by beer name', sink: false,
@@ -210,17 +208,16 @@ const SORTS = {
              cmp: (a, b) => a.brewery.localeCompare(b.brewery)
                             || a.name.localeCompare(b.name) },
 };
-// Brewery first, so All beers opens as a directory rather than repeating the
-// ranking Top picks already shows - the two tabs looked identical otherwise.
-const sortOrder = () => MODE === 'mine'
-  ? ['brewery', 'pick', 'rating', 'name']
-  : ['brewery', 'rating', 'name'];
+// All beers is the lookup view, so it opens as a directory. It deliberately
+// has no pick order: that is what Top picks is, and offering it here made the
+// two tabs look like the same list.
+const SORT_ORDER = ['brewery', 'rating', 'name'];
 
-let sortBy = localStorage.getItem('sort') || 'brewery';
+let sortBy = localStorage.getItem('sort') || SORT_ORDER[0];
 
 function sortAll(list) {
-  const order = sortOrder();
-  if (!order.includes(sortBy)) sortBy = order[0];
+  if (!SORT_ORDER.includes(sortBy)) sortBy = SORT_ORDER[0];
+  const order = SORT_ORDER;
   const s = SORTS[sortBy];
   // Only the "what should I drink" sorts push what you have had to the bottom.
   // Looking a beer up by name is easier when the order is simply the order.
@@ -295,7 +292,7 @@ function render() {
   // Both list views are re-sortable; the icon lights up when off the default.
   $('#sort').hidden = !(view === 'all' || view === 'stands');
   const onDefault = view === 'stands' ? standSort === 'acw'
-                                      : sortBy === sortOrder()[0];
+                                      : sortBy === SORT_ORDER[0];
   $('#sort').style.color = onDefault ? '' : 'var(--amber)';
 
   if (view === 'settings') {
@@ -542,8 +539,7 @@ $('#sort').onclick = () => {
     standSort = order[(order.indexOf(standSort) + 1) % order.length];
     localStorage.setItem('standsort', standSort);
   } else {
-    const order = sortOrder();
-    sortBy = order[(order.indexOf(sortBy) + 1) % order.length];
+    sortBy = SORT_ORDER[(SORT_ORDER.indexOf(sortBy) + 1) % SORT_ORDER.length];
     localStorage.setItem('sort', sortBy);
   }
   scrollTo(0, 0); render();
