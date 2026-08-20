@@ -22,6 +22,9 @@
   --pad: 16px;
 }
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+/* Drops the double-tap-to-zoom gesture, which fires on a mistimed second tap.
+   Pinch-to-zoom is untouched, so the page can still be enlarged. */
+html { touch-action: manipulation; }
 html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
 body {
   font: 16px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
@@ -207,11 +210,13 @@ const SORTS = {
              cmp: (a, b) => a.brewery.localeCompare(b.brewery)
                             || a.name.localeCompare(b.name) },
 };
+// Brewery first, so All beers opens as a directory rather than repeating the
+// ranking Top picks already shows - the two tabs looked identical otherwise.
 const sortOrder = () => MODE === 'mine'
-  ? ['pick', 'rating', 'name', 'brewery']
-  : ['rating', 'name', 'brewery'];
+  ? ['brewery', 'pick', 'rating', 'name']
+  : ['brewery', 'rating', 'name'];
 
-let sortBy = localStorage.getItem('sort') || 'pick';
+let sortBy = localStorage.getItem('sort') || 'brewery';
 
 function sortAll(list) {
   const order = sortOrder();
