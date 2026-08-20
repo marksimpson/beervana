@@ -7,7 +7,7 @@ Untappd's site search is backed by Algolia with a public, search-only key that
 the site itself ships to browsers. We query that directly: no login, no cookies,
 no scraping of Untappd's own servers.
 """
-import csv, json, re, subprocess, urllib.parse, difflib, os, time, collections
+import csv, json, re, subprocess, urllib.parse, difflib, os, time, collections, math
 
 APP = "9WBO4RQ3HO"
 KEY = "1d347324d67ec472bb7132c66aead485"
@@ -430,8 +430,18 @@ for b in beers:
         novelty = 0.15          # new beers are the point
         bw_weight = 0.22        # no rating: your brewery history carries it
     award = 0.12 if b['awards'] else 0.0
-    b['score'] = round(100 * (0.55 * aff + 0.33 * quality + novelty + award
-                              + bw_weight * bw_bias), 1)
+    # Keep the parts that do not depend on the rating, so the app can redo this
+    # sum against a fresher rating without needing the check-in history.
+    # index.html mirrors the formula - change one and change the other.
+    b['aff'] = round(aff, 3)
+    b['bwb'] = round(bw_bias, 3)
+    b['awarded'] = bool(b['awards'])
+    # Score off the published, rounded parts, and round half-up rather than
+    # half-to-even, so the app recomputing this lands on the same number
+    # instead of nudging every score by 0.1 on the first refresh.
+    raw = (0.55 * b['aff'] + 0.33 * quality + novelty + award
+           + bw_weight * b['bwb'])
+    b['score'] = math.floor(raw * 1000 + 0.5) / 10
 
 # --------------------------------------------------------------------------
 # Publishable data. This file ships with the app and is world-readable, so it
@@ -499,6 +509,12 @@ public = {
         'is_beer': b['is_beer'],
         'drunk': b['drunk'],
         'weight': b['score'],
+        # For the app's live rating refresh: the Untappd id to look up, and the
+        # parts of the weighting that do not move when the rating does.
+        'bid': b['bid'],
+        'aff': b.get('aff'),
+        'bwb': b.get('bwb'),
+        'awarded': b.get('awarded', False),
     } for b in beers],
 }
 with open(os.path.join(HERE, 'data.json'), 'w') as f:

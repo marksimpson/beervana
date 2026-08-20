@@ -158,6 +158,7 @@ let view = 'stands';        // stands | picks | all | stand | beer | settings
 let stand = null;
 let beer = null;
 let query = '';
+let ratingsAt = null;       // when the Untappd ratings were last refreshed
 
 // Whose Untappd history is baked into data.json. If you fork this for your own
 // history, this is the only name to change.
@@ -322,7 +323,36 @@ function render() {
           Reset everything on this device
         </button>
       </div>
+      <div class="setting">
+        <h4>Untappd ratings</h4>
+        <p>${ratingsAt
+          ? 'Last refreshed ' + new Date(ratingsAt).toLocaleString('en-NZ',
+              { weekday: 'short', hour: 'numeric', minute: '2-digit' })
+            + '. They update on their own whenever the app opens with a signal.'
+          : 'Using the ratings built into the app. They refresh on their own '
+            + 'whenever it opens with a signal.'}</p>
+        <button class="btn ghost" id="refresh">Refresh now</button>
+      </div>
       <p class="sub">Beer list generated ${esc(DATA.generated || '')}.</p>`;
+    $('#refresh').onclick = async () => {
+      const btn = $('#refresh');
+      btn.textContent = 'Refreshing…';
+      btn.disabled = true;
+      try {
+        const changed = await refreshRatings();
+        ratingsAt = Date.now();
+        render();
+        const b2 = $('#refresh');
+        if (b2) {
+          b2.textContent = changed ? `${changed} rating${changed === 1 ? '' : 's'} changed`
+                                   : 'Already up to date';
+          b2.disabled = true;
+        }
+      } catch (e) {
+        btn.textContent = 'No connection';
+        btn.disabled = false;
+      }
+    };
     $('#mode').onclick = () => {
       MODE = MODE === 'mine' ? 'guest' : 'mine';
       localStorage.setItem('mode', MODE);
@@ -520,10 +550,95 @@ $('#tabs').addEventListener('click', e => {
 
 $('#q').addEventListener('input', e => { query = e.target.value.trim(); render(); });
 
+// --------------------------------------------------------------------------
+// Live ratings.
+//
+// The baked ratings age fast during a festival: beers poured for the first time
+// on Saturday pick up their first Untappd ratings that evening. On load, when
+// there is a connection, every matched beer is looked up by its Untappd id in
+// one request and the ratings are refreshed in place. The result is kept in
+// localStorage, so the next launch has yesterday's figures even with no signal.
+// --------------------------------------------------------------------------
+const ALGOLIA = {
+  url: 'https://9WBO4RQ3HO-dsn.algolia.net/1/indexes/*/objects',
+  headers: {
+    'X-Algolia-API-Key': '1d347324d67ec472bb7132c66aead485',
+    'X-Algolia-Application-Id': '9WBO4RQ3HO',
+    'Content-Type': 'application/json',
+  },
+};
+
+// Mirrors the scoring in match.py. Change one and change the other.
+function weigh(b) {
+  if (!b.is_beer || b.aff == null) return b.weight;
+  const rated = b.rating_count >= 5;
+  const quality = rated ? Math.max(0, Math.min((b.rating - 3.2) / 1.0, 1)) : 0.45;
+  const novelty = rated ? 0 : 0.15;
+  const bwWeight = rated ? 0.06 : 0.22;
+  const award = b.awarded ? 0.12 : 0;
+  return Math.round(1000 * (0.55 * b.aff + 0.33 * quality + novelty + award
+                            + bwWeight * (b.bwb ?? 0))) / 10;
+}
+
+function applyRatings(fresh) {
+  let changed = 0;
+  for (const b of DATA.beers) {
+    const f = b.bid && fresh[b.bid];
+    if (!f) continue;
+    const count = f.c >= 5 ? f.c : 0;
+    const rating = f.c >= 5 ? f.r : null;
+    if (rating !== b.rating || count !== b.rating_count) changed++;
+    b.rating = rating;
+    b.rating_count = count;
+    b.weight = weigh(b);
+  }
+  return changed;
+}
+
+async function refreshRatings() {
+  const bids = [...new Set(DATA.beers.map(b => b.bid).filter(Boolean))];
+  if (!bids.length) return;
+  const res = await fetch(ALGOLIA.url, {
+    method: 'POST', headers: ALGOLIA.headers,
+    body: JSON.stringify({
+      requests: bids.map(id => ({
+        indexName: 'beer', objectID: String(id),
+        attributesToRetrieve: ['bid', 'rating_score', 'rating_count'],
+      })),
+    }),
+  });
+  if (!res.ok) throw new Error('algolia ' + res.status);
+  const fresh = {};
+  for (const r of (await res.json()).results || []) {
+    if (r && r.bid) fresh[r.bid] = { r: r.rating_score, c: r.rating_count };
+  }
+  if (!Object.keys(fresh).length) throw new Error('no ratings returned');
+  localStorage.setItem('ratings', JSON.stringify({ at: Date.now(), fresh }));
+  return applyRatings(fresh);
+}
+
 fetch('data.json').then(r => r.json()).then(d => {
   DATA = d;
   history.replaceState({ view, stand: null, beerKey: null }, '');
+
+  // Anything saved from a previous run first, so an offline launch is current
+  // as of the last time there was signal.
+  try {
+    const cached = JSON.parse(localStorage.getItem('ratings') || 'null');
+    if (cached && cached.fresh) {
+      applyRatings(cached.fresh);
+      ratingsAt = cached.at;
+    }
+  } catch (e) { /* ignore a corrupt cache */ }
+
   render();
+
+  // Then try for something newer. Failure here is expected in a stadium.
+  refreshRatings().then(changed => {
+    if (changed == null) return;
+    ratingsAt = Date.now();
+    render();
+  }).catch(() => {});
 }).catch(() => {
   $('#main').innerHTML = '<p class="empty">Could not load the beer list.</p>';
 });
