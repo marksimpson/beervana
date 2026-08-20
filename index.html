@@ -576,8 +576,10 @@ function weigh(b) {
   const novelty = rated ? 0 : 0.15;
   const bwWeight = rated ? 0.06 : 0.22;
   const award = b.awarded ? 0.12 : 0;
-  return Math.round(1000 * (0.55 * b.aff + 0.33 * quality + novelty + award
-                            + bwWeight * (b.bwb ?? 0))) / 10;
+  const raw = Math.round(1000 * (0.55 * b.aff + 0.33 * quality + novelty + award
+                                 + bwWeight * (b.bwb ?? 0))) / 10;
+  // Deliberate adjustments, which must survive a rating refresh.
+  return Math.max(0, Math.min(100, raw + (b.intent ?? 0)));
 }
 
 function applyRatings(fresh) {

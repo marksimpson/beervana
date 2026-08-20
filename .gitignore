@@ -15,3 +15,6 @@ crop-*.png
 
 # Cached brewery pages from beervana.co.nz
 .site-cache/
+
+# Personal opinions about named breweries - never commit
+preferences.json

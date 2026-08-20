@@ -237,6 +237,46 @@ def family(type_name):
     return (type_name or '').split(' - ')[0].strip()
 
 
+# For the beers with no Untappd match, the spreadsheet's own style text is all
+# there is. It is free prose rather than a taxonomy - "WCIPA", "NZ Hazy",
+# "XXPA" - but it says plenty, and treating those as unknown buries them. The
+# Neck of the Woods West Coast IPA is the case in point: an award winner
+# sitting at a neutral score because nothing had read the word IPA.
+SHEET_FAMILY = [
+    ('Stout',      r'stout'),
+    ('Porter',     r'porter'),
+    ('Barleywine', r'barley\s?wine'),
+    ('IPA',        r'\b(ipa|ipl)\b|india pale|\b[a-z]{0,3}ipa\b|hazy|neipa|dipa|tipa|iipa'),
+    ('Pale Ale',   r'pale ale|\bx?xpa\b|\bapa\b|session ale'),
+    ('Sour',       r'sour|gose|berliner|lambic|wild ale|kettle|funk|brett'),
+    ('Pilsner',    r'pils'),
+    ('Lager',      r'lager|helles|m[äa]rzen|bock|schwarz|dunkel'),
+    ('Wheat Beer', r'wheat|weizen|witbier|hefe'),
+    ('Red Ale',    r'red ale|amber'),
+    ('Brown Ale',  r'brown'),
+    ('Farmhouse Ale', r'saison|farmhouse'),
+    ('Bitter',     r'bitter|\besb\b'),
+]
+
+
+def sheet_family(style, abv):
+    # The style text describes what a beer tastes of, not whether it has any
+    # alcohol: Canyon's "Bright eyed 0" is written up as a Hazy IPA and is 0%.
+    # The ABV column settles it, and Untappd would have said Non-Alcoholic.
+    try:
+        if abv not in (None, '') and float(abv) < 0.6:
+            return 'Non-Alcoholic'
+    except ValueError:
+        pass
+    s = (style or '').lower()
+    if 'non-alc' in s or 'non alc' in s or re.search(r'\b0%', s):
+        return 'Non-Alcoholic'
+    for fam, pattern in SHEET_FAMILY:
+        if re.search(pattern, s):
+            return fam
+    return ''
+
+
 fam_count = collections.Counter()
 fam_ratings = collections.defaultdict(list)
 for c in history:
@@ -355,6 +395,52 @@ for tier in (0, 1, 2):
             matches[id(r)] = (best, score, tier)
 
 # --------------------------------------------------------------------------
+# Untappd ids supplied by hand for beers the matcher could not find. Fetching
+# the record by id gives them a rating, a working check-in link and a place in
+# the app's live refresh, rather than a "search Untappd" dead end.
+# --------------------------------------------------------------------------
+bids_path = os.path.join(HERE, 'beer-bids.json')
+manual_bids, bids_unmatched = {}, []
+if os.path.exists(bids_path):
+    wanted = {k: v for k, v in json.load(open(bids_path)).items()
+              if not k.startswith('_')}
+    if wanted:
+        # /objects is a different endpoint from search, so fetch these directly.
+        payload = {'requests': [{'indexName': 'beer', 'objectID': str(bid)}
+                                for bid in wanted.values()]}
+        tmp = os.path.join(HERE, '.req.json')
+        with open(tmp, 'w') as f:
+            json.dump(payload, f)
+        out = subprocess.run([
+            'curl', '-s', '-X', 'POST',
+            '-H', f'X-Algolia-API-Key: {KEY}',
+            '-H', f'X-Algolia-Application-Id: {APP}',
+            '-H', 'Content-Type: application/json',
+            '--data', f'@{tmp}',
+            f'https://{APP}-dsn.algolia.net/1/indexes/*/objects'],
+            capture_output=True, text=True, check=True)
+        os.path.exists(tmp) and os.remove(tmp)
+        got = {}
+        for rec in json.loads(out.stdout).get('results', []):
+            if rec and rec.get('bid'):
+                got[rec['bid']] = rec
+        for label, bid in wanted.items():
+            brewery, _, beer = label.partition('|')
+            key = (norm(brewery), norm(beer))
+            hit = got.get(bid)
+            if not hit:
+                bids_unmatched.append(f'{label} (id {bid} not found)')
+                continue
+            row = next((r for r in rows
+                        if (norm(r['BREWERY']), norm(r['BEER NAME'])) == key
+                        or (norm(r['EXHIBITOR']), norm(r['BEER NAME'])) == key), None)
+            if row is None:
+                bids_unmatched.append(f'{label} (no such beer in the list)')
+                continue
+            matches[id(row)] = (hit, 1.0, 'manual')
+            manual_bids[label] = bid
+
+# --------------------------------------------------------------------------
 # Assemble, score, and report
 # --------------------------------------------------------------------------
 NOT_BEER = re.compile(r'cocktail|gin\b|vodka|rum\b|whisk|tonic|mead|cider|'
@@ -401,15 +487,43 @@ for r in rows:
                   'match_score': 0, 'match_tier': None, 'drunk': False})
     beers.append(b)
 
+# --------------------------------------------------------------------------
+# Deliberate adjustments the check-in history cannot know about: awards won
+# since the export, breweries that are hard to get hold of, and ones being
+# skipped on purpose. Added to the finished score.
+# --------------------------------------------------------------------------
+intent_path = os.path.join(HERE, 'preferences.json')
+intent_of, intent_unmatched, style_rules = {}, [], []
+if os.path.exists(intent_path):
+    prefs = json.load(open(intent_path))
+    style_rules = [(re.compile(cfg['match'], re.I), cfg['adjust'], label)
+                   for label, cfg in (prefs.get('styles') or {}).items()]
+    raw = {k: v for k, v in (prefs.get('breweries') or {}).items()
+           if not k.startswith('_')}
+    names = {b['exhibitor'] for b in beers} | {b['brewery'] for b in beers}
+    for name, cfg in raw.items():
+        target, toks = brewery_norm(name), brewery_tokens(name)
+        hit = {x for x in names if brewery_norm(x) == target}
+        if not hit and toks:
+            hit = {x for x in names
+                   if brewery_tokens(x) and
+                   (brewery_tokens(x) <= toks or toks <= brewery_tokens(x))}
+        if hit:
+            for x in hit:
+                intent_of[x] = cfg['adjust']
+        else:
+            intent_unmatched.append(name)
+
+
 # scoring
 for b in beers:
     if not b['is_beer']:
         b['score'] = None
         continue
-    fam = b['family']
+    fam = b['family'] or sheet_family(b['sheet_style'], b['abv'])
     aff = profile.get(fam, {}).get('affinity', 0.25)
     if not fam:
-        aff = 0.3                                   # unmatched: neutral-ish
+        aff = 0.3                            # nothing to go on either way
     # How you rate this brewery, as a deviation from your overall average.
     bw = brewery_ratings.get(norm(b['brewery'])) or \
         brewery_ratings.get(norm(b['exhibitor'])) or []
@@ -441,7 +555,17 @@ for b in beers:
     # instead of nudging every score by 0.1 on the first refresh.
     raw = (0.55 * b['aff'] + 0.33 * quality + novelty + award
            + bw_weight * b['bwb'])
-    b['score'] = math.floor(raw * 1000 + 0.5) / 10
+    b['intent'] = intent_of.get(b['exhibitor'], intent_of.get(b['brewery'], 0))
+    # Styles carry their own adjustment, tested against whichever description
+    # we have: Untappd's canonical one, or the spreadsheet's own words.
+    # The name counts too: Untappd files Panhead's "Hazy Vandal" as an IPA -
+    # New Zealand, and the brewer calling it hazy is the better evidence.
+    style_text = f"{b['style']} {b['sheet_style']} {b['name']}"
+    for pattern, adjust, _ in style_rules:
+        if pattern.search(style_text):
+            b['intent'] += adjust
+    b['score'] = max(0.0, min(100.0,
+                              math.floor(raw * 1000 + 0.5) / 10 + b['intent']))
 
 # --------------------------------------------------------------------------
 # Publishable data. This file ships with the app and is world-readable, so it
@@ -515,6 +639,7 @@ public = {
         'aff': b.get('aff'),
         'bwb': b.get('bwb'),
         'awarded': b.get('awarded', False),
+        'intent': b.get('intent', 0),
     } for b in beers],
 }
 with open(os.path.join(HERE, 'data.json'), 'w') as f:
@@ -539,6 +664,14 @@ print(f"  by tier              : " + ", ".join(
 print(f"have a rating (>=5)    : {len(rated)} ({len(rated)/len(matched):.0%} of matched)")
 print(f"already drunk          : {len(drunk)} ({len(drunk)/len(matched):.0%} of matched)")
 print(f"breweries resolved     : {len(brewery_map)}/{len(brewery_names)}")
+if intent_of:
+    print("  deliberate adjustments:")
+    for name in sorted(set(intent_of), key=lambda n: -intent_of[n]):
+        n = sum(1 for b in beers if b['exhibitor'] == name or b['brewery'] == name)
+        print(f"       {name[:30]:<31}{intent_of[name]:>+5}   {n} beers")
+if intent_unmatched:
+    print(f"  !! preferences.json names nothing recognises: "
+          f"{', '.join(intent_unmatched)}")
 
 # One beer at two stands usually means the merge put it in the wrong place, or
 # the two sources disagree about whose beer it is. Neither is silent-worthy.
