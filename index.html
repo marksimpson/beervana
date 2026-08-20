@@ -136,7 +136,6 @@ h2:first-child { margin-top: 4px; }
   <div class="bar">
     <button class="back" id="back" hidden>&lsaquo; Back</button>
     <h1 id="title">Beervana 2026</h1>
-    <button class="gear" id="dir" title="Reverse walking direction">&#8646;</button>
     <button class="gear" id="sort" title="Change sort">&#8645;</button>
     <button class="gear" id="gear" title="Settings">&#9881;</button>
   </div>
@@ -233,14 +232,26 @@ function sortAll(list) {
   });
 }
 
-// You come in at aisle 16, so that is where the list starts and it wraps round
-// the concourse from there: 16 to 36, then 1 to 15, which is anti-clockwise.
-// Reversed, it wraps the other way for when you turn round and walk clockwise.
+// You come in at aisle 16, so that is where the walking orders start and they
+// wrap round the concourse from there: 16 to 36 then 1 to 15 going
+// anti-clockwise, the other way round going clockwise.
 const ENTRANCE = 16;
 const AISLES = 36;
-let reversed = localStorage.getItem('dir') === 'rev';
-const walkOrder = a => a == null ? 999
-  : (reversed ? (ENTRANCE - a + AISLES) : (a - ENTRANCE + AISLES)) % AISLES;
+
+const STAND_SORTS = {
+  acw:  { label: 'walking anti-clockwise',
+          cmp: (a, b) => walkOrder(a.aisle, false) - walkOrder(b.aisle, false) },
+  cw:   { label: 'walking clockwise',
+          cmp: (a, b) => walkOrder(a.aisle, true) - walkOrder(b.aisle, true) },
+  name: { label: 'A to Z', cmp: () => 0 },
+};
+const walkOrder = (a, rev) => a == null ? 999
+  : (rev ? (ENTRANCE - a + AISLES) : (a - ENTRANCE + AISLES)) % AISLES;
+
+// 'dir' was the old two-state toggle; carry a reversed device over to clockwise.
+let standSort = localStorage.getItem('standsort')
+  || (localStorage.getItem('dir') === 'rev' ? 'cw' : 'acw');
+if (!STAND_SORTS[standSort]) standSort = 'acw';
 
 function matches(b, q) {
   if (!q) return true;
@@ -280,10 +291,11 @@ function render() {
   $('#tabs').hidden = detail;
   $('#q').hidden = detail;
   $('#gear').hidden = detail;
-  $('#dir').hidden = (view !== 'stands');   // only the stand list is walk-ordered
-  $('#dir').style.color = reversed ? 'var(--amber)' : '';
-  $('#sort').hidden = (view !== 'all');     // only all beers is re-sortable
-  $('#sort').style.color = sortBy === sortOrder()[0] ? '' : 'var(--amber)';
+  // Both list views are re-sortable; the icon lights up when off the default.
+  $('#sort').hidden = !(view === 'all' || view === 'stands');
+  const onDefault = view === 'stands' ? standSort === 'acw'
+                                      : sortBy === sortOrder()[0];
+  $('#sort').style.color = onDefault ? '' : 'var(--amber)';
 
   if (view === 'settings') {
     $('#title').textContent = 'Settings';
@@ -391,9 +403,9 @@ function render() {
         return { ...s, total: bs.length, left: bs.filter(b => !isHad(b)).length, hits: hit.length };
       })
       .filter(s => s.hits > 0 || (!q && s.total))
-      .sort((a, b) => walkOrder(a.aisle) - walkOrder(b.aisle) || a.name.localeCompare(b.name));
-    $('#sub').textContent = `${stands.length} stands, `
-      + (reversed ? 'walking clockwise' : 'walking anti-clockwise');
+      .sort((a, b) => STAND_SORTS[standSort].cmp(a, b) || a.name.localeCompare(b.name));
+    $('#sub').textContent =
+      `${stands.length} stands, ${STAND_SORTS[standSort].label}`;
     main.innerHTML = stands.length ? stands.map(s => `
       <button class="row" data-stand="${esc(s.name)}">
         ${s.aisle ? `<div class="aisle">${s.aisle}<small>aisle</small></div>` : ''}
@@ -478,20 +490,19 @@ $('#main').addEventListener('click', e => {
   }
 });
 
-// Reversing is a re-sort, not a screen change, so it stays out of history:
-// the back gesture should leave the stand list, not undo a sort.
-$('#dir').onclick = () => {
-  reversed = !reversed;
-  localStorage.setItem('dir', reversed ? 'rev' : 'fwd');
-  scrollTo(0, 0); render();
-};
-
-// Cycles rather than opening a menu: four options, and the subtitle says which
-// one you are on.
+// Cycles rather than opening a menu, and the subtitle says which one you are
+// on. Re-sorting is not a screen change, so it stays out of history: the back
+// gesture should leave the list, not undo a sort.
 $('#sort').onclick = () => {
-  const order = sortOrder();
-  sortBy = order[(order.indexOf(sortBy) + 1) % order.length];
-  localStorage.setItem('sort', sortBy);
+  if (view === 'stands') {
+    const order = Object.keys(STAND_SORTS);
+    standSort = order[(order.indexOf(standSort) + 1) % order.length];
+    localStorage.setItem('standsort', standSort);
+  } else {
+    const order = sortOrder();
+    sortBy = order[(order.indexOf(sortBy) + 1) % order.length];
+    localStorage.setItem('sort', sortBy);
+  }
   scrollTo(0, 0); render();
 };
 
