@@ -493,11 +493,16 @@ for r in rows:
 # skipped on purpose. Added to the finished score.
 # --------------------------------------------------------------------------
 intent_path = os.path.join(HERE, 'preferences.json')
-intent_of, intent_unmatched, style_rules = {}, [], []
+intent_of, intent_unmatched, style_rules, beer_rules = {}, [], [], {}
 if os.path.exists(intent_path):
     prefs = json.load(open(intent_path))
     style_rules = [(re.compile(cfg['match'], re.I), cfg['adjust'], label)
                    for label, cfg in (prefs.get('styles') or {}).items()]
+    # Named beers, for when neither the brewery nor the style rule is right
+    # about a particular one.
+    beer_rules = {(norm(k.split('|')[0]), norm(k.split('|')[-1])): cfg['adjust']
+                  for k, cfg in (prefs.get('beers') or {}).items()
+                  if not k.startswith('_') and '|' in k}
     raw = {k: v for k, v in (prefs.get('breweries') or {}).items()
            if not k.startswith('_')}
     names = {b['exhibitor'] for b in beers} | {b['brewery'] for b in beers}
@@ -564,6 +569,11 @@ for b in beers:
     for pattern, adjust, _ in style_rules:
         if pattern.search(style_text):
             b['intent'] += adjust
+    # A named beer overrides whatever the brewery and style rules decided.
+    named = beer_rules.get((norm(b['brewery']), norm(b['name']))) \
+        or beer_rules.get((norm(b['exhibitor']), norm(b['name'])))
+    if named is not None:
+        b['intent'] += named
     b['score'] = max(0.0, min(100.0,
                               math.floor(raw * 1000 + 0.5) / 10 + b['intent']))
 
