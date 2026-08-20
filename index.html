@@ -617,7 +617,10 @@ async function refreshRatings() {
   return applyRatings(fresh);
 }
 
-fetch('data.json').then(r => r.json()).then(d => {
+// no-cache revalidates with the server. Without it the first load of a new
+// deploy can be handed the previous data.json out of the browser's HTTP cache,
+// before the service worker is even involved.
+fetch('data.json', { cache: 'no-cache' }).then(r => r.json()).then(d => {
   DATA = d;
   history.replaceState({ view, stand: null, beerKey: null }, '');
 

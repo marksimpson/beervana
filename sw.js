@@ -1,5 +1,5 @@
 // Cache everything up front so the app works with no signal in the venue.
-const CACHE = 'beervana-v18';
+const CACHE = 'beervana-v19';
 const FILES = ['./', 'index.html', 'data.json', 'manifest.json', 'icon.svg'];
 
 // cache: 'reload' forces each precache fetch to the network. Without it addAll
