@@ -100,9 +100,6 @@ main { padding: 12px var(--pad) 40px; }
 .aisle small { display: block; font-size: 9px; font-weight: 500; color: var(--muted);
                text-transform: uppercase; letter-spacing: .06em; }
 .rating { color: var(--green); font-weight: 600; }
-h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .07em;
-     color: var(--muted); margin: 22px 0 8px; font-weight: 600; }
-h2:first-child { margin-top: 4px; }
 .empty { color: var(--muted); text-align: center; padding: 40px 20px; }
 
 /* detail sheet */
@@ -465,25 +462,9 @@ function render() {
                        : `${list.length} beers, best rated first`)
     : `${list.length} beers, ${SORTS[sortBy].label}`;
 
-  if (view === 'picks' && MODE === 'mine') {
-    // Group by style family so the IPAs don't bury everything else. Only worth
-    // doing for a personal ranking; a straight rating sort has no such bias.
-    // Only a matched beer has a canonical "Family - Sub" style. Unmatched ones
-    // fall back to the spreadsheet's free text, which is one-of-a-kind prose
-    // and would give every such beer its own heading.
-    const fam = b => (b.url && (b.style || '').split(' - ')[0]) || 'Other';
-    const groups = {};
-    for (const b of list) (groups[fam(b)] ||= []).push(b);
-    const order = Object.keys(groups).sort((a, c) =>
-      (groups[c][0].weight ?? 0) - (groups[a][0].weight ?? 0));
-    main.innerHTML = order.map(f =>
-      `<h2>${esc(f)}</h2>` +
-      groups[f].slice(0, 8).map(b => beerRow(b, true)).join('')).join('')
-      || '<p class="empty">Nothing to suggest.</p>';
-  } else {
-    main.innerHTML = list.length ? list.map(b => beerRow(b, true)).join('')
-      : '<p class="empty">No beers match.</p>';
-  }
+  main.innerHTML = list.length ? list.map(b => beerRow(b, true)).join('')
+    : `<p class="empty">${view === 'picks' ? 'Nothing to suggest.'
+                                           : 'No beers match.'}</p>`;
 }
 
 // Every move between screens becomes a history entry, so the phone's back
