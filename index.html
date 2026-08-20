@@ -158,17 +158,14 @@ let beer = null;
 let query = '';
 let ratingsAt = null;       // when the Untappd ratings were last refreshed
 
-// Whose Untappd history is baked into data.json. If you fork this for your own
-// history, this is the only name to change.
-const OWNER = 'Mark';
-
-// Two modes. "mine" uses OWNER's Untappd history: beers already checked in are
-// marked and demoted, and each beer carries a personal weighting. "guest"
-// ignores all of that and ranks on the public Untappd rating instead.
+// Two modes. "mine" applies the check-in history baked into data.json: beers
+// already checked in are marked and demoted, and each beer carries a personal
+// weighting. "guest" ignores all of that and ranks on the public Untappd rating
+// instead, and is the default.
 // Visiting with ?mine switches this device over for good; ?guest switches back.
 const params = new URLSearchParams(location.search);
 // ?mark is the original spelling of ?mine, kept so home screen icons and
-// devices set up before the rename carry on working.
+// devices set up before it was renamed carry on working.
 if (params.has('mine') || params.has('mark')) localStorage.setItem('mode', 'mine');
 if (params.has('guest')) localStorage.setItem('mode', 'guest');
 if (params.has('mine') || params.has('mark') || params.has('guest')) {
@@ -304,12 +301,13 @@ function render() {
       <div class="setting">
         <h4>Recommendations</h4>
         <p>${MODE === 'mine'
-          ? `Using ${esc(OWNER)}&rsquo;s Untappd history: beers already checked in are `
-            + 'marked and pushed down, and each beer gets a personal pick score.'
+          ? 'Using the check-in history built into this app: beers already '
+            + 'checked in are marked and pushed down, and each beer gets a '
+            + 'personal pick score.'
           : 'Ranking by public Untappd rating. No personal history is applied.'}</p>
         <button class="btn ghost" id="mode">
           ${MODE === 'mine' ? 'Switch to everyone&rsquo;s ratings'
-                            : `Use ${esc(OWNER)}&rsquo;s recommendations`}
+                            : 'Use the personal recommendations'}
         </button>
       </div>
       <div class="setting">
