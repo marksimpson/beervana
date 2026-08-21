@@ -9,10 +9,16 @@ no scraping of Untappd's own servers.
 
 Pass --retry-misses to re-search the beers that found nothing last time; see
 the retry block below for why a plain re-run will not do it.
+
+Pass --find-missing to do the Untappd lookup only, writing what it finds to
+beer-bids.json. That needs no check-in history, so it runs anywhere.
 """
 import csv, json, re, subprocess, sys, urllib.parse, difflib, os, time, collections, math
 
-RETRY_MISSES = '--retry-misses' in sys.argv
+FIND_MISSING = '--find-missing' in sys.argv
+# Looking for beers that were missing means asking about them again, whether
+# this machine has a cache of yesterday's misses or no cache at all.
+RETRY_MISSES = '--retry-misses' in sys.argv or FIND_MISSING
 
 APP = "9WBO4RQ3HO"
 KEY = "1d347324d67ec472bb7132c66aead485"
@@ -262,93 +268,6 @@ if os.path.exists(site_path):
         have[bn].add(b['name'])
         added_beers += 1
 
-history = json.load(open(os.path.join(HERE, 'untappd-history.json')))
-drunk_bids = {c['bid'] for c in history if c.get('bid')}
-drunk_names = {(norm(c['brewery_name']), norm(c['beer_name'])) for c in history}
-
-# --------------------------------------------------------------------------
-# Taste profile, derived from the history
-# --------------------------------------------------------------------------
-def family(type_name):
-    return (type_name or '').split(' - ')[0].strip()
-
-
-# For the beers with no Untappd match, the spreadsheet's own style text is all
-# there is. It is free prose rather than a taxonomy - "WCIPA", "NZ Hazy",
-# "XXPA" - but it says plenty, and treating those as unknown buries them. The
-# Neck of the Woods West Coast IPA is the case in point: an award winner
-# sitting at a neutral score because nothing had read the word IPA.
-SHEET_FAMILY = [
-    ('Stout',      r'stout'),
-    ('Porter',     r'porter'),
-    ('Barleywine', r'barley\s?wine'),
-    ('IPA',        r'\b(ipa|ipl)\b|india pale|\b[a-z]{0,3}ipa\b|hazy|neipa|dipa|tipa|iipa'),
-    ('Pale Ale',   r'pale ale|\bx?xpa\b|\bapa\b|session ale'),
-    ('Sour',       r'sour|gose|berliner|lambic|wild ale|kettle|funk|brett'),
-    ('Pilsner',    r'pils'),
-    ('Lager',      r'lager|helles|m[äa]rzen|bock|schwarz|dunkel'),
-    ('Wheat Beer', r'wheat|weizen|witbier|hefe'),
-    ('Red Ale',    r'red ale|amber'),
-    ('Brown Ale',  r'brown'),
-    ('Farmhouse Ale', r'saison|farmhouse'),
-    ('Bitter',     r'bitter|\besb\b'),
-]
-
-
-def sheet_family(style, abv):
-    # The style text describes what a beer tastes of, not whether it has any
-    # alcohol: Canyon's "Bright eyed 0" is written up as a Hazy IPA and is 0%.
-    # The ABV column settles it, and Untappd would have said Non-Alcoholic.
-    try:
-        if abv not in (None, '') and float(abv) < 0.6:
-            return 'Non-Alcoholic'
-    except ValueError:
-        pass
-    s = (style or '').lower()
-    if 'non-alc' in s or 'non alc' in s or re.search(r'\b0%', s):
-        return 'Non-Alcoholic'
-    for fam, pattern in SHEET_FAMILY:
-        if re.search(pattern, s):
-            return fam
-    return ''
-
-
-fam_count = collections.Counter()
-fam_ratings = collections.defaultdict(list)
-for c in history:
-    f = family(c.get('beer_type'))
-    fam_count[f] += 1
-    if c.get('rating_score'):
-        fam_ratings[f].append(c['rating_score'])
-
-total_checkins = len(history)
-overall_avg = sum(c['rating_score'] for c in history if c.get('rating_score')) / \
-    sum(1 for c in history if c.get('rating_score'))
-
-# How you rate each brewery you've drunk. This is what separates the unrated
-# beers from each other: a new release from a brewery you consistently love is
-# a better bet than a new release from one you don't.
-brewery_ratings = collections.defaultdict(list)
-for c in history:
-    if c.get('rating_score'):
-        brewery_ratings[norm(c['brewery_name'])].append(c['rating_score'])
-
-profile = {}
-for f, n in fam_count.items():
-    rs = fam_ratings[f]
-    avg = sum(rs) / len(rs) if rs else overall_avg
-    share = n / total_checkins
-    # Affinity blends "how much you drink it" with "how well you rate it".
-    # The rating term is what lets a rare-but-loved family (Barleywine) rank.
-    volume = min(share / 0.10, 1.0)                     # 10% share saturates
-    quality = max(0.0, min((avg - 3.0) / 1.3, 1.0))     # 3.0 floor, 4.3 ceiling
-    confidence = min(n / 40, 1.0)                       # ignore tiny samples
-    profile[f] = {
-        'checkins': n,
-        'avg_rating': round(avg, 2),
-        'share': round(share, 4),
-        'affinity': round((0.45 * volume + 0.55 * quality) * confidence, 4),
-    }
 
 # --------------------------------------------------------------------------
 # Pass 1: resolve breweries (try the BREWERY column, then EXHIBITOR)
@@ -528,6 +447,149 @@ if os.path.exists(bids_path):
                 continue
             matches[id(row)] = (hit, 1.0, 'manual')
             manual_bids[label] = bid
+
+# --------------------------------------------------------------------------
+# Lookup-only mode.
+#
+# Everything above this point is pure Untappd lookup. The check-in history is
+# needed to score a beer, not to find one, so this stops here and runs fine on
+# a machine that has no untappd-history.json.
+#
+# It writes nothing to data.json - a data.json built without the history would
+# have no drunk flags and no weights, which is worse than a stale one. The ids
+# go to beer-bids.json instead, which is committable, so a later full run on
+# the machine that does have the history picks them up and scores them.
+# --------------------------------------------------------------------------
+if FIND_MISSING:
+    published, data_path = {}, os.path.join(HERE, 'data.json')
+    if os.path.exists(data_path):
+        for b in json.load(open(data_path))['beers']:
+            published[(brewery_norm(b['brewery']), norm(b['name']))] = b
+
+    # Beers the shipped app currently shows no link for. Comparing against
+    # data.json rather than this run's misses is what makes the mode work on a
+    # fresh clone, where there is no .algolia-cache.json and so nothing to
+    # retry - the first search already asks Untappd everything.
+    newly = []
+    for r in rows:
+        m = matches.get(id(r))
+        was = published.get((brewery_norm(r['BREWERY']), norm(r['BEER NAME'])))
+        if m and was and was.get('is_beer') and not was.get('url'):
+            newly.append((r, m))
+
+    existing = json.load(open(bids_path)) if os.path.exists(bids_path) else {}
+    out, added = dict(existing), []
+    for r, (hit, _, _) in newly:
+        label = f"{r['BREWERY']} | {r['BEER NAME']}"
+        if label not in existing:                  # a hand-picked id wins
+            out[label] = hit['bid']
+            added.append(label)
+    if added:
+        with open(bids_path, 'w') as f:
+            json.dump(out, f, indent=2)
+            f.write('\n')
+
+    gone = [b for b in published.values() if b.get('is_beer') and not b.get('url')]
+    print(f"had no Untappd page    : {len(gone)}")
+    print(f"found now              : {len(newly)}"
+          f"   ({len(added)} added to beer-bids.json)")
+    for r, (hit, score, tier) in newly:
+        mark = ' ' if f"{r['BREWERY']} | {r['BEER NAME']}" in added else '.'
+        print(f"  {mark} {r['BREWERY'][:18]:<19}{r['BEER NAME'][:26]:<27}-> "
+              f"{hit['beer_name'][:26]:<27}t{tier} {score:.2f}  {hit['bid']}")
+    print()
+    print("Read those before trusting them - a wrong id is worse than no link.")
+    print("Then commit beer-bids.json, and run match.py without --find-missing")
+    print("on the machine that has untappd-history.json to rebuild data.json.")
+    raise SystemExit(0)
+
+history = json.load(open(os.path.join(HERE, 'untappd-history.json')))
+drunk_bids = {c['bid'] for c in history if c.get('bid')}
+drunk_names = {(norm(c['brewery_name']), norm(c['beer_name'])) for c in history}
+
+# --------------------------------------------------------------------------
+# Taste profile, derived from the history
+# --------------------------------------------------------------------------
+def family(type_name):
+    return (type_name or '').split(' - ')[0].strip()
+
+
+# For the beers with no Untappd match, the spreadsheet's own style text is all
+# there is. It is free prose rather than a taxonomy - "WCIPA", "NZ Hazy",
+# "XXPA" - but it says plenty, and treating those as unknown buries them. The
+# Neck of the Woods West Coast IPA is the case in point: an award winner
+# sitting at a neutral score because nothing had read the word IPA.
+SHEET_FAMILY = [
+    ('Stout',      r'stout'),
+    ('Porter',     r'porter'),
+    ('Barleywine', r'barley\s?wine'),
+    ('IPA',        r'\b(ipa|ipl)\b|india pale|\b[a-z]{0,3}ipa\b|hazy|neipa|dipa|tipa|iipa'),
+    ('Pale Ale',   r'pale ale|\bx?xpa\b|\bapa\b|session ale'),
+    ('Sour',       r'sour|gose|berliner|lambic|wild ale|kettle|funk|brett'),
+    ('Pilsner',    r'pils'),
+    ('Lager',      r'lager|helles|m[äa]rzen|bock|schwarz|dunkel'),
+    ('Wheat Beer', r'wheat|weizen|witbier|hefe'),
+    ('Red Ale',    r'red ale|amber'),
+    ('Brown Ale',  r'brown'),
+    ('Farmhouse Ale', r'saison|farmhouse'),
+    ('Bitter',     r'bitter|\besb\b'),
+]
+
+
+def sheet_family(style, abv):
+    # The style text describes what a beer tastes of, not whether it has any
+    # alcohol: Canyon's "Bright eyed 0" is written up as a Hazy IPA and is 0%.
+    # The ABV column settles it, and Untappd would have said Non-Alcoholic.
+    try:
+        if abv not in (None, '') and float(abv) < 0.6:
+            return 'Non-Alcoholic'
+    except ValueError:
+        pass
+    s = (style or '').lower()
+    if 'non-alc' in s or 'non alc' in s or re.search(r'\b0%', s):
+        return 'Non-Alcoholic'
+    for fam, pattern in SHEET_FAMILY:
+        if re.search(pattern, s):
+            return fam
+    return ''
+
+
+fam_count = collections.Counter()
+fam_ratings = collections.defaultdict(list)
+for c in history:
+    f = family(c.get('beer_type'))
+    fam_count[f] += 1
+    if c.get('rating_score'):
+        fam_ratings[f].append(c['rating_score'])
+
+total_checkins = len(history)
+overall_avg = sum(c['rating_score'] for c in history if c.get('rating_score')) / \
+    sum(1 for c in history if c.get('rating_score'))
+
+# How you rate each brewery you've drunk. This is what separates the unrated
+# beers from each other: a new release from a brewery you consistently love is
+# a better bet than a new release from one you don't.
+brewery_ratings = collections.defaultdict(list)
+for c in history:
+    if c.get('rating_score'):
+        brewery_ratings[norm(c['brewery_name'])].append(c['rating_score'])
+
+profile = {}
+for f, n in fam_count.items():
+    rs = fam_ratings[f]
+    avg = sum(rs) / len(rs) if rs else overall_avg
+    share = n / total_checkins
+    # Affinity blends "how much you drink it" with "how well you rate it".
+    # The rating term is what lets a rare-but-loved family (Barleywine) rank.
+    volume = min(share / 0.10, 1.0)                     # 10% share saturates
+    quality = max(0.0, min((avg - 3.0) / 1.3, 1.0))     # 3.0 floor, 4.3 ceiling
+    confidence = min(n / 40, 1.0)                       # ignore tiny samples
+    profile[f] = {
+        'checkins': n,
+        'avg_rating': round(avg, 2),
+        'share': round(share, 4),
+        'affinity': round((0.45 * volume + 0.55 * quality) * confidence, 4),
+    }
 
 # --------------------------------------------------------------------------
 # Assemble, score, and report

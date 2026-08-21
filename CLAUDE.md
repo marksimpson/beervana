@@ -90,6 +90,25 @@ in the file and nothing else has reviewed them.
 Do not clear the whole cache to achieve this. That re-queries all 376 beers and
 can move matches that are already right.
 
+### Finding beers without the check-in history
+
+The history is needed to score a beer, not to find one. On a machine without
+`untappd-history.json`:
+
+```bash
+python3 match.py --find-missing
+```
+
+does the lookup only and stops before scoring, writing what it finds into
+`beer-bids.json`. It writes nothing to `data.json` - one built without the
+history would have no drunk flags and no weights, which is worse than a stale
+one. Commit the bids, then run `match.py` normally where the history lives.
+
+It compares against the `url`s already in `data.json` rather than against this
+run's own misses, which is what makes it work on a fresh clone: there is no
+`.algolia-cache.json` there, so nothing is a repeat and there is nothing to
+retry. Ids already in `beer-bids.json` are left alone - hand-picked wins.
+
 ### The leaderboard comes from Firebase, not the website
 
 beervana.co.nz sends no CORS headers and `x-frame-options: DENY`, so the page
