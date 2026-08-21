@@ -46,6 +46,25 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 CACHE = os.path.join(HERE, ".algolia-cache.json")
 
 # --------------------------------------------------------------------------
+# Check the inputs before spending anything on the network. A full search is a
+# couple of minutes; discovering a missing file at the end of it, having
+# written nothing, is the worst of both.
+# --------------------------------------------------------------------------
+HISTORY = os.path.join(HERE, 'untappd-history.json')
+if not FIND_MISSING and not os.path.exists(HISTORY):
+    raise SystemExit(
+        "untappd-history.json is not here, and scoring needs it.\n"
+        "\n"
+        "  To look beers up on Untappd without it, which is most of what a\n"
+        "  run does, and write what it finds to beer-bids.json:\n"
+        "\n"
+        "      python match.py --find-missing\n"
+        "\n"
+        "  To rebuild data.json, put the history next to match.py first. A\n"
+        "  data.json built without it would have no drunk flags and no\n"
+        "  weights, so this stops rather than write one.")
+
+# --------------------------------------------------------------------------
 # Algolia access, with an on-disk cache so re-runs cost nothing
 # --------------------------------------------------------------------------
 cache = json.load(open(CACHE, encoding='utf-8')) if os.path.exists(CACHE) else {}
@@ -523,7 +542,7 @@ if FIND_MISSING:
     print("on the machine that has untappd-history.json to rebuild data.json.")
     raise SystemExit(0)
 
-history = json.load(open(os.path.join(HERE, 'untappd-history.json'), encoding='utf-8'))
+history = json.load(open(HISTORY, encoding='utf-8'))
 drunk_bids = {c['bid'] for c in history if c.get('bid')}
 drunk_names = {(norm(c['brewery_name']), norm(c['beer_name'])) for c in history}
 
