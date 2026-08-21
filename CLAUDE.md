@@ -69,6 +69,27 @@ nothing touching anyone's account. Search takes 10 queries a request; the
 Never drive this through the Chrome tools. That is Mark's real browser with his
 real Untappd session.
 
+### A cached miss is forever, unless you ask for it back
+
+`.algolia-cache.json` keys on the query, and `algolia()` skips anything already
+in it. A beer that found nothing is cached as an empty hit list, which is
+indistinguishable from one already answered - so re-running `match.py` when a
+brewery has since published the page will not send the query, and the beer stays
+missing however many times you run it.
+
+```bash
+python3 match.py --retry-misses
+```
+
+drops the cached misses and asks again, along with any brewery that never
+resolved (that one upgrades its beers from tier 2's unfiltered guesswork to a
+filtered search). Matched rows are left alone, so a retry can only add. Read the
+`retried misses` block it prints before pushing: those are the loosest matches
+in the file and nothing else has reviewed them.
+
+Do not clear the whole cache to achieve this. That re-queries all 376 beers and
+can move matches that are already right.
+
 ### The leaderboard comes from Firebase, not the website
 
 beervana.co.nz sends no CORS headers and `x-frame-options: DENY`, so the page

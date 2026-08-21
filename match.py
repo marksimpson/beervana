@@ -6,8 +6,13 @@ Writes: data.json (for the app), plus a coverage report on stdout.
 Untappd's site search is backed by Algolia with a public, search-only key that
 the site itself ships to browsers. We query that directly: no login, no cookies,
 no scraping of Untappd's own servers.
+
+Pass --retry-misses to re-search the beers that found nothing last time; see
+the retry block below for why a plain re-run will not do it.
 """
-import csv, json, re, subprocess, urllib.parse, difflib, os, time, collections, math
+import csv, json, re, subprocess, sys, urllib.parse, difflib, os, time, collections, math
+
+RETRY_MISSES = '--retry-misses' in sys.argv
 
 APP = "9WBO4RQ3HO"
 KEY = "1d347324d67ec472bb7132c66aead485"
@@ -350,19 +355,26 @@ for f, n in fam_count.items():
 # --------------------------------------------------------------------------
 brewery_names = sorted({r['BREWERY'] for r in rows if r.get('BREWERY')} |
                        {r['EXHIBITOR'] for r in rows if r.get('EXHIBITOR')})
-reqs = [(f'brewery::{b}', 'brewery',
-         {'query': clean_brewery(b) or b, 'hitsPerPage': 3}) for b in brewery_names]
-res = algolia(reqs)
 
-brewery_map = {}
-for name, hits in zip(brewery_names, res):
-    best, score = None, 0.0
-    for h in hits:
-        s = sim(clean_brewery(name), clean_brewery(h.get('brewery_name', '')))
-        if s > score:
-            best, score = h, s
-    if best and score >= 0.75:
-        brewery_map[name] = {'id': best['brewery_id'], 'name': best['brewery_name']}
+
+def resolve_breweries(names):
+    """Look each name up in the brewery index, keeping the best hit over 0.75."""
+    res = algolia([(f'brewery::{b}', 'brewery',
+                    {'query': clean_brewery(b) or b, 'hitsPerPage': 3})
+                   for b in names])
+    out = {}
+    for name, hits in zip(names, res):
+        best, score = None, 0.0
+        for h in hits:
+            s = sim(clean_brewery(name), clean_brewery(h.get('brewery_name', '')))
+            if s > score:
+                best, score = h, s
+        if best and score >= 0.75:
+            out[name] = {'id': best['brewery_id'], 'name': best['brewery_name']}
+    return out
+
+
+brewery_map = resolve_breweries(brewery_names)
 
 # --------------------------------------------------------------------------
 # Pass 2: tiered beer lookup
@@ -413,17 +425,63 @@ def pick(r, hits, require_brewery):
 
 
 matches = {}
-for tier in (0, 1, 2):
-    pending = [r for r in rows if id(r) not in matches]
-    specs = [(r, build_tier(r, tier)) for r in pending]
-    specs = [(r, s) for r, s in specs if s]
-    if not specs:
-        continue
-    hits_list = algolia([s for _, s in specs])
-    for (r, _), hits in zip(specs, hits_list):
-        best, score = pick(r, hits, require_brewery=(tier == 2))
-        if best:
-            matches[id(r)] = (best, score, tier)
+
+
+def run_tiers(candidates):
+    """Search each row through the tiers in order, cheapest and most certain
+    first. A row that matches at one tier is not asked about again. Returns the
+    rows this call matched."""
+    found = []
+    for tier in (0, 1, 2):
+        pending = [r for r in candidates if id(r) not in matches]
+        specs = [(r, build_tier(r, tier)) for r in pending]
+        specs = [(r, s) for r, s in specs if s]
+        if not specs:
+            continue
+        hits_list = algolia([s for _, s in specs])
+        for (r, _), hits in zip(specs, hits_list):
+            best, score = pick(r, hits, require_brewery=(tier == 2))
+            if best:
+                matches[id(r)] = (best, score, tier)
+                found.append(r)
+    return found
+
+
+run_tiers(rows)
+
+# --------------------------------------------------------------------------
+# Re-search the beers that found nothing last time.
+#
+# A beer with no Untappd page yesterday can have one today - brewers add them
+# as the festival starts. A plain re-run will not notice: algolia() skips any
+# request already in the cache, and a miss is cached as an empty hit list, so
+# the question never reaches Untappd a second time. This drops those cached
+# misses and asks again.
+#
+# Only unmatched rows are evicted, so a retry can add matches but never move
+# one that already exists. That matters on festival morning: the downside is
+# bounded to beers currently showing nothing at all.
+# --------------------------------------------------------------------------
+missed_rows, retry_found = [], []
+if RETRY_MISSES:
+    missed_rows = [r for r in rows if id(r) not in matches]
+    if missed_rows:
+        # A brewery that never resolved sends all its beers to tier 2's
+        # unfiltered guesswork, so re-ask for those first: a brewery page that
+        # has since appeared upgrades every one of its beers to a filtered
+        # search against the right brewery_id.
+        unresolved = [b for b in brewery_names if b not in brewery_map]
+        for b in unresolved:
+            cache.pop(f'brewery::{b}', None)
+        if unresolved:
+            brewery_map.update(resolve_breweries(unresolved))
+
+        for r in missed_rows:
+            for tier in (0, 1, 2):
+                spec = build_tier(r, tier)
+                if spec:
+                    cache.pop(spec[0], None)
+        retry_found = run_tiers(missed_rows)
 
 # --------------------------------------------------------------------------
 # Untappd ids supplied by hand for beers the matcher could not find. Fetching
@@ -705,6 +763,15 @@ print(f"matched on Untappd     : {len(matched)} ({len(matched)/n:.0%})"
       f"   of real beer: {len(matched_real)}/{len(real)} ({len(matched_real)/len(real):.0%})")
 print(f"  by tier              : " + ", ".join(
     f"t{t}={sum(1 for b in matched if b['match_tier']==t)}" for t in (0, 1, 2)))
+if RETRY_MISSES:
+    print(f"  retried misses       : {len(retry_found)} newly found "
+          f"of {len(missed_rows)}")
+    # Worth reading before pushing: these are the loosest matches in the file,
+    # and nothing else has looked at them.
+    for r in retry_found:
+        hit, score, tier = matches[id(r)]
+        print(f"       {r['BREWERY'][:18]:<19}{r['BEER NAME'][:28]:<29}-> "
+              f"{hit['beer_name'][:28]:<29}t{tier} {score:.2f}")
 print(f"have a rating (>=5)    : {len(rated)} ({len(rated)/len(matched):.0%} of matched)")
 print(f"already drunk          : {len(drunk)} ({len(drunk)/len(matched):.0%} of matched)")
 print(f"breweries resolved     : {len(brewery_map)}/{len(brewery_names)}")
