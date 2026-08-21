@@ -90,17 +90,25 @@ in the file and nothing else has reviewed them.
 Do not clear the whole cache to achieve this. That re-queries all 376 beers and
 can move matches that are already right.
 
-### Every file read and written is UTF-8, explicitly
+### The scripts re-run themselves in UTF-8 mode
 
 The sheet has macrons and smart quotes, and Untappd returns whatever the brewer
 typed. On Windows the locale codepage is cp1252, so a bare `open()` or a
 `subprocess.run(text=True)` decodes Algolia's reply as cp1252 and dies - the
-reader thread raises, `stdout` comes back `None`, and the traceback you see is
-`json.loads(None)` several frames later, which points nowhere near the cause.
-Pass `encoding='utf-8'` on every `open()` and every `subprocess.run`.
+reader thread raises, `stdout` comes back `None`, and the traceback you get is
+`json.loads(None)` several frames later, pointing nowhere near the cause.
 
-`data.json` still lands pure ASCII, because `json.dump` escapes non-ASCII by
-default. Do not "fix" that with `ensure_ascii=False`.
+`match.py` and `fetch_site.py` therefore check `sys.flags.utf8_mode` at the top
+and, if it is off, restart themselves under `-X utf8`. That has to happen before
+the interpreter starts, which is why it cannot just be set in the script.
+`BEERVANA_UTF8` is the sentinel that stops it recursing. Both also pass
+`encoding='utf-8'` on every `open()` and `subprocess.run`, which is redundant
+under UTF-8 mode and kept so the files stay correct if run some other way.
+
+Two things this does not cover, and does not need to: source files are read as
+UTF-8 regardless (the `ä` in the Märzen regex is fine), and `data.json` still
+lands pure ASCII because `json.dump` escapes non-ASCII by default. Do not "fix"
+that second one with `ensure_ascii=False` - the app is fetching it as-is.
 
 ### Finding beers without the check-in history
 

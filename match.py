@@ -15,11 +15,25 @@ beer-bids.json. That needs no check-in history, so it runs anywhere.
 """
 import csv, json, re, subprocess, sys, urllib.parse, difflib, os, time, collections, math
 
-# Windows consoles and redirected pipes default to the locale codepage, which
-# has no macron: printing the report would die on a name like Tuatara's. Ask
-# for UTF-8 explicitly; a no-op everywhere else.
-if hasattr(sys.stdout, 'reconfigure'):
-    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+# --------------------------------------------------------------------------
+# Run in UTF-8 mode, whatever the machine thinks its encoding is.
+#
+# Windows defaults every open(), every subprocess pipe and the console itself
+# to the locale codepage - cp1252 - which has no macron and cannot represent
+# most of what Untappd returns. PEP 540's UTF-8 mode settles all of it at once,
+# but only if it is on before the interpreter starts. So if it is not, start
+# again with it on. The env var stops that recursing if the flag never takes.
+#
+# The explicit encoding='utf-8' on each open() below is then belt and braces:
+# it keeps the file correct if it is ever run some other way.
+# --------------------------------------------------------------------------
+if not sys.flags.utf8_mode and os.environ.get('BEERVANA_UTF8') != '1':
+    os.environ['BEERVANA_UTF8'] = '1'
+    raise SystemExit(subprocess.call(
+        [sys.executable, '-X', 'utf8', os.path.abspath(__file__)] + sys.argv[1:]))
+
+# Report the beer names, rather than lose the run to an encode error on one.
+sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 FIND_MISSING = '--find-missing' in sys.argv
 # Looking for beers that were missing means asking about them again, whether

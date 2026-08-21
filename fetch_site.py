@@ -7,7 +7,17 @@ in __NEXT_DATA__, so no scraping of rendered HTML is needed.
 
 Writes site-beers.json.
 """
-import json, os, re, subprocess, time, urllib.parse
+import json, os, re, subprocess, sys, time, urllib.parse
+
+# Same UTF-8 mode guard as match.py, and for the same reason: brewery pages are
+# UTF-8, Windows is cp1252 by default, and the two do not meet. See the comment
+# there for why this has to happen before the interpreter starts.
+if not sys.flags.utf8_mode and os.environ.get('BEERVANA_UTF8') != '1':
+    os.environ['BEERVANA_UTF8'] = '1'
+    raise SystemExit(subprocess.call(
+        [sys.executable, '-X', 'utf8', os.path.abspath(__file__)] + sys.argv[1:]))
+
+sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = 'https://beervana.co.nz'
@@ -84,7 +94,8 @@ for i, slug in enumerate(slugs, 1):
         })
     print(f'  [{i:>2}/{len(slugs)}] {name:<36} {len(beers):>3} beers')
 
-with open(os.path.join(HERE, 'site-beers.json'), 'w') as f:
+with open(os.path.join(HERE, 'site-beers.json'), 'w',
+          encoding='utf-8', newline='\n') as f:
     json.dump(out, f, indent=1)
 
 print()
