@@ -1,5 +1,12 @@
 {
   "_comment": "Untappd ids for beers the matcher could not find, so they get a real rating, a working check-in link and live refreshes. Key is 'Brewery | Beer name' exactly as the app shows it; value is the number at the end of the untappd.com/b/... URL.",
-
-  "Neck of the Woods | Kinky M.I.L.F": 6789702
+  "Neck of the Woods | Kinky M.I.L.F": 6789702,
+  "BEERS by Bacon Bros | Slime Princess": 6837291,
+  "BEERS by Bacon Bros | Emerald Princess": 6837291,
+  "Double Vision Brewing | Monarch Unleashed": 6837421,
+  "Garage Project | gg ez": 6837362,
+  "Garage Project | Stun Lock": 6837350,
+  "Neck of the Woods | SOUR: ELIXIR": 6837366,
+  "Three Sisters Brewery | Big Pink Energy": 6837280,
+  "Three Sisters Brewery | Papaya Don't Preach": 6837287
 }
