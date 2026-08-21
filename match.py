@@ -15,6 +15,12 @@ beer-bids.json. That needs no check-in history, so it runs anywhere.
 """
 import csv, json, re, subprocess, sys, urllib.parse, difflib, os, time, collections, math
 
+# Windows consoles and redirected pipes default to the locale codepage, which
+# has no macron: printing the report would die on a name like Tuatara's. Ask
+# for UTF-8 explicitly; a no-op everywhere else.
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+
 FIND_MISSING = '--find-missing' in sys.argv
 # Looking for beers that were missing means asking about them again, whether
 # this machine has a cache of yesterday's misses or no cache at all.
@@ -28,7 +34,7 @@ CACHE = os.path.join(HERE, ".algolia-cache.json")
 # --------------------------------------------------------------------------
 # Algolia access, with an on-disk cache so re-runs cost nothing
 # --------------------------------------------------------------------------
-cache = json.load(open(CACHE)) if os.path.exists(CACHE) else {}
+cache = json.load(open(CACHE, encoding='utf-8')) if os.path.exists(CACHE) else {}
 
 
 def algolia(reqs):
@@ -39,7 +45,7 @@ def algolia(reqs):
         payload = {'requests': [{'indexName': ix, 'params': urllib.parse.urlencode(p)}
                                 for _, ix, p in chunk]}
         tmp = os.path.join(HERE, '.req.json')
-        with open(tmp, 'w') as f:
+        with open(tmp, 'w', encoding='utf-8') as f:
             json.dump(payload, f)
         out = subprocess.run([
             'curl', '-s', '-X', 'POST',
@@ -48,7 +54,7 @@ def algolia(reqs):
             '-H', 'Content-Type: application/json',
             '--data', f'@{tmp}',
             f'https://{APP}-dsn.algolia.net/1/indexes/*/queries'],
-            capture_output=True, text=True, check=True)
+            capture_output=True, text=True, encoding='utf-8', check=True)
         d = json.loads(out.stdout)
         if 'results' not in d:
             raise SystemExit(f"Algolia error: {d}")
@@ -56,7 +62,7 @@ def algolia(reqs):
             cache[k] = res.get('hits', [])
         time.sleep(0.15)          # be polite
     if todo:
-        with open(CACHE, 'w') as f:
+        with open(CACHE, 'w', encoding='utf-8') as f:
             json.dump(cache, f)
         os.path.exists(os.path.join(HERE, '.req.json')) and os.remove(os.path.join(HERE, '.req.json'))
     return [cache.get(r[0], []) for r in reqs]
@@ -143,7 +149,7 @@ def brewery_tokens(s):
 site_path = os.path.join(HERE, 'site-beers.json')
 added_beers, added_stands, dato_id_of = 0, set(), {}
 if os.path.exists(site_path):
-    site = json.load(open(site_path))
+    site = json.load(open(site_path, encoding='utf-8'))
 
     # Every beer name the spreadsheet lists, whoever it credits. The two sources
     # sometimes disagree about whose beer it is - the site puts Boss Level under
@@ -410,14 +416,14 @@ if RETRY_MISSES:
 bids_path = os.path.join(HERE, 'beer-bids.json')
 manual_bids, bids_unmatched = {}, []
 if os.path.exists(bids_path):
-    wanted = {k: v for k, v in json.load(open(bids_path)).items()
+    wanted = {k: v for k, v in json.load(open(bids_path, encoding='utf-8')).items()
               if not k.startswith('_')}
     if wanted:
         # /objects is a different endpoint from search, so fetch these directly.
         payload = {'requests': [{'indexName': 'beer', 'objectID': str(bid)}
                                 for bid in wanted.values()]}
         tmp = os.path.join(HERE, '.req.json')
-        with open(tmp, 'w') as f:
+        with open(tmp, 'w', encoding='utf-8') as f:
             json.dump(payload, f)
         out = subprocess.run([
             'curl', '-s', '-X', 'POST',
@@ -426,7 +432,7 @@ if os.path.exists(bids_path):
             '-H', 'Content-Type: application/json',
             '--data', f'@{tmp}',
             f'https://{APP}-dsn.algolia.net/1/indexes/*/objects'],
-            capture_output=True, text=True, check=True)
+            capture_output=True, text=True, encoding='utf-8', check=True)
         os.path.exists(tmp) and os.remove(tmp)
         got = {}
         for rec in json.loads(out.stdout).get('results', []):
@@ -463,7 +469,7 @@ if os.path.exists(bids_path):
 if FIND_MISSING:
     published, data_path = {}, os.path.join(HERE, 'data.json')
     if os.path.exists(data_path):
-        for b in json.load(open(data_path))['beers']:
+        for b in json.load(open(data_path, encoding='utf-8'))['beers']:
             published[(brewery_norm(b['brewery']), norm(b['name']))] = b
 
     # Beers the shipped app currently shows no link for. Comparing against
@@ -477,7 +483,7 @@ if FIND_MISSING:
         if m and was and was.get('is_beer') and not was.get('url'):
             newly.append((r, m))
 
-    existing = json.load(open(bids_path)) if os.path.exists(bids_path) else {}
+    existing = json.load(open(bids_path, encoding='utf-8')) if os.path.exists(bids_path) else {}
     out, added = dict(existing), []
     for r, (hit, _, _) in newly:
         label = f"{r['BREWERY']} | {r['BEER NAME']}"
@@ -485,7 +491,7 @@ if FIND_MISSING:
             out[label] = hit['bid']
             added.append(label)
     if added:
-        with open(bids_path, 'w') as f:
+        with open(bids_path, 'w', encoding='utf-8', newline='\n') as f:
             json.dump(out, f, indent=2)
             f.write('\n')
 
@@ -503,7 +509,7 @@ if FIND_MISSING:
     print("on the machine that has untappd-history.json to rebuild data.json.")
     raise SystemExit(0)
 
-history = json.load(open(os.path.join(HERE, 'untappd-history.json')))
+history = json.load(open(os.path.join(HERE, 'untappd-history.json'), encoding='utf-8'))
 drunk_bids = {c['bid'] for c in history if c.get('bid')}
 drunk_names = {(norm(c['brewery_name']), norm(c['beer_name'])) for c in history}
 
@@ -646,7 +652,7 @@ for r in rows:
 intent_path = os.path.join(HERE, 'preferences.json')
 intent_of, intent_unmatched, style_rules, beer_rules = {}, [], [], {}
 if os.path.exists(intent_path):
-    prefs = json.load(open(intent_path))
+    prefs = json.load(open(intent_path, encoding='utf-8'))
     style_rules = [(re.compile(cfg['match'], re.I), cfg['adjust'], label)
                    for label, cfg in (prefs.get('styles') or {}).items()]
     # Named beers, for when neither the brewery nor the style rule is right
@@ -741,7 +747,7 @@ for b in beers:
 
 # Aisle numbers scraped from the venue map, if map_aisles.py has been run.
 aisle_path = os.path.join(HERE, 'stand-aisles.json')
-aisle_of = json.load(open(aisle_path)) if os.path.exists(aisle_path) else {}
+aisle_of = json.load(open(aisle_path, encoding='utf-8')) if os.path.exists(aisle_path) else {}
 
 # Read off the map by hand, and therefore right where the scraper is only
 # close. Keys may name either the stand or one of its breweries, since the two
@@ -749,7 +755,7 @@ aisle_of = json.load(open(aisle_path)) if os.path.exists(aisle_path) else {}
 manual_path = os.path.join(HERE, 'aisles-manual.json')
 manual_unmatched = []
 if os.path.exists(manual_path):
-    manual = json.load(open(manual_path))
+    manual = json.load(open(manual_path, encoding='utf-8'))
     stand_breweries = collections.defaultdict(set)
     for b in beers:
         stand_breweries[b['exhibitor']].add(b['brewery'])
@@ -806,7 +812,7 @@ public = {
         'intent': b.get('intent', 0),
     } for b in beers],
 }
-with open(os.path.join(HERE, 'data.json'), 'w') as f:
+with open(os.path.join(HERE, 'data.json'), 'w', encoding='utf-8', newline='\n') as f:
     json.dump(public, f, separators=(',', ':'))
 
 # ---- report ----

@@ -90,6 +90,18 @@ in the file and nothing else has reviewed them.
 Do not clear the whole cache to achieve this. That re-queries all 376 beers and
 can move matches that are already right.
 
+### Every file read and written is UTF-8, explicitly
+
+The sheet has macrons and smart quotes, and Untappd returns whatever the brewer
+typed. On Windows the locale codepage is cp1252, so a bare `open()` or a
+`subprocess.run(text=True)` decodes Algolia's reply as cp1252 and dies - the
+reader thread raises, `stdout` comes back `None`, and the traceback you see is
+`json.loads(None)` several frames later, which points nowhere near the cause.
+Pass `encoding='utf-8'` on every `open()` and every `subprocess.run`.
+
+`data.json` still lands pure ASCII, because `json.dump` escapes non-ASCII by
+default. Do not "fix" that with `ensure_ascii=False`.
+
 ### Finding beers without the check-in history
 
 The history is needed to score a beer, not to find one. On a machine without
