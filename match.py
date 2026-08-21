@@ -144,6 +144,27 @@ def sim(a, b):
 
 
 # --------------------------------------------------------------------------
+# The score.
+#
+# Takes only what data.json publishes, so it can be recomputed from the file
+# alone - which is what the app does on a rating refresh, and what
+# --find-missing does when a beer gains a rating it did not have.
+#
+# weigh() in index.html mirrors this. Change one, change the other, then run
+# the parity check in CLAUDE.md. Python rounds half-to-even and JavaScript
+# rounds half-up, hence floor(x * 1000 + 0.5) rather than round().
+# --------------------------------------------------------------------------
+def weigh(aff, bwb, awarded, intent, rating, rating_count):
+    rated = rating_count >= 5
+    quality = max(0.0, min(((rating or 0) - 3.2) / 1.0, 1.0)) if rated else 0.45
+    novelty = 0.0 if rated else 0.15        # new beers are the point
+    bw_weight = 0.06 if rated else 0.22     # no rating: brewery history carries it
+    award = 0.12 if awarded else 0.0
+    raw = 0.55 * aff + 0.33 * quality + novelty + award + bw_weight * bwb
+    return max(0.0, min(100.0, math.floor(raw * 1000 + 0.5) / 10 + intent))
+
+
+# --------------------------------------------------------------------------
 # Load inputs
 # --------------------------------------------------------------------------
 rows = []
@@ -488,22 +509,33 @@ if os.path.exists(bids_path):
             manual_bids[label] = bid
 
 # --------------------------------------------------------------------------
-# Lookup-only mode.
+# Lookup-only mode: find the beers Untappd had no page for, and patch them
+# into the shipped data.json.
 #
-# Everything above this point is pure Untappd lookup. The check-in history is
-# needed to score a beer, not to find one, so this stops here and runs fine on
-# a machine that has no untappd-history.json.
+# Everything above this point is pure Untappd lookup. The history is needed to
+# score a beer, not to find one, so this runs on a machine without it.
 #
-# It writes nothing to data.json - a data.json built without the history would
-# have no drunk flags and no weights, which is worse than a stale one. The ids
-# go to beer-bids.json instead, which is committable, so a later full run on
-# the machine that does have the history picks them up and scores them.
+# It patches data.json rather than rebuilding it, which is what makes that
+# possible. Rebuilding needs the history for every beer's drunk flag and
+# affinity; patching needs none of it, because those values are already in the
+# file from the last full run. Only the beers that gained a page are touched,
+# and only their Untappd fields: aff, bwb, intent and drunk are carried
+# through untouched.
+#
+# The score is recomputed, because a beer that gained a rating has to be
+# reweighed - by the same weigh() the app uses, off the same published parts,
+# so data.json stays self-consistent and the first rating refresh does not
+# shift anything. The one thing left stale is drunk: without the history there
+# is no way to know, and these are pages published in the last day or so.
 # --------------------------------------------------------------------------
 if FIND_MISSING:
     published, data_path = {}, os.path.join(HERE, 'data.json')
-    if os.path.exists(data_path):
-        for b in json.load(open(data_path, encoding='utf-8'))['beers']:
-            published[(brewery_norm(b['brewery']), norm(b['name']))] = b
+    if not os.path.exists(data_path):
+        raise SystemExit("data.json is not here, and --find-missing patches it "
+                         "rather than building one. Nothing to do.")
+    shipped = json.load(open(data_path, encoding='utf-8'))
+    for b in shipped['beers']:
+        published[(brewery_norm(b['brewery']), norm(b['name']))] = b
 
     # Beers the shipped app currently shows no link for. Comparing against
     # data.json rather than this run's misses is what makes the mode work on a
@@ -528,18 +560,67 @@ if FIND_MISSING:
             json.dump(out, f, indent=2)
             f.write('\n')
 
+    # Patch each found beer into the shipped file, in place.
+    for r, (hit, _, _) in newly:
+        b = published[(brewery_norm(r['BREWERY']), norm(r['BEER NAME']))]
+        n = hit.get('rating_count') or 0
+        b['bid'] = hit['bid']
+        b['url'] = (f"https://untappd.com/b/{hit['beer_slug']}/{hit['bid']}"
+                    if hit.get('beer_slug')
+                    else f"https://untappd.com/beer/{hit['bid']}")
+        b['style'] = hit.get('type_name') or b['style']
+        b['label'] = hit.get('beer_label_hd') or hit.get('beer_label') or ''
+        b['rating'] = (hit.get('rating_score') or 0) if n >= 5 else None
+        b['rating_count'] = n if n >= 5 else 0
+        b['awarded'] = bool(hit.get('community_awards'))
+        # Untappd can also settle that a listing is not beer at all.
+        if not hit.get('parent_style_is_beer', 1):
+            b['is_beer'] = False
+        b['weight'] = (weigh(b['aff'], b.get('bwb') or 0, b['awarded'],
+                             b.get('intent') or 0, b['rating'], b['rating_count'])
+                       if b['is_beer'] and b.get('aff') is not None else None)
+
+    # data.json is the app's only input, so refuse to leave a half-written one.
+    # Every beer that publishes a score must agree with weigh(), or the app's
+    # first rating refresh silently moves it - the check CLAUDE.md documents.
+    drift = [b for b in shipped['beers']
+             if b['is_beer'] and b.get('aff') is not None
+             and abs(weigh(b['aff'], b.get('bwb') or 0, b.get('awarded', False),
+                           b.get('intent') or 0, b.get('rating'),
+                           b.get('rating_count') or 0) - b['weight']) > 0.001]
+    if drift:
+        raise SystemExit(f"refusing to write: {len(drift)} beer(s) would not "
+                         f"survive a rating refresh, first is {drift[0]['name']}")
+
+    shipped['generated'] = time.strftime('%Y-%m-%d')
+    tmp_out = data_path + '.tmp'
+    with open(tmp_out, 'w', encoding='utf-8', newline='\n') as f:
+        json.dump(shipped, f, separators=(',', ':'))
+    os.replace(tmp_out, data_path)               # never a truncated data.json
+
     gone = [b for b in published.values() if b.get('is_beer') and not b.get('url')]
-    print(f"had no Untappd page    : {len(gone)}")
+    print(f"had no Untappd page    : {len(gone) + len(newly)}")
     print(f"found now              : {len(newly)}"
-          f"   ({len(added)} added to beer-bids.json)")
+          f"   ({len(added)} new to beer-bids.json)")
     for r, (hit, score, tier) in newly:
-        mark = ' ' if f"{r['BREWERY']} | {r['BEER NAME']}" in added else '.'
-        print(f"  {mark} {r['BREWERY'][:18]:<19}{r['BEER NAME'][:26]:<27}-> "
-              f"{hit['beer_name'][:26]:<27}t{tier} {score:.2f}  {hit['bid']}")
+        b = published[(brewery_norm(r['BREWERY']), norm(r['BEER NAME']))]
+        tag = (f"{b['rating']:.2f} ({b['rating_count']})"
+               if b['rating_count'] >= 5 else "unrated/new")
+        print(f"    {r['BREWERY'][:16]:<17}{r['BEER NAME'][:24]:<25}-> "
+              f"{hit['beer_name'][:24]:<25}t{tier} {score:.2f}  {tag}")
+    print(f"still missing          : {len(gone)}")
     print()
-    print("Read those before trusting them - a wrong id is worse than no link.")
-    print("Then commit beer-bids.json, and run match.py without --find-missing")
-    print("on the machine that has untappd-history.json to rebuild data.json.")
+    if newly:
+        print("data.json patched: those beers now have links, ratings and")
+        print("labels. Scores were reweighed off their new ratings; drunk")
+        print("flags could not be, so a beer you have had may still show as")
+        print("new. Everything else in the file is untouched.")
+        print()
+        print("Read the matches above - a wrong id links to the wrong beer.")
+        print("Then bump CACHE in sw.js and push to main to deploy.")
+    else:
+        print("Nothing found, so data.json is unchanged. Those beers still")
+        print("have no Untappd page.")
     raise SystemExit(0)
 
 history = json.load(open(HISTORY, encoding='utf-8'))
@@ -728,28 +809,11 @@ for b in beers:
         bw_bias = max(-1.0, min((bw_avg - overall_avg) / 0.4, 1.0)) * bw_conf
     else:
         bw_avg, bw_bias = None, 0.0
-    rating = b['rating']
-    n = b['rating_count']
-    if n >= 5:
-        quality = max(0.0, min((rating - 3.2) / 1.0, 1.0))
-        novelty = 0.0
-        bw_weight = 0.06        # we have real data; brewery is a nudge only
-    else:
-        quality = 0.45          # unknown, not bad
-        novelty = 0.15          # new beers are the point
-        bw_weight = 0.22        # no rating: your brewery history carries it
-    award = 0.12 if b['awards'] else 0.0
     # Keep the parts that do not depend on the rating, so the app can redo this
     # sum against a fresher rating without needing the check-in history.
-    # index.html mirrors the formula - change one and change the other.
     b['aff'] = round(aff, 3)
     b['bwb'] = round(bw_bias, 3)
     b['awarded'] = bool(b['awards'])
-    # Score off the published, rounded parts, and round half-up rather than
-    # half-to-even, so the app recomputing this lands on the same number
-    # instead of nudging every score by 0.1 on the first refresh.
-    raw = (0.55 * b['aff'] + 0.33 * quality + novelty + award
-           + bw_weight * b['bwb'])
     b['dato'] = (dato_id_of.get((brewery_norm(b['brewery']), norm(b['name'])))
                  or dato_id_of.get((None, norm(b['name']))))
     b['intent'] = intent_of.get(b['exhibitor'], intent_of.get(b['brewery'], 0))
@@ -766,8 +830,8 @@ for b in beers:
         or beer_rules.get((norm(b['exhibitor']), norm(b['name'])))
     if named is not None:
         b['intent'] += named
-    b['score'] = max(0.0, min(100.0,
-                              math.floor(raw * 1000 + 0.5) / 10 + b['intent']))
+    b['score'] = weigh(b['aff'], b['bwb'], b['awarded'], b['intent'],
+                       b['rating'], b['rating_count'])
 
 # --------------------------------------------------------------------------
 # Publishable data. This file ships with the app and is world-readable, so it

@@ -110,7 +110,7 @@ UTF-8 regardless (the `ä` in the Märzen regex is fine), and `data.json` still
 lands pure ASCII because `json.dump` escapes non-ASCII by default. Do not "fix"
 that second one with `ensure_ascii=False` - the app is fetching it as-is.
 
-### Finding beers without the check-in history
+### Deploying new Untappd matches without the check-in history
 
 The history is needed to score a beer, not to find one. On a machine without
 `untappd-history.json`:
@@ -119,15 +119,35 @@ The history is needed to score a beer, not to find one. On a machine without
 python3 match.py --find-missing
 ```
 
-does the lookup only and stops before scoring, writing what it finds into
-`beer-bids.json`. It writes nothing to `data.json` - one built without the
-history would have no drunk flags and no weights, which is worse than a stale
-one. Commit the bids, then run `match.py` normally where the history lives.
+looks up every beer the shipped `data.json` has no `url` for, and patches the
+ones it finds straight into that file - link, rating, label, style - then
+writes their ids to `beer-bids.json` too. Bump `CACHE` in `sw.js` and push.
+
+Patching is what makes this possible without the history. A *rebuild* needs it
+for every beer's drunk flag and affinity; a patch needs none, because those
+values are already in the file from the last full run. Only beers that gained a
+page are touched, and `aff`, `bwb`, `intent` and `drunk` are carried through
+untouched. The score is recomputed - a beer that gained a rating has to be
+reweighed - through the same `weigh()` the full run uses.
+
+Two things to know:
+
+- **`drunk` goes stale.** There is no way to know without the history, so a
+  beer already drunk can show as new. It corrects itself on the next full run.
+- **It refuses to write** if any beer in the finished file disagrees with
+  `weigh()`, since that is exactly the drift the app's first rating refresh
+  would expose. Verified against the real file: 376/376, zero drift.
 
 It compares against the `url`s already in `data.json` rather than against this
 run's own misses, which is what makes it work on a fresh clone: there is no
 `.algolia-cache.json` there, so nothing is a repeat and there is nothing to
 retry. Ids already in `beer-bids.json` are left alone - hand-picked wins.
+
+### The scoring formula lives in two places, and `weigh()` is one of them
+
+`match.py` now has a single `weigh()` that both the full run and `--find-missing`
+call, so there is no third copy. It still has to agree with `weigh()` in
+`index.html`. Change one, change the other, then run the parity check above.
 
 ### The leaderboard comes from Firebase, not the website
 
